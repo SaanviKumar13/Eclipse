@@ -11,7 +11,7 @@ import SwiftUI
 struct EclipseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
