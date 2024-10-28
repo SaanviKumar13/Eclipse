@@ -70,6 +70,7 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				27817BA32CCF93B9003D3905 /* Views */,
 				27817B942CCF8F96003D3905 /* Models */,
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
 				27817B822CCF8DC2003D3905 /* SceneDelegate.swift */,
@@ -94,6 +95,13 @@
 				27817BA12CCF907E003D3905 /* BookSupport.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		27817BA32CCF93B9003D3905 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
