@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Author {
-    var id: String
+struct Author: Identifiable {
+    var id = UUID()
     var name: String
-    var biography: String?
+    var bio: String
+    var image: String
     var books: [Book]
 }
