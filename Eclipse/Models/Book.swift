@@ -11,7 +11,7 @@ struct Book {
     var id: String
     var title: String
     var author: Author
-    var genre: Genre
+    var genre: String
     var description: String
     var coverImageURL: URL?
     var tags: [Tag]
@@ -19,6 +19,7 @@ struct Book {
     var price: Double?
     var rentersNearby: Int
     var seriesInfo: SeriesInfo?
+    var status: Status?
 }
 
 struct SeriesInfo {
@@ -29,4 +30,11 @@ struct SeriesInfo {
 struct Tag {
     var id: String
     var name: String
+}
+
+enum Status: String{
+    case wantToRead = "Want to Read"
+    case currentlyReading = "Currently Reading"
+    case finished = "Finished"
+    case didNotFinish = "Did Not Finish"
 }

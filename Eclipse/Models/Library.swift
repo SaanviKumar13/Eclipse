@@ -8,7 +8,7 @@
 import Foundation
 
 struct Library {
-    var booksByGenre: [Genre: [Book]]
+    var booksByGenre: [String: [Book]]
     var statusLists: StatusLists
 }
 

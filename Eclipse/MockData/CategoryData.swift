@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+var categories: [Category] = [
+      Category(name: "Fiction"),
+      Category(name: "Science"),
+      Category(name: "Biography"),
+      Category(name: "History"),
+      Category(name: "Fantasy")
+  ]
