@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 let mockBooks: [Book] = [
     Book(
@@ -19,7 +20,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Fiction",
         description: "A novel about a woman who finds herself in a library with books representing different versions of her life.",
-        coverImageURL: URL(string: "https://example.com/midnight_library.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"midnight_library"),
         tags: [Tag(id: "1", name: "Inspirational")],
         rating: 4.3,
         price: 10.99,
@@ -38,7 +39,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Romance",
         description: "A heart-wrenching story that tackles difficult themes and emotional challenges.",
-        coverImageURL: URL(string: "https://example.com/it_ends_with_us.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"it_ends_with_us"),
         tags: [Tag(id: "2", name: "Romance")],
         rating: 4.6,
         price: 12.99,
@@ -57,7 +58,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Dystopian",
         description: "A classic dystopian novel that delves into themes of government surveillance and totalitarianism.",
-        coverImageURL: URL(string: "https://example.com/1984.jpg"),
+        coverImageURL:UIImage(imageLiteralResourceName:"1984"),
         tags: [Tag(id: "3", name: "Classic"), Tag(id: "4", name: "Dystopian")],
         rating: 4.8,
         price: 15.99,
@@ -76,7 +77,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Classic",
         description: "A story of love and social expectations in early 19th-century England.",
-        coverImageURL: URL(string: "https://example.com/pride_prejudice.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"pride_and_prejudice"),
         tags: [Tag(id: "5", name: "Classic"), Tag(id: "6", name: "Romance")],
         rating: 4.7,
         price: 9.99,
@@ -95,7 +96,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Fiction",
         description: "A young girl's observations of racial injustice in the American South.",
-        coverImageURL: URL(string: "https://example.com/to_kill_mockingbird.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"to_kill_a_mocking_bird"),
         tags: [Tag(id: "7", name: "Historical"), Tag(id: "8", name: "Social Issues")],
         rating: 4.9,
         price: 13.99,
@@ -114,7 +115,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Mystery",
         description: "A coming-of-age murder mystery set in the marshes of North Carolina.",
-        coverImageURL: URL(string: "https://example.com/crawdads_sing.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"where_the_crawdads_sing"),
         tags: [Tag(id: "9", name: "Mystery"), Tag(id: "10", name: "Coming of Age")],
         rating: 4.5,
         price: 11.99,
@@ -133,7 +134,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Classic",
         description: "A novel about the American dream and the dark side of wealth.",
-        coverImageURL: URL(string: "https://example.com/great_gatsby.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"great_gatsby"),
         tags: [Tag(id: "11", name: "Classic"), Tag(id: "12", name: "Tragedy")],
         rating: 4.4,
         price: 8.99,
@@ -152,7 +153,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Fiction",
         description: "A story about teenage rebellion and alienation.",
-        coverImageURL: URL(string: "https://example.com/catcher_rye.jpg"),
+        coverImageURL: UIImage(imageLiteralResourceName:"catcher_in_the_rye"),
         tags: [Tag(id: "13", name: "Classic"), Tag(id: "14", name: "Psychological")],
         rating: 4.2,
         price: 7.99,

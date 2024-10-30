@@ -23,9 +23,9 @@
 		27817BBA2CD16E04003D3905 /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BB92CD16E04003D3905 /* ReadingListViewController.swift */; };
 		27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BBB2CD16E12003D3905 /* AllBooksViewController.swift */; };
 		27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */; };
-		27817BC52CD1766C003D3905 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC42CD1766C003D3905 /* CategoryData.swift */; };
 		27817BC82CD17C07003D3905 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC72CD17C07003D3905 /* Category.swift */; };
 		27817BCB2CD181DF003D3905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27817BCA2CD181DF003D3905 /* Assets.xcassets */; };
+		27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,9 +47,9 @@
 		27817BB92CD16E04003D3905 /* ReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
 		27817BBB2CD16E12003D3905 /* AllBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksViewController.swift; sourceTree = "<group>"; };
 		27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		27817BC42CD1766C003D3905 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		27817BC72CD17C07003D3905 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		27817BCA2CD181DF003D3905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				27817BAF2CD12E05003D3905 /* BookData.swift */,
-				27817BC42CD1766C003D3905 /* CategoryData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -134,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */,
+				27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
-				27817BC52CD1766C003D3905 /* CategoryData.swift in Sources */,
+				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817BC82CD17C07003D3905 /* Category.swift in Sources */,
 				27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */,

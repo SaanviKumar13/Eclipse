@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Book {
     var id: String
@@ -13,7 +14,7 @@ struct Book {
     var author: Author
     var genre: String
     var description: String
-    var coverImageURL: URL?
+    var coverImageURL: UIImage
     var tags: [Tag]
     var rating: Double
     var price: Double?
