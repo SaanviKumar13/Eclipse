@@ -19,12 +19,12 @@ class LibraryViewController: UIViewController {
     
     @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
-        case 0:ReadingListView.alpha = 1
-            AllBooksView.alpha = 0
-            break
-        case 1:ReadingListView.alpha = 0
-            AllBooksView.alpha = 1
-            break
+        case 0: ReadingListView.alpha = 1
+                AllBooksView.alpha = 0
+                break
+        case 1: ReadingListView.alpha = 0
+                AllBooksView.alpha = 1
+                break
         default: break
         }
     }

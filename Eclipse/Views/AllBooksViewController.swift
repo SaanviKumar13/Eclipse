@@ -59,7 +59,7 @@ class AllBooksViewController: UIViewController, UICollectionViewDataSource, UICo
             let textWidth = (category as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: 17)]).width
             return CGSize(width: textWidth + padding, height: 50)
         } else {
-            let width = (collectionView.frame.width - 40) / 2
+            let width = (collectionView.frame.width ) / 2
             return CGSize(width: width, height: 250)
         }
     }
