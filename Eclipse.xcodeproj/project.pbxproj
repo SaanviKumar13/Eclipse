@@ -26,6 +26,8 @@
 		27817BC82CD17C07003D3905 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC72CD17C07003D3905 /* Category.swift */; };
 		27817BCB2CD181DF003D3905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27817BCA2CD181DF003D3905 /* Assets.xcassets */; };
 		27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */; };
+		27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */; };
+		27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		27817BC72CD17C07003D3905 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		27817BCA2CD181DF003D3905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
+		27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,8 @@
 			children = (
 				27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */,
 				27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */,
+				27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */,
+				27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
+				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817BC82CD17C07003D3905 /* Category.swift in Sources */,
 				27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */,
@@ -222,6 +229,7 @@
 				27817BBA2CD16E04003D3905 /* ReadingListViewController.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
+				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,

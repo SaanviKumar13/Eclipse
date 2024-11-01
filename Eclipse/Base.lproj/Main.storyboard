@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -131,13 +132,62 @@
                     <view key="view" contentMode="scaleToFill" id="DCb-lX-p1m">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="582"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="2" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xRl-3R-XQs">
+                                <rect key="frame" x="0.0" y="59" width="393" height="489"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReadingListCell" rowHeight="100" id="95I-0x-ZXq">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="95I-0x-ZXq" id="QvY-ED-adn">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PAK-g3-hsh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gNL-bR-bhz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="100"/>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LqA-4k-Szn">
+                                                            <rect key="frame" x="196.66666666666663" y="40" width="196.33333333333337" height="20.333333333333329"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="network" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-A5-5S6">
+                                                                    <rect key="frame" x="0.0" y="1" width="19.666666666666668" height="19"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="PAK-g3-hsh" secondAttribute="trailing" id="4DD-4y-2Nn"/>
+                                                <constraint firstItem="PAK-g3-hsh" firstAttribute="top" secondItem="QvY-ED-adn" secondAttribute="top" id="7GV-px-cuj"/>
+                                                <constraint firstAttribute="bottom" secondItem="PAK-g3-hsh" secondAttribute="bottom" id="7xw-H1-UpZ"/>
+                                                <constraint firstItem="PAK-g3-hsh" firstAttribute="leading" secondItem="QvY-ED-adn" secondAttribute="leading" id="lzg-pm-u0J"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="a6U-nO-umk"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xRl-3R-XQs" firstAttribute="top" secondItem="a6U-nO-umk" secondAttribute="top" id="7UH-ek-CrQ"/>
+                            <constraint firstItem="xRl-3R-XQs" firstAttribute="leading" secondItem="a6U-nO-umk" secondAttribute="leading" id="Lih-x6-e0I"/>
+                            <constraint firstItem="a6U-nO-umk" firstAttribute="trailing" secondItem="xRl-3R-XQs" secondAttribute="trailing" id="XyY-hH-OL1"/>
+                            <constraint firstItem="a6U-nO-umk" firstAttribute="bottom" secondItem="xRl-3R-XQs" secondAttribute="bottom" id="iOn-vz-qeb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TableView" destination="xRl-3R-XQs" id="yQ8-A7-yml"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sx-BQ-n5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199" y="885"/>
+            <point key="canvasLocation" x="2197.709923664122" y="884.50704225352115"/>
         </scene>
         <!--All Books View Controller-->
         <scene sceneID="Bc9-DM-uJj">
@@ -253,11 +303,9 @@
     <resources>
         <image name="book.fill" catalog="system" width="128" height="95"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="network" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
