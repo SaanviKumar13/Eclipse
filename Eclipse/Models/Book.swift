@@ -14,7 +14,7 @@ struct Book {
     var author: Author
     var genre: String
     var description: String
-    var coverImageURL: UIImage
+    var coverImageURL: UIImage?
     var tags: [Tag]
     var rating: Double
     var price: Double?

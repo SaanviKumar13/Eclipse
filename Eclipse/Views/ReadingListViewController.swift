@@ -4,29 +4,34 @@
 //
 //  Created by user@87 on 30/10/24.
 //
+
 import UIKit
 
 class ReadingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    struct List {
+        let title: String
+        let bookIDs: [String]
+        let isPrivate: Bool
+    }
+    
+    var statusLists: [List] = [
+        List(title: "Want To Read", bookIDs: wantToReadList, isPrivate: false),
+        List(title: "Currently Reading", bookIDs: currentlyReadingList, isPrivate: true),
+        List(title: "Finished", bookIDs: finishedList, isPrivate: false),
+        List(title: "Did Not Finish", bookIDs: didNotFinishList, isPrivate: true)
+    ]
+
+    var customLists: [String: List] = [
+        "Whodunit?": List(title: "Whodunit?", bookIDs: whodunitList, isPrivate: false),
+        "Sci-Fi Adventures": List(title: "Sci-Fi Adventures", bookIDs: sciFiAdventuresList, isPrivate: true),
+        "Historical Drama": List(title: "Historical Drama", bookIDs: historicalDramaList, isPrivate: false)
+    ]
 
     @IBOutlet weak var TableView: UITableView!
-    
-    var customLists: [String: [String]] = [
-        "Whodunit?": ["1", "6"],
-        "Sci-Fi Adventures": ["2", "3"],
-        "Historical Drama": ["5", "4"]
-    ]
-
-    var statusLists: [(title: String, bookIDs: [String])] = [
-        ("Want To Read", ["1", "4", "6"]),
-        ("Currently Reading", ["3"]),
-        ("Finished", ["2", "5", "7"]),
-        ("Did Not Finish", ["8"])
-    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        TableView.register(ReadingListTableViewCell.self, forCellReuseIdentifier: "ReadingListCell")
-        
         TableView.dataSource = self
         TableView.delegate = self
     }
@@ -47,17 +52,46 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
         if indexPath.section == 0 {
             let statusList = statusLists[indexPath.row]
             cell.titleLabel.text = statusList.title
-            cell.subtitleLabel.text = "\(statusList.bookIDs.count) books"
+            cell.subtitleLabel.text = statusList.bookIDs.isEmpty ? "No books available" : "\(statusList.bookIDs.count) books"
+            cell.privacyIndicator.image = statusList.isPrivate ? UIImage(systemName: "lock.fill") : UIImage(systemName: "network")
+            let bookIDs = statusList.bookIDs.prefix(3)
+            setBookImages(for: cell, with: bookIDs, from: mockBooks)
+
         } else {
             let customListName = Array(customLists.keys)[indexPath.row]
-            let bookIDs = customLists[customListName] ?? []
-            cell.titleLabel.text = customListName
+            let customList = customLists[customListName]!
+            cell.titleLabel.text = customList.title
+            let bookIDs = customList.bookIDs
             cell.subtitleLabel.text = "\(bookIDs.count) books"
+            cell.privacyIndicator.image = customList.isPrivate ? UIImage(systemName: "lock.fill") : UIImage(systemName: "network")
+            let bookIDsToDisplay = bookIDs.prefix(3)
+            setBookImages(for: cell, with: bookIDsToDisplay, from: mockBooks)
         }
-
-        cell.coverImageView.image = UIImage(named: "reading_list")
-
+        
         return cell
+    }
+
+    private func setBookImages(for cell: ReadingListTableViewCell, with bookIDs: ArraySlice<String>, from books: [Book]) {
+        var bookImages: [UIImage] = []
+        for bookID in bookIDs {
+            if let book = books.first(where: { $0.id == bookID }) {
+                if let image = book.coverImageURL {
+                    bookImages.append(image)
+                }
+            }
+        }
+        cell.book1.image = nil
+        cell.book2.image = nil
+        cell.book3.image = nil
+        if bookImages.indices.contains(0) {
+            cell.book1.image = bookImages[0]
+        }
+        if bookImages.indices.contains(1) {
+            cell.book2.image = bookImages[1]
+        }
+        if bookImages.indices.contains(2) {
+            cell.book3.image = bookImages[2]
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -99,3 +133,4 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
         return 44
     }
 }
+

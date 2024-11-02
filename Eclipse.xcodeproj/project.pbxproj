@@ -28,6 +28,7 @@
 		27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */; };
 		27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */; };
 		27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */; };
+		27817BD92CD60F71003D3905 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD82CD60F71003D3905 /* ListData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
+		27817BD82CD60F71003D3905 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				27817BAF2CD12E05003D3905 /* BookData.swift */,
+				27817BD82CD60F71003D3905 /* ListData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
+				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
