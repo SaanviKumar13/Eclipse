@@ -29,6 +29,8 @@
 		27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */; };
 		27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */; };
 		27817BD92CD60F71003D3905 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD82CD60F71003D3905 /* ListData.swift */; };
+		27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */; };
+		27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
 		27817BD82CD60F71003D3905 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
+		27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
+		27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBookTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 				27817BB72CD15463003D3905 /* LibraryViewController.swift */,
 				27817BB92CD16E04003D3905 /* ReadingListViewController.swift */,
 				27817BBB2CD16E12003D3905 /* AllBooksViewController.swift */,
+				27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */,
 				27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */,
 				27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */,
+				27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				27817BB82CD15463003D3905 /* LibraryViewController.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
+				27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
@@ -234,6 +241,7 @@
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
+				27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,

@@ -7,10 +7,10 @@
 
 import Foundation
 
-let wantToReadList: [String] = ["1", "4", "6"]
-let currentlyReadingList: [String] = ["3"]
-let finishedList: [String] = ["2", "5", "7"]
-let didNotFinishList: [String] = ["8"]
+var wantToReadList: [String] = ["1", "4", "6"]
+var currentlyReadingList: [String] = ["3"]
+var finishedList: [String] = ["2", "5", "7"]
+var didNotFinishList: [String] = ["8"]
 
 let whodunitList: [String] = ["1", "6"]
 let sciFiAdventuresList: [String] = ["2", "3"]
