@@ -110,6 +110,7 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
                 createButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
                 createButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
             ])
+            createButton.addTarget(self, action: #selector(createNewCollectionTapped), for: .touchUpInside)
         }
 
         return headerView
@@ -123,8 +124,17 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
         performSegue(withIdentifier: "showStatusList", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    @objc func createNewCollectionTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let createVC = storyboard.instantiateViewController(withIdentifier: "CreateCollectionViewController") as? CreateCollectionViewController {
+            let navController = UINavigationController(rootViewController: createVC)
+            navController.modalPresentationStyle = .formSheet
+            present(navController, animated: true, completion: nil)
+        }
+    }
 
-  
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showStatusList",
