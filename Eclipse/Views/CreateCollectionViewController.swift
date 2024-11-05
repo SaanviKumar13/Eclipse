@@ -13,6 +13,7 @@ class CreateCollectionViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var privateSwitch: UISwitch!
+    @IBOutlet weak var privacyInfo: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,19 @@ class CreateCollectionViewController: UIViewController {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        configurePrivacyInfoLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    private func configurePrivacyInfoLabel() {
+          privacyInfo.numberOfLines = 0
+          privacyInfo.lineBreakMode = .byWordWrapping
+          privacyInfo.text = "Other users will not be able to see your lists."
+      }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let name = nameTextField.text, !name.isEmpty else {

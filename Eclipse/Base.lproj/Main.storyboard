@@ -280,7 +280,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxg-c6-SHP">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kxg-c6-SHP">
                                 <rect key="frame" x="328" y="449" width="51" height="31"/>
                             </switch>
                         </subviews>
@@ -327,6 +327,7 @@
                         <outlet property="descriptionTextField" destination="SYw-BK-yEO" id="5zq-4z-yOH"/>
                         <outlet property="imageView" destination="bW0-5B-RMK" id="rXb-h4-8pJ"/>
                         <outlet property="nameTextField" destination="ckJ-gz-d39" id="b5n-MA-uAl"/>
+                        <outlet property="privacyInfo" destination="zpI-qo-Cmg" id="odY-IN-ayS"/>
                         <outlet property="privateSwitch" destination="kxg-c6-SHP" id="k5v-y0-qON"/>
                     </connections>
                 </viewController>
