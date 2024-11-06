@@ -13,7 +13,7 @@ struct User {
     var email: String
     var password: String
     var address: String
-    var favoriteGenres: [Genre]
+    var favoriteGenres: [String]
     var favoriteAuthors: [Author]
     var library: Library
     var readingLists: [ReadingList]
