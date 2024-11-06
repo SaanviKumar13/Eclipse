@@ -9,25 +9,6 @@ import UIKit
 
 class ReadingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    struct List {
-        let title: String
-        let bookIDs: [String]
-        let isPrivate: Bool
-    }
-
-    var statusLists: [List] = [
-        List(title: "Want To Read", bookIDs: wantToReadList, isPrivate: false),
-        List(title: "Currently Reading", bookIDs: currentlyReadingList, isPrivate: true),
-        List(title: "Finished", bookIDs: finishedList, isPrivate: false),
-        List(title: "Did Not Finish", bookIDs: didNotFinishList, isPrivate: true)
-    ]
-
-    var customLists: [String: List] = [
-        "Whodunit?": List(title: "Whodunit?", bookIDs: whodunitList, isPrivate: false),
-        "Sci-Fi Adventures": List(title: "Sci-Fi Adventures", bookIDs: sciFiAdventuresList, isPrivate: true),
-        "Historical Drama": List(title: "Historical Drama", bookIDs: historicalDramaList, isPrivate: false)
-    ]
-
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -121,7 +102,11 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showStatusList", sender: indexPath)
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "showStatusList", sender: indexPath)
+        } else {
+            performSegue(withIdentifier: "showCustomList", sender: indexPath)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -134,21 +119,18 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
 
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showStatusList",
-           let indexPath = sender as? IndexPath,
-           let destinationVC = segue.destination as? StatusListViewController {
-            
-            if indexPath.section == 0 {
+        if let indexPath = sender as? IndexPath {
+            if segue.identifier == "showStatusList",
+               let destinationVC = segue.destination as? StatusListViewController {
                 let selectedStatus = statusLists[indexPath.row]
                 destinationVC.selectedStatusTitle = selectedStatus.title
                 destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
-            } else {
+            } else if segue.identifier == "showCustomList",
+                      let destinationVC = segue.destination as? CustomListViewController {
                 let customListName = Array(customLists.keys)[indexPath.row]
                 let selectedCustomList = customLists[customListName]!
-                destinationVC.selectedStatusTitle = selectedCustomList.title
+                destinationVC.selectedListTitle = selectedCustomList.title
                 destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
             }
         }

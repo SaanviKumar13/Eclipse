@@ -32,6 +32,10 @@
 		27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */; };
 		27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */; };
 		27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0312CDA07DF002EC79A /* CreateCollectionViewController.swift */; };
+		27DAA0342CDA1E56002EC79A /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0332CDA1E56002EC79A /* CustomListViewController.swift */; };
+		27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */; };
+		27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */; };
+		27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,10 @@
 		27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBookTableViewCell.swift; sourceTree = "<group>"; };
 		27DAA0312CDA07DF002EC79A /* CreateCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewController.swift; sourceTree = "<group>"; };
+		27DAA0332CDA1E56002EC79A /* CustomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
+		27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBookTableViewCell.swift; sourceTree = "<group>"; };
+		27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryViewController.swift; sourceTree = "<group>"; };
+		27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +139,8 @@
 				27817BBB2CD16E12003D3905 /* AllBooksViewController.swift */,
 				27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */,
 				27DAA0312CDA07DF002EC79A /* CreateCollectionViewController.swift */,
+				27DAA0332CDA1E56002EC79A /* CustomListViewController.swift */,
+				27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 				27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */,
 				27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */,
 				27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */,
+				27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */,
+				27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -227,14 +239,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */,
+				27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
 				27817BB82CD15463003D3905 /* LibraryViewController.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				27DAA0342CDA1E56002EC79A /* CustomListViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
+				27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817BC82CD17C07003D3905 /* Category.swift in Sources */,
 				27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */,
