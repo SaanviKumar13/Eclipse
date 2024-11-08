@@ -26,8 +26,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t4T-vV-8nX">
                                 <rect key="frame" x="50" y="155" width="293" height="32"/>
                                 <segments>
-                                    <segment title="Reading List"/>
                                     <segment title="All Books"/>
+                                    <segment title="Reading List"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentDidChange:" destination="sVl-65-irJ" eventType="valueChanged" id="f0J-zX-6TN"/>
@@ -581,14 +581,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="setStatusCell" id="1Gr-L6-EZi" customClass="AddToLibraryTableViewCell" customModule="Eclipse" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Gr-L6-EZi" id="qjW-1T-hqa">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvd-Mv-XBQ">
-                                                    <rect key="frame" x="36" y="11.000000000000002" width="321" height="20.666666666666671"/>
+                                                    <rect key="frame" x="36" y="10.999999999999998" width="321" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
