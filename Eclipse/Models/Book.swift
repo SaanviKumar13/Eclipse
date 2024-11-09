@@ -8,17 +8,22 @@
 import Foundation
 
 struct Book {
-    var id: String
-    var title: String
-    var author: Author
-    var genre: Genre
-    var description: String
+    var id: String?
+    var title: String?
+    var author: String?
+    var genre: String?
+    var description: String?
     var coverImageURL: URL?
-    var tags: [Tag]
-    var rating: Double
-    var price: Double?
-    var rentersNearby: Int
+    var tags: [String]?
+    var rating: Double?
+    var price: String?
+    var rentersNearby: Int?
     var seriesInfo: SeriesInfo?
+    let lender: String?
+    let imageName: String
+    let daysLeft: String?
+        
+
 }
 
 struct SeriesInfo {

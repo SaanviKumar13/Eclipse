@@ -19,6 +19,13 @@
 		27817B9E2CCF901F003D3905 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B9D2CCF901F003D3905 /* Author.swift */; };
 		27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B9F2CCF9058003D3905 /* RentRequest.swift */; };
 		27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BA12CCF907E003D3905 /* BookSupport.swift */; };
+		FF39067B2CDF296400AA9F3A /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39067A2CDF296400AA9F3A /* RequestsViewController.swift */; };
+		FF39067D2CDF2B7F00AA9F3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39067C2CDF2B7F00AA9F3A /* RequestTableViewCell.swift */; };
+		FF3906802CDF319A00AA9F3A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39067F2CDF319A00AA9F3A /* CustomColor.swift */; };
+		FF3906842CDF330900AA9F3A /* LendBorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3906832CDF330900AA9F3A /* LendBorrowViewController.swift */; };
+		FF3906862CDF332300AA9F3A /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3906852CDF332300AA9F3A /* BookCell.swift */; };
+		FF3906882CDF365100AA9F3A /* LendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3906872CDF365100AA9F3A /* LendViewController.swift */; };
+		FF39068A2CDF366D00AA9F3A /* BorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3906892CDF366D00AA9F3A /* BorrowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,13 @@
 		27817B9D2CCF901F003D3905 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		27817B9F2CCF9058003D3905 /* RentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentRequest.swift; sourceTree = "<group>"; };
 		27817BA12CCF907E003D3905 /* BookSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSupport.swift; sourceTree = "<group>"; };
+		FF39067A2CDF296400AA9F3A /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		FF39067C2CDF2B7F00AA9F3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		FF39067F2CDF319A00AA9F3A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		FF3906832CDF330900AA9F3A /* LendBorrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendBorrowViewController.swift; sourceTree = "<group>"; };
+		FF3906852CDF332300AA9F3A /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		FF3906872CDF365100AA9F3A /* LendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendViewController.swift; sourceTree = "<group>"; };
+		FF3906892CDF366D00AA9F3A /* BorrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +82,7 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				FF39067E2CDF318B00AA9F3A /* Helpers */,
 				27817BA32CCF93B9003D3905 /* Views */,
 				27817B942CCF8F96003D3905 /* Models */,
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
@@ -97,8 +112,22 @@
 		27817BA32CCF93B9003D3905 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF3906832CDF330900AA9F3A /* LendBorrowViewController.swift */,
+				FF3906872CDF365100AA9F3A /* LendViewController.swift */,
+				FF3906892CDF366D00AA9F3A /* BorrowViewController.swift */,
+				FF3906852CDF332300AA9F3A /* BookCell.swift */,
+				FF39067A2CDF296400AA9F3A /* RequestsViewController.swift */,
+				FF39067C2CDF2B7F00AA9F3A /* RequestTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FF39067E2CDF318B00AA9F3A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FF39067F2CDF319A00AA9F3A /* CustomColor.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +202,16 @@
 			files = (
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				FF39067B2CDF296400AA9F3A /* RequestsViewController.swift in Sources */,
+				FF3906802CDF319A00AA9F3A /* CustomColor.swift in Sources */,
+				FF3906842CDF330900AA9F3A /* LendBorrowViewController.swift in Sources */,
+				FF3906882CDF365100AA9F3A /* LendViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
+				FF39067D2CDF2B7F00AA9F3A /* RequestTableViewCell.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
+				FF39068A2CDF366D00AA9F3A /* BorrowViewController.swift in Sources */,
+				FF3906862CDF332300AA9F3A /* BookCell.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
