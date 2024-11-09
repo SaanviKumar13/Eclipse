@@ -21,15 +21,29 @@ class TabBarController: UITabBarController {
             iconName: "house.fill",
             tag: 0
         )
+        
+        let exploreNav = createNavController(
+            viewController: ExploreViewController(),
+            title: "Explore",
+            iconName: "magnifyingglass",
+            tag: 1
+        )
+        
+        let rentNav = createNavController(
+            viewController: RentViewController(),
+            title: "Rent",
+            iconName: "cart.fill",
+            tag: 2
+        )
 
         let libraryNav = createNavController(
             viewController: LibraryViewController(),
             title: "Library",
             iconName: "book.fill",
-            tag: 1
+            tag: 3
         )
 
-        viewControllers = [homeNav, libraryNav]
+        viewControllers = [homeNav,exploreNav, rentNav,  libraryNav]
         tabBar.tintColor = .systemBlue
         tabBar.unselectedItemTintColor = .systemGray
     }

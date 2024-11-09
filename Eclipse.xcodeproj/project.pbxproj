@@ -10,6 +10,8 @@
 		270231032CDF2C6500D8E971 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231022CDF2C6500D8E971 /* Category.swift */; };
 		270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231052CDF326800D8E971 /* LibraryViewController.swift */; };
 		270231082CDF33F600D8E971 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231072CDF33F600D8E971 /* TabBarController.swift */; };
+		2702310A2CDF39FA00D8E971 /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231092CDF39FA00D8E971 /* RentViewController.swift */; };
+		2702310C2CDF3A0500D8E971 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */; };
 		27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B802CCF8DC2003D3905 /* AppDelegate.swift */; };
 		27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B822CCF8DC2003D3905 /* SceneDelegate.swift */; };
 		27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B842CCF8DC2003D3905 /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 		270231022CDF2C6500D8E971 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		270231052CDF326800D8E971 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		270231072CDF33F600D8E971 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		270231092CDF39FA00D8E971 /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
+		2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27817B7D2CCF8DC2003D3905 /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27817B802CCF8DC2003D3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27817B822CCF8DC2003D3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				270231052CDF326800D8E971 /* LibraryViewController.swift */,
+				270231092CDF39FA00D8E971 /* RentViewController.swift */,
+				2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,10 +207,12 @@
 				27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */,
 				270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
+				2702310C2CDF3A0500D8E971 /* ExploreViewController.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
+				2702310A2CDF39FA00D8E971 /* RentViewController.swift in Sources */,
 				270231032CDF2C6500D8E971 /* Category.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
