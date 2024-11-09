@@ -83,9 +83,11 @@ class BookCell: UITableViewCell {
 
     func configure(with book: Book) {
         titleLabel.text = book.title
-        lenderLabel.text = "Lent to \(String(describing: book.lender))"
-        priceLabel.text = book.price
-        daysLeftLabel.text = book.daysLeft
-        coverImageView.image = UIImage(named: book.imageName)
+        lenderLabel.text = "Lent to John Doe"
+//        lenderLabel.text = "Lent to \(String(describing: book.lender))"
+        priceLabel.text = String(describing: book.price ?? 0)
+//        daysLeftLabel.text = book.daysLeft
+        daysLeftLabel.text = "10"
+        coverImageView.image = book.coverImageURL
     }
 }
