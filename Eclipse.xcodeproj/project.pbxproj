@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		270231032CDF2C6500D8E971 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231022CDF2C6500D8E971 /* Category.swift */; };
+		270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231052CDF326800D8E971 /* LibraryViewController.swift */; };
+		270231082CDF33F600D8E971 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231072CDF33F600D8E971 /* TabBarController.swift */; };
 		27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B802CCF8DC2003D3905 /* AppDelegate.swift */; };
 		27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B822CCF8DC2003D3905 /* SceneDelegate.swift */; };
 		27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B842CCF8DC2003D3905 /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		270231022CDF2C6500D8E971 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		270231052CDF326800D8E971 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		270231072CDF33F600D8E971 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		27817B7D2CCF8DC2003D3905 /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27817B802CCF8DC2003D3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27817B822CCF8DC2003D3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 		270231042CDF2D1D00D8E971 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				270231052CDF326800D8E971 /* LibraryViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
 				27817B822CCF8DC2003D3905 /* SceneDelegate.swift */,
 				27817B842CCF8DC2003D3905 /* ViewController.swift */,
+				270231072CDF33F600D8E971 /* TabBarController.swift */,
 				27817B892CCF8DC3003D3905 /* Assets.xcassets */,
 				27817B8B2CCF8DC3003D3905 /* LaunchScreen.storyboard */,
 				27817B8E2CCF8DC3003D3905 /* Info.plist */,
@@ -191,7 +197,9 @@
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
 				27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				270231082CDF33F600D8E971 /* TabBarController.swift in Sources */,
 				27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */,
+				270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
