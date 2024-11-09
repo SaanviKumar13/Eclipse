@@ -26,6 +26,7 @@
 		27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BA12CCF907E003D3905 /* BookSupport.swift */; };
 		27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD112CDF29B9005C1C40 /* BookData.swift */; };
 		27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD132CDF29CB005C1C40 /* CategoryData.swift */; };
+		FF0BCDA62CDF3F43008D54F7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF0BCDA52CDF3F43008D54F7 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		27817BA12CCF907E003D3905 /* BookSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSupport.swift; sourceTree = "<group>"; };
 		27FBBD112CDF29B9005C1C40 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		27FBBD132CDF29CB005C1C40 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
+		FF0BCDA52CDF3F43008D54F7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				27817B892CCF8DC3003D3905 /* Assets.xcassets */,
 				27817B8B2CCF8DC3003D3905 /* LaunchScreen.storyboard */,
 				27817B8E2CCF8DC3003D3905 /* Info.plist */,
+				FF0BCDA52CDF3F43008D54F7 /* .gitignore */,
 			);
 			path = Eclipse;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27817B8A2CCF8DC3003D3905 /* Assets.xcassets in Resources */,
+				FF0BCDA62CDF3F43008D54F7 /* .gitignore in Resources */,
 				27817B8D2CCF8DC3003D3905 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
