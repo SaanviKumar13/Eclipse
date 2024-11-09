@@ -19,7 +19,7 @@ let mockBooks: [Book] = [
         ),
         genre: "Fiction",
         description: "A novel about a woman who finds herself in a library with books representing different versions of her life.",
-        coverImageURL: UIImage(imageLiteralResourceName:"midnight_library"),
+        coverImageURL: UIImage(imageLiteralResourceName:"the_midnight_library"),
         tags: [Tag(id: "1", name: "Inspirational")],
         rating: 4.3,
         price: 10.99,

@@ -55,6 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270231042CDF2D1D00D8E971 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		27817B742CCF8DC2003D3905 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +81,7 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				270231042CDF2D1D00D8E971 /* Views */,
 				27FBBD102CDF29AE005C1C40 /* MockData */,
 				27817B942CCF8F96003D3905 /* Models */,
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
