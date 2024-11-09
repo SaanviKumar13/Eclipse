@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270231032CDF2C6500D8E971 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231022CDF2C6500D8E971 /* Category.swift */; };
+		270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231052CDF326800D8E971 /* LibraryViewController.swift */; };
+		270231082CDF33F600D8E971 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231072CDF33F600D8E971 /* TabBarController.swift */; };
+		2702310A2CDF39FA00D8E971 /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270231092CDF39FA00D8E971 /* RentViewController.swift */; };
+		2702310C2CDF3A0500D8E971 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */; };
 		27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B802CCF8DC2003D3905 /* AppDelegate.swift */; };
 		27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B822CCF8DC2003D3905 /* SceneDelegate.swift */; };
 		27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B842CCF8DC2003D3905 /* ViewController.swift */; };
@@ -19,9 +24,16 @@
 		27817B9E2CCF901F003D3905 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B9D2CCF901F003D3905 /* Author.swift */; };
 		27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B9F2CCF9058003D3905 /* RentRequest.swift */; };
 		27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BA12CCF907E003D3905 /* BookSupport.swift */; };
+		27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD112CDF29B9005C1C40 /* BookData.swift */; };
+		27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD132CDF29CB005C1C40 /* CategoryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270231022CDF2C6500D8E971 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		270231052CDF326800D8E971 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		270231072CDF33F600D8E971 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		270231092CDF39FA00D8E971 /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
+		2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27817B7D2CCF8DC2003D3905 /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27817B802CCF8DC2003D3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27817B822CCF8DC2003D3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +48,8 @@
 		27817B9D2CCF901F003D3905 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		27817B9F2CCF9058003D3905 /* RentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentRequest.swift; sourceTree = "<group>"; };
 		27817BA12CCF907E003D3905 /* BookSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSupport.swift; sourceTree = "<group>"; };
+		27FBBD112CDF29B9005C1C40 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		27FBBD132CDF29CB005C1C40 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270231042CDF2D1D00D8E971 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				270231052CDF326800D8E971 /* LibraryViewController.swift */,
+				270231092CDF39FA00D8E971 /* RentViewController.swift */,
+				2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		27817B742CCF8DC2003D3905 = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +92,13 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
-				27817BA32CCF93B9003D3905 /* Views */,
+				270231042CDF2D1D00D8E971 /* Views */,
+				27FBBD102CDF29AE005C1C40 /* MockData */,
 				27817B942CCF8F96003D3905 /* Models */,
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
 				27817B822CCF8DC2003D3905 /* SceneDelegate.swift */,
 				27817B842CCF8DC2003D3905 /* ViewController.swift */,
+				270231072CDF33F600D8E971 /* TabBarController.swift */,
 				27817B892CCF8DC3003D3905 /* Assets.xcassets */,
 				27817B8B2CCF8DC3003D3905 /* LaunchScreen.storyboard */,
 				27817B8E2CCF8DC3003D3905 /* Info.plist */,
@@ -90,15 +116,18 @@
 				27817B9D2CCF901F003D3905 /* Author.swift */,
 				27817B9F2CCF9058003D3905 /* RentRequest.swift */,
 				27817BA12CCF907E003D3905 /* BookSupport.swift */,
+				270231022CDF2C6500D8E971 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		27817BA32CCF93B9003D3905 /* Views */ = {
+		27FBBD102CDF29AE005C1C40 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				27FBBD112CDF29B9005C1C40 /* BookData.swift */,
+				27FBBD132CDF29CB005C1C40 /* CategoryData.swift */,
 			);
-			path = Views;
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,12 +201,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
+				27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				270231082CDF33F600D8E971 /* TabBarController.swift in Sources */,
+				27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */,
+				270231062CDF326800D8E971 /* LibraryViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
+				2702310C2CDF3A0500D8E971 /* ExploreViewController.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
+				2702310A2CDF39FA00D8E971 /* RentViewController.swift in Sources */,
+				270231032CDF2C6500D8E971 /* Category.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817B9C2CCF8FF1003D3905 /* Genre.swift in Sources */,
