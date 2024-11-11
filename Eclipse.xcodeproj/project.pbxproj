@@ -29,6 +29,12 @@
 		27931F9E2CE25A8B002F0D95 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931F9D2CE25A8B002F0D95 /* CategoryCollectionViewCell.swift */; };
 		27931FA02CE25ABC002F0D95 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931F9F2CE25ABC002F0D95 /* BookCollectionViewCell.swift */; };
 		27931FA52CE25C8A002F0D95 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FA42CE25C8A002F0D95 /* Color.swift */; };
+		27931FA72CE25F45002F0D95 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FA62CE25F45002F0D95 /* ReadingListTableViewCell.swift */; };
+		27931FA92CE26460002F0D95 /* CreateCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FA82CE26460002F0D95 /* CreateCollectionViewController.swift */; };
+		27931FAB2CE264A8002F0D95 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FAA2CE264A8002F0D95 /* StatusListViewController.swift */; };
+		27931FAD2CE26515002F0D95 /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FAC2CE26515002F0D95 /* CustomListViewController.swift */; };
+		27931FAF2CE265C4002F0D95 /* CustomBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FAE2CE265C4002F0D95 /* CustomBookTableViewCell.swift */; };
+		27931FB12CE2663F002F0D95 /* StatusBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FB02CE2663F002F0D95 /* StatusBookTableViewCell.swift */; };
 		27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD112CDF29B9005C1C40 /* BookData.swift */; };
 		27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD132CDF29CB005C1C40 /* CategoryData.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +64,12 @@
 		27931F9D2CE25A8B002F0D95 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		27931F9F2CE25ABC002F0D95 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		27931FA42CE25C8A002F0D95 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		27931FA62CE25F45002F0D95 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
+		27931FA82CE26460002F0D95 /* CreateCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewController.swift; sourceTree = "<group>"; };
+		27931FAA2CE264A8002F0D95 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
+		27931FAC2CE26515002F0D95 /* CustomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
+		27931FAE2CE265C4002F0D95 /* CustomBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBookTableViewCell.swift; sourceTree = "<group>"; };
+		27931FB02CE2663F002F0D95 /* StatusBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBookTableViewCell.swift; sourceTree = "<group>"; };
 		27FBBD112CDF29B9005C1C40 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		27FBBD132CDF29CB005C1C40 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +93,9 @@
 				2702310B2CDF3A0500D8E971 /* ExploreViewController.swift */,
 				27931F982CE24F20002F0D95 /* AllBooksViewController.swift */,
 				27931F9A2CE24F2B002F0D95 /* ReadingListViewController.swift */,
+				27931FA82CE26460002F0D95 /* CreateCollectionViewController.swift */,
+				27931FAA2CE264A8002F0D95 /* StatusListViewController.swift */,
+				27931FAC2CE26515002F0D95 /* CustomListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,6 +155,9 @@
 			children = (
 				27931F9D2CE25A8B002F0D95 /* CategoryCollectionViewCell.swift */,
 				27931F9F2CE25ABC002F0D95 /* BookCollectionViewCell.swift */,
+				27931FA62CE25F45002F0D95 /* ReadingListTableViewCell.swift */,
+				27931FAE2CE265C4002F0D95 /* CustomBookTableViewCell.swift */,
+				27931FB02CE2663F002F0D95 /* StatusBookTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -241,18 +259,24 @@
 				2702310C2CDF3A0500D8E971 /* ExploreViewController.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
+				27931FB12CE2663F002F0D95 /* StatusBookTableViewCell.swift in Sources */,
 				27931F9B2CE24F2B002F0D95 /* ReadingListViewController.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27931FA52CE25C8A002F0D95 /* Color.swift in Sources */,
+				27931FAB2CE264A8002F0D95 /* StatusListViewController.swift in Sources */,
+				27931FA92CE26460002F0D95 /* CreateCollectionViewController.swift in Sources */,
 				2702310A2CDF39FA00D8E971 /* RentViewController.swift in Sources */,
 				27931F992CE24F20002F0D95 /* AllBooksViewController.swift in Sources */,
 				270231032CDF2C6500D8E971 /* Category.swift in Sources */,
 				27931F9E2CE25A8B002F0D95 /* CategoryCollectionViewCell.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
+				27931FAF2CE265C4002F0D95 /* CustomBookTableViewCell.swift in Sources */,
 				27931FA02CE25ABC002F0D95 /* BookCollectionViewCell.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817B9C2CCF8FF1003D3905 /* Genre.swift in Sources */,
+				27931FA72CE25F45002F0D95 /* ReadingListTableViewCell.swift in Sources */,
+				27931FAD2CE26515002F0D95 /* CustomListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
