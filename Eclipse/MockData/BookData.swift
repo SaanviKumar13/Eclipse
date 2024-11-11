@@ -84,25 +84,25 @@ let mockBooks: [Book] = [
         seriesInfo: nil,
         status: .wantToRead
     ),
-    Book(
-        id: "5",
-        title: "To Kill a Mockingbird",
-        author: Author(
-            name: "Harper Lee",
-            bio: "Harper Lee was an American novelist, best known for her novel 'To Kill a Mockingbird'.",
-            image: "https://example.com/harper_lee.jpg",
-            books: []
-        ),
-        genre: "Fiction",
-        description: "A young girl's observations of racial injustice in the American South.",
-        coverImageURL: UIImage(imageLiteralResourceName:"to_kill_a_mocking_bird"),
-        tags: [Tag(id: "7", name: "Historical"), Tag(id: "8", name: "Social Issues")],
-        rating: 4.9,
-        price: 13.99,
-        rentersNearby: 8,
-        seriesInfo: nil,
-        status: .finished
-    ),
+//    Book(
+//        id: "5",
+//        title: "To Kill a Mockingbird",
+//        author: Author(
+//            name: "Harper Lee",
+//            bio: "Harper Lee was an American novelist, best known for her novel 'To Kill a Mockingbird'.",
+//            image: "https://example.com/harper_lee.jpg",
+//            books: []
+//        ),
+//        genre: "Fiction",
+//        description: "A young girl's observations of racial injustice in the American South.",
+//        coverImageURL: UIImage(imageLiteralResourceName:"to_kill_a_mocking_bird"),
+//        tags: [Tag(id: "7", name: "Historical"), Tag(id: "8", name: "Social Issues")],
+//        rating: 4.9,
+//        price: 13.99,
+//        rentersNearby: 8,
+//        seriesInfo: nil,
+//        status: .finished
+//    ),
     Book(
         id: "6",
         title: "Where the Crawdads Sing",
