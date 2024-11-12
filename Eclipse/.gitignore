@@ -1,0 +1,13 @@
+# User-specific files
+*.xcuserstate
+*.swp
+*.swo
+*.DS_Store
+*.idea/
+
+# Xcode-specific files
+xcuserdata/
+project.xcworkspace/xcuserdata/
+
+
+

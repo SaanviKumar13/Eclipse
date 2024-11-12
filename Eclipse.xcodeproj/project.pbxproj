@@ -35,6 +35,7 @@
 		27931FAD2CE26515002F0D95 /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FAC2CE26515002F0D95 /* CustomListViewController.swift */; };
 		27931FAF2CE265C4002F0D95 /* CustomBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FAE2CE265C4002F0D95 /* CustomBookTableViewCell.swift */; };
 		27931FB12CE2663F002F0D95 /* StatusBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931FB02CE2663F002F0D95 /* StatusBookTableViewCell.swift */; };
+		27F9830C2CE325D90055C114 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 27F9830B2CE325D90055C114 /* .gitignore */; };
 		27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD112CDF29B9005C1C40 /* BookData.swift */; };
 		27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD132CDF29CB005C1C40 /* CategoryData.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		27931FAC2CE26515002F0D95 /* CustomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
 		27931FAE2CE265C4002F0D95 /* CustomBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBookTableViewCell.swift; sourceTree = "<group>"; };
 		27931FB02CE2663F002F0D95 /* StatusBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBookTableViewCell.swift; sourceTree = "<group>"; };
+		27F9830B2CE325D90055C114 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		27FBBD112CDF29B9005C1C40 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		27FBBD132CDF29CB005C1C40 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				27817B892CCF8DC3003D3905 /* Assets.xcassets */,
 				27817B8B2CCF8DC3003D3905 /* LaunchScreen.storyboard */,
 				27817B8E2CCF8DC3003D3905 /* Info.plist */,
+				27F9830B2CE325D90055C114 /* .gitignore */,
 			);
 			path = Eclipse;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27817B8A2CCF8DC3003D3905 /* Assets.xcassets in Resources */,
+				27F9830C2CE325D90055C114 /* .gitignore in Resources */,
 				27817B8D2CCF8DC3003D3905 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

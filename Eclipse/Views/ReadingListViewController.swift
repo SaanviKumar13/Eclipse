@@ -1,180 +1,144 @@
+//
+//  ReadingListViewController.swift
+//  Eclipse
+//
+//  Created by user@87 on 11/11/24.
+//
 import UIKit
 
-class StatusListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let tableView = UITableView()
+class ReadingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Reading Lists"
+        title = "Library"
+        view.backgroundColor = .systemBackground
         setupTableView()
-        loadReadingLists()
     }
 
     private func setupTableView() {
+        tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ReadingListCell.self, forCellReuseIdentifier: "ReadingListCell")
+        tableView.register(ReadingListTableViewCell.self, forCellReuseIdentifier: "ReadingListCell")
+        tableView.separatorStyle = .none
         view.addSubview(tableView)
-        tableView.frame = view.bounds
-    }
-
-    private func loadReadingLists() {
-        readingLists = statusLists
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return readingLists.count
+        return section == 0 ? statusLists.count : customLists.keys.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReadingListCell", for: indexPath) as? ReadingListCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReadingListCell", for: indexPath) as? ReadingListTableViewCell else {
             return UITableViewCell()
         }
 
-        let readingList = readingLists[indexPath.row]
-        cell.configure(with: readingList)
+        let list: List
+        if indexPath.section == 0 {
+            list = statusLists[indexPath.row]
+        } else {
+            let customListName = Array(customLists.keys)[indexPath.row]
+            list = customLists[customListName]!
+        }
+        
+        configure(cell, with: list, using: mockBooks)
+        
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedReadingList = readingLists[indexPath.row]
-        let booksVC = BooksViewController(readingList: selectedReadingList)
-        navigationController?.pushViewController(booksVC, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
+    private func configure(_ cell: ReadingListTableViewCell, with list: List, using books: [Book]) {
+        cell.titleLabel.text = list.title
+        cell.subtitleLabel.text = list.bookIDs.isEmpty ? "No books available" : "\(list.bookIDs.count) books"
+        cell.privacyIndicator.image = list.isPrivate ? UIImage(systemName: "lock.fill") : UIImage(systemName: "network")
 
-class CustomListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let tableView = UITableView()
-    private var customReadingLists: [ReadingList] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Reading Lists"
-        setupTableView()
-        loadCustomReadingLists()
+        let bookImages: [UIImage] = list.bookIDs.prefix(3).compactMap { bookID in
+            books.first(where: { $0.id == bookID })?.coverImageURL
+        }
+        cell.setThumbnails(images: bookImages)
     }
 
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(ReadingListCell.self, forCellReuseIdentifier: "ReadingListCell")
-        view.addSubview(tableView)
-        tableView.frame = view.bounds
-    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .systemGroupedBackground
 
-    private func loadCustomReadingLists() {
-        customReadingLists = Array(customLists.values)
-    }
+        let titleLabel = UILabel()
+        titleLabel.backgroundColor = .clear
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.text = section == 0 ? "Status Lists" : "Custom Lists"
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+        headerView.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+        ])
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customReadingLists.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReadingListCell", for: indexPath) as? ReadingListCell else {
-            return UITableViewCell()
+        if section == 1 {
+            let createButton = UIButton(type: .system)
+            createButton.translatesAutoresizingMaskIntoConstraints = false
+            createButton.setTitle("Create New Collection", for: .normal)
+            createButton.backgroundColor = .clear
+            headerView.addSubview(createButton)
+            
+            NSLayoutConstraint.activate([
+                createButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+                createButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+            ])
+            createButton.addTarget(self, action: #selector(createNewCollectionTapped), for: .touchUpInside)
         }
 
-        let customReadingList = customReadingLists[indexPath.row]
-        cell.configure(with: customReadingList)
-        return cell
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedReadingList = customReadingLists[indexPath.row]
-        let booksVC = BooksViewController(readingList: selectedReadingList)
-        navigationController?.pushViewController(booksVC, animated: true)
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "showStatusList", sender: indexPath)
+        } else {
+            performSegue(withIdentifier: "showCustomList", sender: indexPath)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    @objc private func createNewCollectionTapped() {
+    
+    @objc private func createNewCollectionTapped(_ sender: UIButton) {
         let createVC = CreateCollectionViewController()
         let navController = UINavigationController(rootViewController: createVC)
         navController.modalPresentationStyle = .formSheet
         present(navController, animated: true, completion: nil)
     }
-}
 
-class ReadingListCell: UITableViewCell {
-    private let titleLabel = UILabel()
-    private let subtitleLabel = UILabel()
-    private let privacyIndicator = UIImageView()
-    private let bookImageViews = (1 ... 3).map { _ in UIImageView() }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupUI() {
-        // Set up labels, image views, and other UI elements
-    }
-
-    func configure(with readingList: ReadingList) {
-        titleLabel.text = readingList.title
-        subtitleLabel.text = readingList.bookIDs.isEmpty ? "No books available" : "\(readingList.bookIDs.count) books"
-        privacyIndicator.image = readingList.isPrivate ? UIImage(systemName: "lock.fill") : UIImage(systemName: "network")
-
-        // Load and configure book cover images
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = sender as? IndexPath {
+            if segue.identifier == "showStatusList",
+               let destinationVC = segue.destination as? StatusListViewController {
+                let selectedStatus = statusLists[indexPath.row]
+                destinationVC.selectedStatusTitle = selectedStatus.title
+                destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
+            } else if segue.identifier == "showCustomList",
+                      let destinationVC = segue.destination as? CustomListViewController {
+                let customListName = Array(customLists.keys)[indexPath.row]
+                let selectedCustomList = customLists[customListName]!
+                destinationVC.selectedListTitle = selectedCustomList.title
+                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
+            }
+        }
     }
 }
 
-class BooksViewController: UIViewController {
-    private let readingList: ReadingList
-
-    init(readingList: ReadingList) {
-        self.readingList = readingList
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = readingList.title
-        // Set up UI to display the books in the reading list
-    }
-}
-
-class CreateCollectionViewController: UIViewController {
-    // Implement the UI and functionality for creating a new custom reading list
-}
-
-struct ReadingList {
-    let title: String
-    var bookIDs: [String]
-    let isPrivate: Bool
-}
-
-// Provided data
-var statusLists: [ReadingList] = [
-    ReadingList(title: "Want To Read", bookIDs: [], isPrivate: false),
-    ReadingList(title: "Currently Reading", bookIDs: [], isPrivate: false),
-    ReadingList(title: "Finished", bookIDs: [], isPrivate: false),
-    ReadingList(title: "Did Not Finish", bookIDs: [], isPrivate: false)
-]
-
-var customLists: [String: ReadingList] = [
-    "Custom List 1": ReadingList(title: "Custom List 1", bookIDs: [], isPrivate: false),
-    "Custom List 2": ReadingList(title: "Custom List 2", bookIDs: [], isPrivate: true),
-    "Custom List 3": ReadingList(title: "Custom List 3", bookIDs: [], isPrivate: false)
-]
-
-var mockBooks: [Book] = [
-    // Mock book data
-]
