@@ -110,35 +110,34 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: "showStatusList", sender: indexPath)
+            // Instantiate StatusListViewController and pass data
+            let statusListVC = StatusListViewController()
+            let selectedStatus = statusLists[indexPath.row]
+            statusListVC.selectedStatusTitle = selectedStatus.title
+            statusListVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
+
+            // Push the StatusListViewController onto the navigation stack
+            navigationController?.pushViewController(statusListVC, animated: true)
         } else {
-            performSegue(withIdentifier: "showCustomList", sender: indexPath)
+            // Instantiate CustomListViewController and pass data
+            let customListVC = CustomListViewController()
+            let customListName = Array(customLists.keys)[indexPath.row]
+            let selectedCustomList = customLists[customListName]!
+            customListVC.selectedListTitle = selectedCustomList.title
+            customListVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
+
+            // Push the CustomListViewController onto the navigation stack
+            navigationController?.pushViewController(customListVC, animated: true)
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     @objc private func createNewCollectionTapped(_ sender: UIButton) {
         let createVC = CreateCollectionViewController()
         let navController = UINavigationController(rootViewController: createVC)
         navController.modalPresentationStyle = .formSheet
         present(navController, animated: true, completion: nil)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = sender as? IndexPath {
-            if segue.identifier == "showStatusList",
-               let destinationVC = segue.destination as? StatusListViewController {
-                let selectedStatus = statusLists[indexPath.row]
-                destinationVC.selectedStatusTitle = selectedStatus.title
-                destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
-            } else if segue.identifier == "showCustomList",
-                      let destinationVC = segue.destination as? CustomListViewController {
-                let customListName = Array(customLists.keys)[indexPath.row]
-                let selectedCustomList = customLists[customListName]!
-                destinationVC.selectedListTitle = selectedCustomList.title
-                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
-            }
-        }
     }
 }
 

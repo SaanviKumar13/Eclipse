@@ -4,7 +4,6 @@
 //
 //  Created by user@87 on 11/11/24.
 //
-
 import UIKit
 
 class StatusListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -19,8 +18,8 @@ class StatusListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupTableView()
         setupSearchBar()
+        setupTableView()
         filteredBooks = allBooks
     }
     
@@ -40,7 +39,7 @@ class StatusListViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -122,7 +121,17 @@ extension StatusListViewController: StatusBookTableViewCellDelegate {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
 
-        present(alertController, animated: true)
+        // Set the presentation style to .overCurrentContext to allow transparency
+        alertController.modalPresentationStyle = .overCurrentContext
+        
+        // Ensure the action sheet has a transparent background
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        
+        // Present with proper background
+        present(alertController, animated: true, completion: nil)
     }
 
     private func getNextActions(for book: Book) -> [String] {
@@ -186,3 +195,4 @@ extension StatusListViewController: StatusBookTableViewCellDelegate {
         }
     }
 }
+
