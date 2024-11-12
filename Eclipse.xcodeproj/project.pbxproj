@@ -36,6 +36,7 @@
 		27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */; };
 		27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */; };
 		27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */; };
+		27F9830A2CE319050055C114 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 27F983092CE319050055C114 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBookTableViewCell.swift; sourceTree = "<group>"; };
 		27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryViewController.swift; sourceTree = "<group>"; };
 		27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryTableViewCell.swift; sourceTree = "<group>"; };
+		27F983092CE319050055C114 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				27817B8B2CCF8DC3003D3905 /* LaunchScreen.storyboard */,
 				27817B8E2CCF8DC3003D3905 /* Info.plist */,
 				27817BCA2CD181DF003D3905 /* Assets.xcassets */,
+				27F983092CE319050055C114 /* .gitignore */,
 			);
 			path = Eclipse;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F9830A2CE319050055C114 /* .gitignore in Resources */,
 				27817B8D2CCF8DC3003D3905 /* Base in Resources */,
 				27817BCB2CD181DF003D3905 /* Assets.xcassets in Resources */,
 				27817B882CCF8DC2003D3905 /* Base in Resources */,

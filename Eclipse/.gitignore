@@ -1,0 +1,12 @@
+
+xcuserdata/
+*.xcuserstate
+
+project.xcworkspace/    # Workspace settings
+xcdebugger/             # Debugger-related files
+DerivedData/            # Xcode build outputs
+build/                  # Build products
+*.moved-aside           # Backup files
+*.xcuserstate           # Workspace user state
+*.xcodeproj/project.xcworkspace/ # Workspace files
+*.xcodeproj/xcuserdata/ # User-specific project files
