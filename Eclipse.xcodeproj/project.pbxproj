@@ -32,6 +32,12 @@
 		27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */; };
 		27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B202CE71FDA0035C957 /* ExploreViewController.swift */; };
 		27C21B232CE740010035C957 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B222CE740010035C957 /* QuizViewController.swift */; };
+		27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */; };
+		27C21B272CE74DD80035C957 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B262CE74DD80035C957 /* Quiz.swift */; };
+		27C21B292CE74E030035C957 /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B282CE74E030035C957 /* QuizData.swift */; };
+		27C21B2C2CE792710035C957 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B2B2CE792710035C957 /* CustomColor.swift */; };
+		27C21B2E2CE797EB0035C957 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B2D2CE797EB0035C957 /* ResultsViewController.swift */; };
+		27C21B322CE7B6D80035C957 /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B312CE7B6D80035C957 /* ResultsCollectionViewCell.swift */; };
 		27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */; };
 		27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0312CDA07DF002EC79A /* CreateCollectionViewController.swift */; };
 		27DAA0342CDA1E56002EC79A /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0332CDA1E56002EC79A /* CustomListViewController.swift */; };
@@ -69,6 +75,12 @@
 		27817BDA2CD68A9C003D3905 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		27C21B202CE71FDA0035C957 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27C21B222CE740010035C957 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		27C21B262CE74DD80035C957 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		27C21B282CE74E030035C957 /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
+		27C21B2B2CE792710035C957 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		27C21B2D2CE797EB0035C957 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		27C21B312CE7B6D80035C957 /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
 		27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBookTableViewCell.swift; sourceTree = "<group>"; };
 		27DAA0312CDA07DF002EC79A /* CreateCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewController.swift; sourceTree = "<group>"; };
 		27DAA0332CDA1E56002EC79A /* CustomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +120,7 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				27C21B2A2CE792620035C957 /* Helpers */,
 				27817BBD2CD17410003D3905 /* ViewCells */,
 				27817BAE2CD12DEB003D3905 /* MockData */,
 				27817BA32CCF93B9003D3905 /* Views */,
@@ -134,6 +147,7 @@
 				27817B9F2CCF9058003D3905 /* RentRequest.swift */,
 				27817BA12CCF907E003D3905 /* BookSupport.swift */,
 				27817BC72CD17C07003D3905 /* Category.swift */,
+				27C21B262CE74DD80035C957 /* Quiz.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +164,7 @@
 				27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */,
 				27C21B202CE71FDA0035C957 /* ExploreViewController.swift */,
 				27C21B222CE740010035C957 /* QuizViewController.swift */,
+				27C21B2D2CE797EB0035C957 /* ResultsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +174,7 @@
 			children = (
 				27817BAF2CD12E05003D3905 /* BookData.swift */,
 				27817BD82CD60F71003D3905 /* ListData.swift */,
+				27C21B282CE74E030035C957 /* QuizData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -173,8 +189,18 @@
 				27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */,
 				27DAA0352CDA1F4D002EC79A /* CustomBookTableViewCell.swift */,
 				27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */,
+				27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */,
+				27C21B312CE7B6D80035C957 /* ResultsCollectionViewCell.swift */,
 			);
 			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		27C21B2A2CE792620035C957 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27C21B2B2CE792710035C957 /* CustomColor.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,14 +276,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */,
+				27C21B292CE74E030035C957 /* QuizData.swift in Sources */,
 				27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
 				27817BB82CD15463003D3905 /* LibraryViewController.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				27C21B2C2CE792710035C957 /* CustomColor.swift in Sources */,
+				27C21B322CE7B6D80035C957 /* ResultsCollectionViewCell.swift in Sources */,
 				27DAA0342CDA1E56002EC79A /* CustomListViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
+				27C21B2E2CE797EB0035C957 /* ResultsViewController.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
 				27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */,
@@ -275,8 +305,10 @@
 				27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */,
 				27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
+				27C21B272CE74DD80035C957 /* Quiz.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
+				27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
