@@ -29,11 +29,17 @@
 		FF8A24492CDFB841000AD96E /* LendBorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24452CDFB841000AD96E /* LendBorrowViewController.swift */; };
 		FF8A244A2CDFB841000AD96E /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24402CDFB841000AD96E /* RentViewController.swift */; };
 		FF8A244B2CDFB841000AD96E /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24462CDFB841000AD96E /* ExploreViewController.swift */; };
-		FF8A244C2CDFB841000AD96E /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24412CDFB841000AD96E /* RequestsViewController.swift */; };
 		FF8A244D2CDFB841000AD96E /* LendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A243E2CDFB841000AD96E /* LendViewController.swift */; };
 		FF8A244E2CDFB841000AD96E /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24442CDFB841000AD96E /* LibraryViewController.swift */; };
 		FF8A244F2CDFB841000AD96E /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24422CDFB841000AD96E /* RequestTableViewCell.swift */; };
-		FF8A24512CDFB8DB000AD96E /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24502CDFB8DB000AD96E /* BookCell.swift */; };
+		FF8A24512CDFB8DB000AD96E /* BookCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24502CDFB8DB000AD96E /* BookCard.swift */; };
+		FF8A24A12CE34A9B000AD96E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A02CE34A9B000AD96E /* MainTabBarController.swift */; };
+		FF8A24A32CE34AF1000AD96E /* BookManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A22CE34AF1000AD96E /* BookManagementViewController.swift */; };
+		FF8A24A52CE34B23000AD96E /* BorrowedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A42CE34B23000AD96E /* BorrowedBooksViewController.swift */; };
+		FF8A24A72CE34B4B000AD96E /* LentBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A62CE34B4B000AD96E /* LentBooksViewController.swift */; };
+		FF8A24A92CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */; };
+		FF8A24AB2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */; };
+		FF8A24AD2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,12 +66,18 @@
 		FF8A243E2CDFB841000AD96E /* LendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendViewController.swift; sourceTree = "<group>"; };
 		FF8A243F2CDFB841000AD96E /* BorrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowViewController.swift; sourceTree = "<group>"; };
 		FF8A24402CDFB841000AD96E /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
-		FF8A24412CDFB841000AD96E /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		FF8A24422CDFB841000AD96E /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		FF8A24442CDFB841000AD96E /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		FF8A24452CDFB841000AD96E /* LendBorrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendBorrowViewController.swift; sourceTree = "<group>"; };
 		FF8A24462CDFB841000AD96E /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		FF8A24502CDFB8DB000AD96E /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		FF8A24502CDFB8DB000AD96E /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
+		FF8A24A02CE34A9B000AD96E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FF8A24A22CE34AF1000AD96E /* BookManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementViewController.swift; sourceTree = "<group>"; };
+		FF8A24A42CE34B23000AD96E /* BorrowedBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowedBooksViewController.swift; sourceTree = "<group>"; };
+		FF8A24A62CE34B4B000AD96E /* LentBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentBooksViewController.swift; sourceTree = "<group>"; };
+		FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsAcceptViewController.swift; sourceTree = "<group>"; };
+		FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsProcessingViewController.swift; sourceTree = "<group>"; };
+		FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProcessingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,11 @@
 		27817B742CCF8DC2003D3905 = {
 			isa = PBXGroup;
 			children = (
+				FF8A243F2CDFB841000AD96E /* BorrowViewController.swift */,
+				FF8A24452CDFB841000AD96E /* LendBorrowViewController.swift */,
+				FF8A243E2CDFB841000AD96E /* LendViewController.swift */,
+				FF8A24462CDFB841000AD96E /* ExploreViewController.swift */,
+				FF8A24442CDFB841000AD96E /* LibraryViewController.swift */,
 				27817B7F2CCF8DC2003D3905 /* Eclipse */,
 				27817B7E2CCF8DC2003D3905 /* Products */,
 			);
@@ -149,15 +166,16 @@
 		FF8A243B2CDFB817000AD96E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FF8A243F2CDFB841000AD96E /* BorrowViewController.swift */,
-				FF8A24462CDFB841000AD96E /* ExploreViewController.swift */,
-				FF8A24452CDFB841000AD96E /* LendBorrowViewController.swift */,
-				FF8A243E2CDFB841000AD96E /* LendViewController.swift */,
-				FF8A24442CDFB841000AD96E /* LibraryViewController.swift */,
-				FF8A24402CDFB841000AD96E /* RentViewController.swift */,
-				FF8A24412CDFB841000AD96E /* RequestsViewController.swift */,
+				FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */,
+				FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */,
+				FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */,
 				FF8A24422CDFB841000AD96E /* RequestTableViewCell.swift */,
-				FF8A24502CDFB8DB000AD96E /* BookCell.swift */,
+				FF8A24A62CE34B4B000AD96E /* LentBooksViewController.swift */,
+				FF8A24A42CE34B23000AD96E /* BorrowedBooksViewController.swift */,
+				FF8A24A22CE34AF1000AD96E /* BookManagementViewController.swift */,
+				FF8A24A02CE34A9B000AD96E /* MainTabBarController.swift */,
+				FF8A24402CDFB841000AD96E /* RentViewController.swift */,
+				FF8A24502CDFB8DB000AD96E /* BookCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,22 +251,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8A24A92CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
+				FF8A24AD2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift in Sources */,
+				FF8A24AB2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift in Sources */,
 				27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */,
+				FF8A24A12CE34A9B000AD96E /* MainTabBarController.swift in Sources */,
 				FF8A24472CDFB841000AD96E /* BorrowViewController.swift in Sources */,
 				FF8A244D2CDFB841000AD96E /* LendViewController.swift in Sources */,
-				FF8A24512CDFB8DB000AD96E /* BookCell.swift in Sources */,
+				FF8A24512CDFB8DB000AD96E /* BookCard.swift in Sources */,
 				FF8A244A2CDFB841000AD96E /* RentViewController.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
+				FF8A24A72CE34B4B000AD96E /* LentBooksViewController.swift in Sources */,
 				FF3906802CDF319A00AA9F3A /* CustomColor.swift in Sources */,
 				270231082CDF33F600D8E971 /* TabBarController.swift in Sources */,
+				FF8A24A32CE34AF1000AD96E /* BookManagementViewController.swift in Sources */,
 				27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */,
-				FF8A244C2CDFB841000AD96E /* RequestsViewController.swift in Sources */,
 				FF8A244E2CDFB841000AD96E /* LibraryViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
+				FF8A24A52CE34B23000AD96E /* BorrowedBooksViewController.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				FF8A244B2CDFB841000AD96E /* ExploreViewController.swift in Sources */,
 				270231032CDF2C6500D8E971 /* Category.swift in Sources */,
