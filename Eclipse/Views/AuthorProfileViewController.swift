@@ -4,6 +4,7 @@
 //
 //  Created by user@87 on 16/11/24.
 //
+
 import UIKit
 
 class AuthorProfileViewController: UIViewController {
@@ -20,7 +21,6 @@ class AuthorProfileViewController: UIViewController {
     @IBOutlet weak var readingListView: UIView!
     @IBOutlet weak var allBooksView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -31,13 +31,14 @@ class AuthorProfileViewController: UIViewController {
     }
     
     func setView(){
-        authorImage.image = author?.image
+        guard let author = author else { return }
         
+        authorImage.image = author.image
         authorImage.layer.cornerRadius = 40
         authorImage.clipsToBounds = true
         
-        numberOfBooks.text = "50"
-        numberOfReadingLists.text = "6"
+        numberOfBooks.text = "50"  // Or pass actual data
+        numberOfReadingLists.text = "6"  // Or pass actual data
         
         readingListLabel.numberOfLines = 0
         
@@ -46,19 +47,26 @@ class AuthorProfileViewController: UIViewController {
         
         guidedListButton.layer.cornerRadius = 10
         guidedListButton.clipsToBounds = true
-        
-        
     }
     
     @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex{
-        case 0: readingListView.alpha = 0
-                allBooksView.alpha = 1
-                break
-        case 1: readingListView.alpha = 1
-                allBooksView.alpha = 0
-                break
-        default: break
+        switch sender.selectedSegmentIndex {
+        case 0:
+            readingListView.alpha = 0
+            allBooksView.alpha = 1
+        case 1:
+            readingListView.alpha = 1
+            allBooksView.alpha = 0
+        default:
+            break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAuthorBooks" {
+            if let destinationVC = segue.destination as? AuthorBooksViewController {
+                destinationVC.author = self.author
+            }
         }
     }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-
 let mockBooks: [Book] = [
     Book(
         id: "1",
@@ -50,7 +49,7 @@ let mockBooks: [Book] = [
         rating: 4.8,
         price: 15.99,
         rentersNearby: 7,
-        seriesInfo: nil,
+        seriesInfo: SeriesInfo(seriesName: "Dystopian Classics", bookOrder: 1),
         status: .currentlyReading
     ),
     
@@ -129,7 +128,6 @@ let mockBooks: [Book] = [
         status: .didNotFinish
     ),
     
-    // New books
     Book(
         id: "9",
         title: "Beautiful Ruins",
@@ -201,13 +199,13 @@ let mockBooks: [Book] = [
         rating: 4.9,
         price: 19.99,
         rentersNearby: 10,
-        seriesInfo: nil,
+        seriesInfo: SeriesInfo(seriesName: "Harry Potter", bookOrder: 4),
         status: .finished
     ),
     
     Book(
         id: "14",
-        title: "Percy Jackson",
+        title: "Percy Jackson: The Lightning Thief",
         author: authors[13],
         genre: "Fantasy",
         description: "A young boy discovers he is the son of Poseidon and embarks on an adventure in the world of Greek mythology.",
@@ -216,7 +214,7 @@ let mockBooks: [Book] = [
         rating: 4.6,
         price: 12.99,
         rentersNearby: 9,
-        seriesInfo: nil,
+        seriesInfo: SeriesInfo(seriesName: "Percy Jackson and the Olympians", bookOrder: 1),
         status: .currentlyReading
     ),
     
@@ -225,16 +223,15 @@ let mockBooks: [Book] = [
         title: "A Man Called Ove",
         author: authors[14],
         genre: "Fiction",
-        description: "A grumpy old man forms unexpected connections with his neighbors, transforming his life.",
+        description: "A grumpy old man finds his life turned upside down by new neighbors who bring friendship and hope.",
         coverImageURL: UIImage(named: "a_man_called_ove")!,
-        tags: [Tag(id: "27", name: "Heartwarming"), Tag(id: "28", name: "Humor")],
+        tags: [Tag(id: "27", name: "Humor"), Tag(id: "28", name: "Feel Good")],
         rating: 4.8,
-        price: 10.49,
-        rentersNearby: 6,
+        price: 13.49,
+        rentersNearby: 7,
         seriesInfo: nil,
         status: .finished
     ),
-    
     Book(
         id: "16",
         title: "Killers of the Flower Moon",

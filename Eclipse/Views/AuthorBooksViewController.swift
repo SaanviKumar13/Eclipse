@@ -7,23 +7,52 @@
 
 import UIKit
 
-class AuthorBooksViewController: UIViewController {
+class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var tableView: UITableView!
+
+    var author: Author?
+    var books: [Book] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
 
-        // Do any additional setup after loading the view.
+        if let author = author {
+            books = mockBooks.filter { $0.author.authorID == author.authorID }
+        }
+    }
+
+    // MARK: - TableView DataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return books.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "authorBookCell", for: indexPath) as? AuthorBookTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let book = books[indexPath.row]
+        print(book)
+        cell.title.text = book.title
+        cell.rating.text = "Rating: \(book.rating)"
+        
+        if let seriesInfo = book.seriesInfo {
+            cell.seriesInfo.text = "\(seriesInfo.seriesName) - Book \(seriesInfo.bookOrder)"
+        } else {
+            cell.seriesInfo.text = "Standalone Book"
+        }
+        
+        cell.bookImage.image = book.coverImageURL ?? UIImage(named: "placeholder_image")
+        
+        return cell
     }
-    */
 
+    // MARK: - TableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+
