@@ -12,7 +12,6 @@ class AllBooksViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var booksCollectionView: UICollectionView!
 
-    let categories = ["All", "Fiction", "Romance", "Dystopian", "Classic", "Mystery"]
     var selectedCategoryIndex: Int = 0
     var displayedBooks: [Book] = []
     

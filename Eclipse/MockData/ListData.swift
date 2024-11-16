@@ -34,3 +34,63 @@ var customLists: [String: List] = [
     "Sci-Fi Adventures": List(title: "Sci-Fi Adventures", bookIDs: sciFiAdventuresList, isPrivate: true),
     "Historical Drama": List(title: "Historical Drama", bookIDs: historicalDramaList, isPrivate: false)
 ]
+
+var recommendedLists: [RecommendedList] = [
+    RecommendedList(
+        title: "Italian Vacation Vibes",
+        subtitle: "No need to book a flight- these books will transport you to Italy",
+        books: [
+            "9", // Beautiful Ruins
+            "10", // One Italian Summer
+            "11"  // Under the Tuscan Sun
+        ]
+    ),
+    
+    RecommendedList(
+        title: "Romantic Reads",
+        subtitle: "Heartfelt stories of love and relationships",
+        books: [
+            "2", // It Ends with Us
+            "4", // Pride and Prejudice
+            "9", // Beautiful Ruins
+            "10", // One Italian Summer
+            "7"  // The Great Gatsby
+        ]
+    ),
+    
+    RecommendedList(
+        title: "Classic Literature",
+        subtitle: "Timeless classics that have stood the test of time",
+        books: [
+            "3", // 1984
+            "4", // Pride and Prejudice
+            "8", // The Catcher in the Rye
+            "5", // To Kill a Mockingbird
+            "7"  // The Great Gatsby
+        ]
+    ),
+    
+    RecommendedList(
+        title: "Fantasy & Adventure",
+        subtitle: "Magical worlds and thrilling quests",
+        books: [
+            "13", // Harry Potter and the Goblet of Fire
+            "14", // Percy Jackson
+            "12", // Dark Matter
+            "7",  // The Great Gatsby
+            "8"   // The Catcher in the Rye
+        ]
+    ),
+    
+    RecommendedList(
+        title: "Historical & Thought-Provoking",
+        subtitle: "Books that inspire and challenge your views on history",
+        books: [
+            "16", // Killers of the Flower Moon
+            "3",  // 1984
+            "6",  // Where the Crawdads Sing
+            "5",  // To Kill a Mockingbird
+            "1"   // The Midnight Library
+        ]
+    )
+]

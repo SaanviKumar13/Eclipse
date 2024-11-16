@@ -44,14 +44,14 @@ let sampleResults = [
         id: "1",
         title: "The Midnight Library",
         author: Author(
+            authorID: "1",
             name: "Matt Haig",
             bio: "Matt Haig is an English novelist and journalist. His work includes both fiction and non-fiction, often dealing with themes of mental health.",
-            image: "https://example.com/matt_haig.jpg",
-            books: []
+            image: UIImage(named: "matt_haig")!
         ),
         genre: "Fiction",
         description: "A novel about a woman who finds herself in a library with books representing different versions of her life.",
-        coverImageURL: UIImage(imageLiteralResourceName:"midnight_library"),
+        coverImageURL: UIImage(named:"midnight_library"),
         tags: [Tag(id: "1", name: "Inspirational")],
         rating: 4.3,
         price: 10.99,
@@ -63,14 +63,14 @@ let sampleResults = [
         id: "2",
         title: "It Ends with Us",
         author: Author(
+            authorID: "2",
             name: "Colleen Hoover",
             bio: "Colleen Hoover is an American author known for her emotional romances and contemporary novels.",
-            image: "https://example.com/colleen_hoover.jpg",
-            books: []
+            image: UIImage(named: "colleen_hoover")!
         ),
         genre: "Romance",
         description: "A heart-wrenching story that tackles difficult themes and emotional challenges.",
-        coverImageURL: UIImage(imageLiteralResourceName:"it_ends_with_us"),
+        coverImageURL: UIImage(named:"it_ends_with_us"),
         tags: [Tag(id: "2", name: "Romance")],
         rating: 4.6,
         price: 12.99,
@@ -82,14 +82,14 @@ let sampleResults = [
         id: "3",
         title: "1984",
         author: Author(
+            authorID: "3",
             name: "George Orwell",
             bio: "George Orwell was an English novelist and essayist, famous for his dystopian novels.",
-            image: "https://example.com/george_orwell.jpg",
-            books: []
+            image: UIImage(named: "george_orwell")!
         ),
         genre: "Dystopian",
         description: "A classic dystopian novel that delves into themes of government surveillance and totalitarianism.",
-        coverImageURL:UIImage(imageLiteralResourceName:"1984"),
+        coverImageURL: UIImage(named:"1984"),
         tags: [Tag(id: "3", name: "Classic"), Tag(id: "4", name: "Dystopian")],
         rating: 4.8,
         price: 15.99,
