@@ -130,6 +130,23 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.authorCollectionView {
+            let selectedAuthor = authors[indexPath.item]
+            performSegue(withIdentifier: "showAuthorProfileSegue", sender: selectedAuthor)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAuthorProfileSegue" {
+            if let authorProfileVC = segue.destination as? AuthorProfileViewController,
+               let selectedAuthor = sender as? Author {
+                authorProfileVC.author = selectedAuthor
+            }
+        }
+    }
+
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.authorCollectionView {
