@@ -1,9 +1,12 @@
-//
+
 //  BookCell.swift
 //  Eclipse
 
 import UIKit
 
+protocol BookCardDelegate: AnyObject {
+    func didTapChat(for book: BookData)
+}
 // First, let's create a proper model for the book
 struct BookData {
     let title: String
@@ -15,6 +18,9 @@ struct BookData {
 }
 
 class BookCard: UITableViewCell {
+    
+    weak var delegate: BookCardDelegate?
+    private var currentBook: BookData?
     
     private let coverImageView: UIImageView = {
         let imageView = UIImageView()
@@ -91,14 +97,22 @@ class BookCard: UITableViewCell {
         }()
 
 
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
             setupCell()
+            
+            chatButton.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         }
         
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
+            
+            
         }
+    
+    
         
         private func setupCell() {
             contentView.addSubview(coverImageView)
@@ -156,6 +170,7 @@ class BookCard: UITableViewCell {
         }
         
         func configure(with book: BookData, isLentBook: Bool = false) {
+            currentBook = book
             titleLabel.text = book.title
             if isLentBook {
                 borrowerLenderLabel.text = "Lent to \(book.lentTo ?? "")"
@@ -171,6 +186,11 @@ class BookCard: UITableViewCell {
             if frame.height < minHeight {
                 frame.size.height = minHeight
             }
-        }
+       }
+    @objc private func chatButtonTapped() {
+          guard let book = currentBook else { return }
+          delegate?.didTapChat(for: book)
+      }
+//
+   }
 
-    }

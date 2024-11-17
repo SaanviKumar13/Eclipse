@@ -18,5 +18,6 @@ struct BookSupport {
 struct Message: Identifiable {
     let id = UUID()
     let text: String
-    let isCurrentUser: Bool
+//    let isCurrentUser: Bool
+    let isFromUser: Bool 
 }
