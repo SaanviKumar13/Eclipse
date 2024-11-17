@@ -6,95 +6,9 @@
 //
 
 
-//import UIKit
-//
-//class LentBooksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-//    
-//    private let rentRequestsButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Rent Requests(3)", for: .normal)
-//        button.setTitleColor(.gray, for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//    
-//    private let tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        return tableView
-//    }()
-//    
-//    private let lentBooks: [BookData] = [
-//        BookData(title: "First Term at Malory Towers", borrowedFrom: nil, lentTo: "@janedoe", price: "₹100", days: "2 Days", coverImage: UIImage(named: "malory_towers")!),
-//        BookData(title: "Flawed", borrowedFrom: nil, lentTo: "@sarahj", price: "₹150", days: "3 Days", coverImage: UIImage(named: "flawed")!),
-//        BookData(title: "Dune", borrowedFrom: nil, lentTo: "@johndoe", price: "₹200", days: "4 Days", coverImage: UIImage(named: "dune")!),
-//        BookData(title: "Gone Girl", borrowedFrom: nil, lentTo: "@janedoe", price: "₹150", days: "3 Days", coverImage: UIImage(named: "gone_girl")!)
-//    ]
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .white
-//        setupUI()
-//        setupConstraints()
-//        setupTableView()
-//    }
-//    
-//    private func setupUI() {
-//        view.addSubview(rentRequestsButton)
-//        view.addSubview(tableView)
-//        rentRequestsButton.addTarget(self, action: #selector(rentRequestsButtonTapped), for: .touchUpInside)
-//    }
-//    
-//    private func setupConstraints() {
-//        NSLayoutConstraint.activate([
-//            // Rent Requests Button
-//            rentRequestsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-//            rentRequestsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-//            
-//            // Table View
-//            tableView.topAnchor.constraint(equalTo: rentRequestsButton.bottomAnchor, constant: 16),
-//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
-//    
-//    private func setupTableView() {
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.register(BookCard.self, forCellReuseIdentifier: "BookCard") // Register the custom cell
-//    }
-//    
-//    @objc private func rentRequestsButtonTapped() {
-//        let processingVC = RentalRequestsProcessingViewController()
-//        navigationController?.pushViewController(processingVC, animated: true)
-//    }
-//    
-//    // MARK: - UITableViewDataSource
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return lentBooks.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookCard", for: indexPath) as? BookCard else {
-//            return UITableViewCell()
-//        }
-//        let book = lentBooks[indexPath.row]
-//        cell.configure(with: book, isLentBook: true) // Assuming these are all lent books
-//        return cell
-//    }
-//    
-//    // MARK: - UITableViewDelegate
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 120 // Adjust the row height if needed
-//    }
-//}
 //
 //
-//   
+   
 import UIKit
 
 class LentBooksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
