@@ -46,6 +46,10 @@
 		FF8A24A92CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */; };
 		FF8A24AB2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */; };
 		FF8A24AD2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */; };
+		FFCF501F2CEA8702007E4BC1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF501E2CEA8702007E4BC1 /* HomeViewController.swift */; };
+		FFCF50212CEA872D007E4BC1 /* BooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF50202CEA872D007E4BC1 /* BooksCell.swift */; };
+		FFCF50232CEA874D007E4BC1 /* RenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF50222CEA874D007E4BC1 /* RenterCell.swift */; };
+		FFCF50252CEA9734007E4BC1 /* xx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF50242CEA9734007E4BC1 /* xx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +94,10 @@
 		FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsAcceptViewController.swift; sourceTree = "<group>"; };
 		FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsProcessingViewController.swift; sourceTree = "<group>"; };
 		FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProcessingTableViewCell.swift; sourceTree = "<group>"; };
+		FFCF501E2CEA8702007E4BC1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FFCF50202CEA872D007E4BC1 /* BooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BooksCell.swift; path = ../Models/BooksCell.swift; sourceTree = "<group>"; };
+		FFCF50222CEA874D007E4BC1 /* RenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenterCell.swift; path = ../MockData/RenterCell.swift; sourceTree = "<group>"; };
+		FFCF50242CEA9734007E4BC1 /* xx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 				27817B942CCF8F96003D3905 /* Models */,
 				27817B802CCF8DC2003D3905 /* AppDelegate.swift */,
 				27817B822CCF8DC2003D3905 /* SceneDelegate.swift */,
+				FF8A24A02CE34A9B000AD96E /* MainTabBarController.swift */,
 				27817B842CCF8DC2003D3905 /* ViewController.swift */,
 				270231072CDF33F600D8E971 /* TabBarController.swift */,
 				27817B892CCF8DC3003D3905 /* Assets.xcassets */,
@@ -143,6 +152,7 @@
 		27817B942CCF8F96003D3905 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FF8A24402CDFB841000AD96E /* RentViewController.swift */,
 				27817B952CCF8FA3003D3905 /* User.swift */,
 				27817B972CCF8FC3003D3905 /* Book.swift */,
 				27817B992CCF8FDC003D3905 /* Library.swift */,
@@ -177,16 +187,18 @@
 		FF8A243B2CDFB817000AD96E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFCF50242CEA9734007E4BC1 /* xx.swift */,
+				FFCF501E2CEA8702007E4BC1 /* HomeViewController.swift */,
+				FFCF50202CEA872D007E4BC1 /* BooksCell.swift */,
+				FFCF50222CEA874D007E4BC1 /* RenterCell.swift */,
+				FF8A24A22CE34AF1000AD96E /* BookManagementViewController.swift */,
+				FF8A24A62CE34B4B000AD96E /* LentBooksViewController.swift */,
+				FF8A24A42CE34B23000AD96E /* BorrowedBooksViewController.swift */,
+				FF8A24502CDFB8DB000AD96E /* BookCard.swift */,
 				FF8A24AA2CE34BF9000AD96E /* RentalRequestsProcessingViewController.swift */,
 				FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */,
 				FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */,
 				FF8A24422CDFB841000AD96E /* RequestTableViewCell.swift */,
-				FF8A24A62CE34B4B000AD96E /* LentBooksViewController.swift */,
-				FF8A24A42CE34B23000AD96E /* BorrowedBooksViewController.swift */,
-				FF8A24502CDFB8DB000AD96E /* BookCard.swift */,
-				FF8A24A22CE34AF1000AD96E /* BookManagementViewController.swift */,
-				FF8A24A02CE34A9B000AD96E /* MainTabBarController.swift */,
-				FF8A24402CDFB841000AD96E /* RentViewController.swift */,
 				FF21B1BD2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift */,
 				FF21B1BF2CE7C81000C85EF8 /* BookCoverCell.swift */,
 				FF21B20B2CE9669D00C85EF8 /* RatingPopupView.swift */,
@@ -269,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFCF50212CEA872D007E4BC1 /* BooksCell.swift in Sources */,
 				FF8A24A92CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift in Sources */,
 				FF21B2102CE9F96C00C85EF8 /* MessageInputView.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
@@ -280,7 +293,9 @@
 				FF8A24A12CE34A9B000AD96E /* MainTabBarController.swift in Sources */,
 				FF8A24512CDFB8DB000AD96E /* BookCard.swift in Sources */,
 				FF8A244A2CDFB841000AD96E /* RentViewController.swift in Sources */,
+				FFCF501F2CEA8702007E4BC1 /* HomeViewController.swift in Sources */,
 				FF21B20C2CE9669D00C85EF8 /* RatingPopupView.swift in Sources */,
+				FFCF50232CEA874D007E4BC1 /* RenterCell.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
 				FF21B2122CE9F9AA00C85EF8 /* MessageCell.swift in Sources */,
 				FF8A24A72CE34B4B000AD96E /* LentBooksViewController.swift in Sources */,
@@ -293,6 +308,7 @@
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
 				FF82F0ED2CEA4F8800F8C39E /* CustomCell.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
+				FFCF50252CEA9734007E4BC1 /* xx.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				FF8A24A52CE34B23000AD96E /* BorrowedBooksViewController.swift in Sources */,
