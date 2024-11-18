@@ -118,6 +118,18 @@ let authors: [Author] = [
         name: "David Grann",
         bio: "David Grann is an American journalist and author, best known for his non-fiction book 'Killers of the Flower Moon' about the Osage murders.",
         image: UIImage(named: "david_grann")!
-    )
+    ),
+    Author(
+           authorID: "17",
+           name: "Terry Pratchett",
+           bio: "Terry Pratchett was an English author known for his Discworld series, which blends satire, fantasy, and humor.",
+           image: UIImage(named: "terry_pratchett")!
+       ),
+       Author(
+           authorID: "18",
+           name: "Paula Hawkins",
+           bio: "Paula Hawkins is a British author, best known for her psychological thriller 'The Girl on the Train'.",
+           image: UIImage(named: "paula_hawkins")!
+       ),
 ]
 

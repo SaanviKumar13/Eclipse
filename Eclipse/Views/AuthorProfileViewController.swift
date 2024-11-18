@@ -63,10 +63,13 @@ class AuthorProfileViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showAuthorBooks" {
+        if segue.identifier == "showAuthorBooks" || segue.identifier == "showGuidedList" {
             if let destinationVC = segue.destination as? AuthorBooksViewController {
+                destinationVC.author = self.author
+            } else if let destinationVC = segue.destination as? GuidedListViewController {
                 destinationVC.author = self.author
             }
         }
     }
+
 }

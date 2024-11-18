@@ -37,6 +37,11 @@
 		2783667D2CE8F70F003036A9 /* AuthorReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783667C2CE8F70F003036A9 /* AuthorReadingListViewController.swift */; };
 		2783667F2CE8F71C003036A9 /* AuthorBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783667E2CE8F71C003036A9 /* AuthorBooksViewController.swift */; };
 		278366812CE90639003036A9 /* AuthorBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278366802CE90639003036A9 /* AuthorBookTableViewCell.swift */; };
+		278366832CEAFCB7003036A9 /* GuidedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278366822CEAFCB7003036A9 /* GuidedListViewController.swift */; };
+		278366852CEAFE0B003036A9 /* GuidedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278366842CEAFE0B003036A9 /* GuidedListTableViewCell.swift */; };
+		278366872CEAFED3003036A9 /* GuidedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278366862CEAFED3003036A9 /* GuidedListCollectionViewCell.swift */; };
+		278366892CEB003E003036A9 /* GuidedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278366882CEB003E003036A9 /* GuidedList.swift */; };
+		2783668B2CEB00D3003036A9 /* GuidedListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783668A2CEB00D3003036A9 /* GuidedListData.swift */; };
 		27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B202CE71FDA0035C957 /* ExploreViewController.swift */; };
 		27C21B232CE740010035C957 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B222CE740010035C957 /* QuizViewController.swift */; };
 		27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */; };
@@ -90,6 +95,11 @@
 		2783667C2CE8F70F003036A9 /* AuthorReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReadingListViewController.swift; sourceTree = "<group>"; };
 		2783667E2CE8F71C003036A9 /* AuthorBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorBooksViewController.swift; sourceTree = "<group>"; };
 		278366802CE90639003036A9 /* AuthorBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorBookTableViewCell.swift; sourceTree = "<group>"; };
+		278366822CEAFCB7003036A9 /* GuidedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedListViewController.swift; sourceTree = "<group>"; };
+		278366842CEAFE0B003036A9 /* GuidedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedListTableViewCell.swift; sourceTree = "<group>"; };
+		278366862CEAFED3003036A9 /* GuidedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedListCollectionViewCell.swift; sourceTree = "<group>"; };
+		278366882CEB003E003036A9 /* GuidedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedList.swift; sourceTree = "<group>"; };
+		2783668A2CEB00D3003036A9 /* GuidedListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedListData.swift; sourceTree = "<group>"; };
 		27C21B202CE71FDA0035C957 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27C21B222CE740010035C957 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +179,7 @@
 				27817BC72CD17C07003D3905 /* Category.swift */,
 				27C21B262CE74DD80035C957 /* Quiz.swift */,
 				278366782CE88786003036A9 /* RecommendedList.swift */,
+				278366882CEB003E003036A9 /* GuidedList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +200,7 @@
 				2783667A2CE8CF9C003036A9 /* AuthorProfileViewController.swift */,
 				2783667C2CE8F70F003036A9 /* AuthorReadingListViewController.swift */,
 				2783667E2CE8F71C003036A9 /* AuthorBooksViewController.swift */,
+				278366822CEAFCB7003036A9 /* GuidedListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +213,7 @@
 				27C21B282CE74E030035C957 /* QuizData.swift */,
 				27C21B332CE869490035C957 /* CategoryData.swift */,
 				27C21B372CE875230035C957 /* AuthorData.swift */,
+				2783668A2CEB00D3003036A9 /* GuidedListData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -221,6 +234,8 @@
 				278366742CE88561003036A9 /* RecommendedListTableViewCell.swift */,
 				278366762CE88627003036A9 /* RecommendedBookCollectionViewCell.swift */,
 				278366802CE90639003036A9 /* AuthorBookTableViewCell.swift */,
+				278366842CEAFE0B003036A9 /* GuidedListTableViewCell.swift */,
+				278366862CEAFED3003036A9 /* GuidedListCollectionViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -326,8 +341,11 @@
 				27C21B2E2CE797EB0035C957 /* ResultsViewController.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
+				278366852CEAFE0B003036A9 /* GuidedListTableViewCell.swift in Sources */,
+				278366832CEAFCB7003036A9 /* GuidedListViewController.swift in Sources */,
 				2783667F2CE8F71C003036A9 /* AuthorBooksViewController.swift in Sources */,
 				27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */,
+				278366892CEB003E003036A9 /* GuidedList.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817BC82CD17C07003D3905 /* Category.swift in Sources */,
 				27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */,
@@ -338,10 +356,12 @@
 				27C21B362CE8741E0035C957 /* AuthorCollectionViewCell.swift in Sources */,
 				27817BBA2CD16E04003D3905 /* ReadingListViewController.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
+				278366872CEAFED3003036A9 /* GuidedListCollectionViewCell.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */,
+				2783668B2CEB00D3003036A9 /* GuidedListData.swift in Sources */,
 				27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
 				27C21B272CE74DD80035C957 /* Quiz.swift in Sources */,
