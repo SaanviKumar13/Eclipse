@@ -57,7 +57,7 @@ class PaymentAndDeliveryViewController: UIViewController {
         button.setTitle("Change", for: .normal)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(PaymentAndDeliveryViewController.self, action: #selector(changeAddress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(changeAddress), for: .touchUpInside)
         return button
     }()
     
@@ -69,7 +69,7 @@ class PaymentAndDeliveryViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemGray4.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(PaymentAndDeliveryViewController.self, action: #selector(addNewAddress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addNewAddress), for: .touchUpInside)
         return button
     }()
     
@@ -105,7 +105,7 @@ class PaymentAndDeliveryViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.layer.cornerRadius = 12
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(PaymentAndDeliveryViewController.self, action: #selector(pay), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pay), for: .touchUpInside)
         return button
     }()
     
@@ -169,7 +169,7 @@ class PaymentAndDeliveryViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Johnathan Cahn"
+        title = "Payment"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -283,7 +283,7 @@ class PaymentAndDeliveryViewController: UIViewController {
     
     @objc private func pay() {
             let successVC = PaymentSuccessViewController()
-            successVC.modalPresentationStyle = .overFullScreen
+        successVC.modalPresentationStyle = .overFullScreen
             present(successVC, animated: false)
         }
 }

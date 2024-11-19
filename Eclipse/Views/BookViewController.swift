@@ -182,13 +182,15 @@ class BookViewController: UIViewController {
     }
 
     @objc private func buyButtonTapped() {
-        // Handle buy action here.
-        print("Buy button tapped")
+        let cartVC = CartViewController()
+        cartVC.bookInCart = book
+        navigationController?.pushViewController(cartVC, animated: true)
     }
 
     @objc private func rentButtonTapped() {
-        // Handle rent action here.
-        print("Rent button tapped")
+       let rentVC = RentersNearbyViewController()
+        rentVC.selectedBook = book
+       navigationController?.pushViewController(rentVC, animated: true)
     }
 }
 

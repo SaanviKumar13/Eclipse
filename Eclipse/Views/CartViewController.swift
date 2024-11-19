@@ -1,44 +1,13 @@
 import Foundation
 
-
- struct Book2: Identifiable {
-    public var id = UUID()
-    var author: String
-    var title: String
-    var imageName: String
-    var description: String
-    let amazonRating: String // Add Amazon rating
-    let goodreadsRating: String
-     
-}
-
 import UIKit
-let booksInCart: [Book2] = [
-    Book2(author: "F. Scott Fitzgerald", title: "The Great Gatsby", imageName: "b1", description: "A novel by F. Scott Fitzgerald that explores the themes of decadence, idealism, resistance to change, social upheaval, and excess, set in the Roaring Twenties. It follows the story of Jay Gatsby, a mysterious millionaire, and his obsession with the beautiful Daisy Buchanan, as narrated by Nick Carraway, who becomes entangled in Gatsby's world of wealth and disillusionment.", amazonRating: "4.5", goodreadsRating: "3.91"),
-    // ... add other books from your original data ...
-]
 
-class BookRentalViewController: UIViewController {
+class CartViewController: UIViewController {
     // MARK: - UI Components
     
     private var rentalDays: Int = 4
     
-    private let backButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Back", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-
-    }()
+    var bookInCart: Book!
 
     private let bookContainer: UIView = {
         let view = UIView()
@@ -51,8 +20,8 @@ class BookRentalViewController: UIViewController {
 
     private let bookImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 8
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +61,7 @@ class BookRentalViewController: UIViewController {
         button.tintColor = .systemTeal
         button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular) // Increased font size
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(BookRentalViewController.self, action: #selector(decreaseDays), for: .touchUpInside)
+        button.addTarget(self, action: #selector(decreaseDays), for: .touchUpInside)
         return button
     }()
 
@@ -102,7 +71,7 @@ class BookRentalViewController: UIViewController {
         button.tintColor = .systemTeal
         button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular) // Increased font size
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(BookRentalViewController.self, action: #selector(increaseDays), for: .touchUpInside)
+        button.addTarget(self, action: #selector(increaseDays), for: .touchUpInside)
         return button
     }()
 
@@ -198,7 +167,7 @@ class BookRentalViewController: UIViewController {
         let button = UIButton(type: .infoDark) // Use infoDark button type
         button.tintColor = .gray // Customize tint color as needed
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(BookRentalViewController.self, action: #selector(showInfoScreen), for: .touchUpInside) // Add target action
+        button.addTarget(self, action: #selector(showInfoScreen), for: .touchUpInside) // Add target action
         return button
     }()
 
@@ -226,7 +195,7 @@ class BookRentalViewController: UIViewController {
         button.backgroundColor = UIColor(red: 0.2, green: 0.4, blue: 0.6, alpha: 1.0)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(BookRentalViewController.self, action: #selector(proceedToCheckout), for: .touchUpInside) // Add target
+        button.addTarget(self, action: #selector(proceedToCheckout), for: .touchUpInside) // Add target
         return button
     }()
     
@@ -236,42 +205,16 @@ class BookRentalViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 
-        let firstBook = booksInCart[0]
-        titleLabel.text = firstBook.author
+        let firstBook:Book = bookInCart
         bookTitleLabel.text = firstBook.title
         // Use the rentalDays variable to initialize the total price
         totalPriceLabel.text = "₹\(40 * rentalDays)"
-        bookImageView.image = UIImage(named: firstBook.imageName)
-        userImageView.image = getRandomUserImage()
+        bookImageView.image = firstBook.coverImageURL
+        userImageView.image = UIImage(named: "profile")
     }
-    
-    private func getRandomUserImage() -> UIImage? {
-        // Get a list of all image names in your Assets Catalog (assuming they are PNGs)
-        guard let imageNames = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: nil)?.compactMap({ $0.deletingPathExtension().lastPathComponent }) else {
-            return nil
-        }
-
-        // Filter image names to include only those that start with "user" (customize the prefix as needed)
-        let userImageNames = imageNames.filter { $0.hasPrefix("user") }
-
-        // Shuffle the user image names randomly
-        let shuffledNames = userImageNames.shuffled()
-
-        // If there are any user images, return the first one in the shuffled list
-        if let imageName = shuffledNames.first {
-            return UIImage(named: imageName)
-        }
-
-        return nil
-    }
-
-    // MARK: - UI Setup
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-
-        view.addSubview(backButton)
-        view.addSubview(titleLabel)
         view.addSubview(bookContainer)
         view.addSubview(addressContainer)
         view.addSubview(securityContainer)
@@ -307,16 +250,10 @@ class BookRentalViewController: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            // Back button constraints
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-
-            // Title label constraints
-            titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+             
 
             // Book container constraints
-            bookContainer.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 24),
+            bookContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             bookContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             bookContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
@@ -445,12 +382,13 @@ class BookRentalViewController: UIViewController {
         infoVC.modalPresentationStyle = .pageSheet
         present(infoVC, animated: true, completion: nil)
     }
-
+    
     @objc private func proceedToCheckout() {
         let paymentVC = PaymentAndDeliveryViewController()
+        paymentVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(paymentVC, animated: true)
     }
-    
+
 
     // MARK: - Helper function
     
