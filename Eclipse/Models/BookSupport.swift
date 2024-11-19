@@ -20,4 +20,6 @@ struct Message: Identifiable {
     let text: String
 //    let isCurrentUser: Bool
     let isFromUser: Bool 
+    let isImage: Bool? // Flag to handle images
+    let imageName: String?
 }

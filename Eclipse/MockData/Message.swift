@@ -10,5 +10,7 @@ struct Messages {
     let text: String
     let isFromUser: Bool
     let timestamp: Date
+    let isImage: Bool? // Flag to handle images
+    let imageName: String?
 
 }

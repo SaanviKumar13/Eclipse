@@ -2,12 +2,6 @@
 //  MessageCell.swift
 //  Eclipse
 //
-//  Created by admin48 on 19/11/24.
-//
-//
-//  MessageCell.swift
-//  Eclipse
-//
 //  Created by admin48 on 17/11/24.
 //
 

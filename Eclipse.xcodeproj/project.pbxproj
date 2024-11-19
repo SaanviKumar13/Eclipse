@@ -24,12 +24,14 @@
 		27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD112CDF29B9005C1C40 /* BookData.swift */; };
 		27FBBD142CDF29CB005C1C40 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBBD132CDF29CB005C1C40 /* CategoryData.swift */; };
 		FF0BCDA62CDF3F43008D54F7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF0BCDA52CDF3F43008D54F7 /* .gitignore */; };
+		FF15DA332CECFFE000AA6B76 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15DA322CECFFE000AA6B76 /* MessageCell.swift */; };
+		FF15DA352CED017600AA6B76 /* customerMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15DA342CED017600AA6B76 /* customerMessageCell.swift */; };
+		FF15DA372CED01D300AA6B76 /* customerChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15DA362CED01D300AA6B76 /* customerChatViewController.swift */; };
 		FF21B1BE2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B1BD2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift */; };
 		FF21B1C02CE7C81000C85EF8 /* BookCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B1BF2CE7C81000C85EF8 /* BookCoverCell.swift */; };
 		FF21B20C2CE9669D00C85EF8 /* RatingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B20B2CE9669D00C85EF8 /* RatingPopupView.swift */; };
 		FF21B20E2CE9F8B700C85EF8 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B20D2CE9F8B700C85EF8 /* ChatViewController.swift */; };
 		FF21B2102CE9F96C00C85EF8 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B20F2CE9F96C00C85EF8 /* MessageInputView.swift */; };
-		FF21B2122CE9F9AA00C85EF8 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B2112CE9F9AA00C85EF8 /* MessageCell.swift */; };
 		FF21B2142CE9F9FA00C85EF8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21B2132CE9F9FA00C85EF8 /* Message.swift */; };
 		FF3906802CDF319A00AA9F3A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39067F2CDF319A00AA9F3A /* CustomColor.swift */; };
 		FF82F0EB2CEA4F5C00F8C39E /* RentersNearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82F0EA2CEA4F5C00F8C39E /* RentersNearbyViewController.swift */; };
@@ -72,12 +74,14 @@
 		27FBBD112CDF29B9005C1C40 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		27FBBD132CDF29CB005C1C40 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		FF0BCDA52CDF3F43008D54F7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		FF15DA322CECFFE000AA6B76 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = ../MockData/MessageCell.swift; sourceTree = "<group>"; };
+		FF15DA342CED017600AA6B76 /* customerMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customerMessageCell.swift; sourceTree = "<group>"; };
+		FF15DA362CED01D300AA6B76 /* customerChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customerChatViewController.swift; sourceTree = "<group>"; };
 		FF21B1BD2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorsEditionViewController.swift; sourceTree = "<group>"; };
 		FF21B1BF2CE7C81000C85EF8 /* BookCoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCell.swift; sourceTree = "<group>"; };
 		FF21B20B2CE9669D00C85EF8 /* RatingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopupView.swift; sourceTree = "<group>"; };
 		FF21B20D2CE9F8B700C85EF8 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF21B20F2CE9F96C00C85EF8 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
-		FF21B2112CE9F9AA00C85EF8 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FF21B2132CE9F9FA00C85EF8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FF39067F2CDF319A00AA9F3A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		FF82F0EA2CEA4F5C00F8C39E /* RentersNearbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentersNearbyViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +175,6 @@
 				27FBBD112CDF29B9005C1C40 /* BookData.swift */,
 				27FBBD132CDF29CB005C1C40 /* CategoryData.swift */,
 				FF21B2132CE9F9FA00C85EF8 /* Message.swift */,
-				FF21B2112CE9F9AA00C85EF8 /* MessageCell.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -203,9 +206,12 @@
 				FF21B1BF2CE7C81000C85EF8 /* BookCoverCell.swift */,
 				FF21B20B2CE9669D00C85EF8 /* RatingPopupView.swift */,
 				FF21B20D2CE9F8B700C85EF8 /* ChatViewController.swift */,
+				FF15DA322CECFFE000AA6B76 /* MessageCell.swift */,
 				FF21B20F2CE9F96C00C85EF8 /* MessageInputView.swift */,
 				FF82F0EA2CEA4F5C00F8C39E /* RentersNearbyViewController.swift */,
 				FF82F0EC2CEA4F8800F8C39E /* CustomCell.swift */,
+				FF15DA362CED01D300AA6B76 /* customerChatViewController.swift */,
+				FF15DA342CED017600AA6B76 /* customerMessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFCF50212CEA872D007E4BC1 /* BooksCell.swift in Sources */,
+				FF15DA332CECFFE000AA6B76 /* MessageCell.swift in Sources */,
 				FF8A24A92CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift in Sources */,
 				FF21B2102CE9F96C00C85EF8 /* MessageInputView.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
@@ -297,10 +304,10 @@
 				FF21B20C2CE9669D00C85EF8 /* RatingPopupView.swift in Sources */,
 				FFCF50232CEA874D007E4BC1 /* RenterCell.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
-				FF21B2122CE9F9AA00C85EF8 /* MessageCell.swift in Sources */,
 				FF8A24A72CE34B4B000AD96E /* LentBooksViewController.swift in Sources */,
 				FF3906802CDF319A00AA9F3A /* CustomColor.swift in Sources */,
 				270231082CDF33F600D8E971 /* TabBarController.swift in Sources */,
+				FF15DA372CED01D300AA6B76 /* customerChatViewController.swift in Sources */,
 				FF8A24A32CE34AF1000AD96E /* BookManagementViewController.swift in Sources */,
 				27FBBD122CDF29B9005C1C40 /* BookData.swift in Sources */,
 				FF21B1BE2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift in Sources */,
@@ -309,6 +316,7 @@
 				FF82F0ED2CEA4F8800F8C39E /* CustomCell.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				FFCF50252CEA9734007E4BC1 /* xx.swift in Sources */,
+				FF15DA352CED017600AA6B76 /* customerMessageCell.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				FF8A24A52CE34B23000AD96E /* BorrowedBooksViewController.swift in Sources */,
