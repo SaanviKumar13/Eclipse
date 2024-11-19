@@ -102,6 +102,8 @@ class BookSupportViewController: UIViewController {
         chatButton.translatesAutoresizingMaskIntoConstraints = false
         cardView.addSubview(chatButton)
         
+        chatButton.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             cardView.heightAnchor.constraint(equalToConstant: 100),
             
@@ -120,6 +122,11 @@ class BookSupportViewController: UIViewController {
         ])
         
         return cardView
+    }
+    
+    @objc private func chatButtonTapped() {
+        let chatVC = customerChatViewController()
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 }
 

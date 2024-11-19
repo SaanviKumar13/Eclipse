@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct Message: Identifiable {
-    let id = UUID()
+import Foundation
+struct Messages {
     let text: String
     let isFromUser: Bool
+    let isImage: Bool?
+    let imageName: String?
 }

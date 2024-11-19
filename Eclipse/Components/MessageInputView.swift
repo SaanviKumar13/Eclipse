@@ -13,7 +13,7 @@ protocol MessageInputViewDelegate: AnyObject {
 class MessageInputView: UIView {
     weak var delegate: MessageInputViewDelegate?
     
-    private let textView: UITextView = {
+     let textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = .systemFont(ofSize: 16)

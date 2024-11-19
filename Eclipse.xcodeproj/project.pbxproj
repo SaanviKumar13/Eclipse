@@ -83,6 +83,8 @@
 		27BC97A32CECE155004EC100 /* BookIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A22CECE155004EC100 /* BookIDHelper.swift */; };
 		27BC97A52CECE347004EC100 /* RentersNearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A42CECE347004EC100 /* RentersNearbyViewController.swift */; };
 		27BC97A72CECEFAC004EC100 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A62CECEFAC004EC100 /* RequestData.swift */; };
+		27BC97A92CED0F77004EC100 /* CustomerChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */; };
+		27BC97AB2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97AA2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift */; };
 		27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B202CE71FDA0035C957 /* ExploreViewController.swift */; };
 		27C21B232CE740010035C957 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B222CE740010035C957 /* QuizViewController.swift */; };
 		27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */; };
@@ -182,6 +184,8 @@
 		27BC97A22CECE155004EC100 /* BookIDHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookIDHelper.swift; sourceTree = "<group>"; };
 		27BC97A42CECE347004EC100 /* RentersNearbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentersNearbyViewController.swift; sourceTree = "<group>"; };
 		27BC97A62CECEFAC004EC100 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerChatViewController.swift; sourceTree = "<group>"; };
+		27BC97AA2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMessageTableViewCell.swift; sourceTree = "<group>"; };
 		27C21B202CE71FDA0035C957 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27C21B222CE740010035C957 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 				2711302F2CEC5AD100F5510C /* FeedbackViewController.swift */,
 				271130312CEC608100F5510C /* BookListViewController.swift */,
 				27BC97A42CECE347004EC100 /* RentersNearbyViewController.swift */,
+				27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				271130132CEB30B500F5510C /* MessageTableViewCell.swift */,
 				271130152CEB315500F5510C /* RentBooksTableViewCell.swift */,
 				271130172CEB31A100F5510C /* RenterTableViewCell.swift */,
+				27BC97AA2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				278366872CEAFED3003036A9 /* GuidedListCollectionViewCell.swift in Sources */,
 				27112FED2CEB19FA00F5510C /* OnboardingViewController.swift in Sources */,
 				271130342CEC871300F5510C /* Renter.swift in Sources */,
+				27BC97AB2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27112FEB2CEB192E00F5510C /* AuthorPreferencesViewController.swift in Sources */,
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
@@ -534,6 +541,7 @@
 				27112FF92CEB2C1C00F5510C /* BookManagementViewController.swift in Sources */,
 				271130202CEB40B700F5510C /* BookSupportViewController.swift in Sources */,
 				271130162CEB315500F5510C /* RentBooksTableViewCell.swift in Sources */,
+				27BC97A92CED0F77004EC100 /* CustomerChatViewController.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
 				27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */,

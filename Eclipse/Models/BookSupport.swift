@@ -14,3 +14,10 @@ struct BookSupport {
     var complaint: String
     var compensation: Double
 }
+
+struct Message: Identifiable {
+    let id = UUID()
+    let text: String
+    let isFromUser: Bool
+
+}
