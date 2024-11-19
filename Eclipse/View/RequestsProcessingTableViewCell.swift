@@ -45,7 +45,7 @@ class RequestssTableViewCell: UITableViewCell {
         profileButton.translatesAutoresizingMaskIntoConstraints = false
 
         // Setup for title label
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 

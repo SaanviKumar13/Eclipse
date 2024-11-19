@@ -126,7 +126,7 @@ class BorrowedBooksViewController: UIViewController, UITableViewDelegate, UITabl
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Borrowed Books"
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

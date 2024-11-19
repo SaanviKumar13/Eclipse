@@ -1,10 +1,10 @@
+
 //
 //  VCollectorsEditionViewController.swift
 //  Eclipse
 //
 //  Created by admin48 on 15/11/24.
 //
-
 
 import UIKit
 
@@ -53,8 +53,7 @@ class BooksViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "bubble.right"), for: .normal)
         button.backgroundColor = .clear
-        button.layer.cornerRadius = 15  // Half of the height
-        
+        button.layer.cornerRadius = 15
         button.tintColor = UIColor(named: "#005C78") ?? .systemBlue
         return button
     }()
@@ -63,20 +62,30 @@ class BooksViewController: UIViewController {
         let label = UILabel()
         label.text = "Collectors Edition"
         label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
-        label.textColor = .black
+        label.textColor = UIColor(hex: "B19065")
         return label
     }()
-
-    private let collectorsEditionScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        return scrollView
+    
+    private let collectorsContainer: UIView = {
+        let view = UIView()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [
+            UIColor(hex: "D4BC86").cgColor,
+            UIColor(hex: "B19065").cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        return view
     }()
-
-    private let collectorsEditionContainer: UIStackView = {
+    
+    private let collectorsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 12
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
         return stackView
     }()
 
@@ -93,7 +102,7 @@ class BooksViewController: UIViewController {
     }()
 
     // Sample data
-    private let collectorsEditionBooks = ["book1", "it_ends_with_us", "malory_towers", "verity"]
+    private let collectorsEditionBooks = ["book1", "it_ends_with_us", "malory_towers"]
     private let regularBooks = ["pride_and_prejudice", "devotion", "catcher_in_the_rye", "where_the_crawdads_sing", "dune", "great_gatsby"]
 
     override func viewDidLoad() {
@@ -123,10 +132,8 @@ class BooksViewController: UIViewController {
         view.addSubview(ratingPopup)
     }
 
-    // Add new chat button action
     @objc private func chatButtonTapped() {
         let chatVC = ChatViewController()
-        // Pass the name from nameLabel to the chat
         chatVC.title = nameLabel.text
         navigationController?.pushViewController(chatVC, animated: true)
     }
@@ -168,7 +175,6 @@ class BooksViewController: UIViewController {
             distanceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4)
         ])
 
-        // Add rating button and setup its action
         headerView.addSubview(ratingButton)
         ratingButton.translatesAutoresizingMaskIntoConstraints = false
         ratingButton.addTarget(self, action: #selector(ratingButtonTapped), for: .touchUpInside)
@@ -188,7 +194,6 @@ class BooksViewController: UIViewController {
 
         headerView.addSubview(chatButton)
         chatButton.translatesAutoresizingMaskIntoConstraints = false
-        // Add target for chat button
         chatButton.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
             chatButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
@@ -197,41 +202,32 @@ class BooksViewController: UIViewController {
             chatButton.heightAnchor.constraint(equalToConstant: 30)
         ])
 
-        let collectorsBackground = UIView()
-        collectorsBackground.backgroundColor = UIColor(hex: "C1A875")
-        view.addSubview(collectorsBackground)
-        collectorsBackground.translatesAutoresizingMaskIntoConstraints = false
-
+        // Collectors Edition Section
+        view.addSubview(collectorsContainer)
+        collectorsContainer.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(collectorsEditionLabel)
         collectorsEditionLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(collectorsEditionScrollView)
-        collectorsEditionScrollView.translatesAutoresizingMaskIntoConstraints = false
-
+        
+        collectorsContainer.addSubview(collectorsStackView)
+        collectorsStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            collectorsBackground.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-            collectorsBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectorsBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            collectorsEditionLabel.topAnchor.constraint(equalTo: collectorsBackground.topAnchor, constant: 16),
+            collectorsEditionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24),
             collectorsEditionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
-            collectorsEditionScrollView.topAnchor.constraint(equalTo: collectorsEditionLabel.bottomAnchor, constant: 8),
-            collectorsEditionScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectorsEditionScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectorsEditionScrollView.heightAnchor.constraint(equalToConstant: 150),
-            collectorsEditionScrollView.bottomAnchor.constraint(equalTo: collectorsBackground.bottomAnchor, constant: -16)
+            collectorsContainer.topAnchor.constraint(equalTo: collectorsEditionLabel.bottomAnchor, constant: 16),
+            collectorsContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            collectorsContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            collectorsContainer.heightAnchor.constraint(equalToConstant: 200),
+            
+            collectorsStackView.topAnchor.constraint(equalTo: collectorsContainer.topAnchor, constant: 20),
+            collectorsStackView.leadingAnchor.constraint(equalTo: collectorsContainer.leadingAnchor, constant: 20),
+            collectorsStackView.trailingAnchor.constraint(equalTo: collectorsContainer.trailingAnchor, constant: -20),
+            collectorsStackView.bottomAnchor.constraint(equalTo: collectorsContainer.bottomAnchor, constant: -20)
         ])
 
-        collectorsEditionScrollView.addSubview(collectorsEditionContainer)
-        collectorsEditionContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectorsEditionContainer.topAnchor.constraint(equalTo: collectorsEditionScrollView.topAnchor),
-            collectorsEditionContainer.leadingAnchor.constraint(equalTo: collectorsEditionScrollView.leadingAnchor, constant: 16),
-            collectorsEditionContainer.trailingAnchor.constraint(equalTo: collectorsEditionScrollView.trailingAnchor),
-            collectorsEditionContainer.bottomAnchor.constraint(equalTo: collectorsEditionScrollView.bottomAnchor)
-        ])
-
+        // Setup three collector's edition books
         for bookImageName in collectorsEditionBooks {
             let bookImageView = UIImageView()
             bookImageView.image = UIImage(named: bookImageName)
@@ -240,20 +236,29 @@ class BooksViewController: UIViewController {
             bookImageView.clipsToBounds = true
             bookImageView.backgroundColor = .white
             
-            collectorsEditionContainer.addArrangedSubview(bookImageView)
-            bookImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            bookImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            collectorsStackView.addArrangedSubview(bookImageView)
+            NSLayoutConstraint.activate([
+                bookImageView.widthAnchor.constraint(equalToConstant: 100),
+                bookImageView.heightAnchor.constraint(equalToConstant: 150)
+            ])
         }
 
-        // Regular Books Grid
+        // Regular Books Collection View
         view.addSubview(booksCollectionView)
         booksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            booksCollectionView.topAnchor.constraint(equalTo: collectorsBackground.bottomAnchor, constant: 16),
+            booksCollectionView.topAnchor.constraint(equalTo: collectorsContainer.bottomAnchor, constant: 16),
             booksCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             booksCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             booksCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let gradientLayer = collectorsContainer.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer.frame = collectorsContainer.bounds
+        }
     }
 }
 
@@ -269,3 +274,5 @@ extension BooksViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
 }
+
+

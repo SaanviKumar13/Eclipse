@@ -55,16 +55,20 @@ class BookManagementViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -13),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 36),
             
-            containerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 16),
+            containerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 4),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+       
+
+    
     
     @objc private func segmentChanged(_ sender: UISegmentedControl) {
         borrowedBooksVC.view.isHidden = sender.selectedSegmentIndex == 0

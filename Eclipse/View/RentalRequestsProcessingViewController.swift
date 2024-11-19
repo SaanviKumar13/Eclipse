@@ -33,8 +33,8 @@ class RentalRequestsProcessingViewController: UIViewController, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Rent Requests"
-
+        setupNavigationBar()
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(RequestssTableViewCell.self, forCellReuseIdentifier: "RequestsTableViewCell")
@@ -48,6 +48,21 @@ class RentalRequestsProcessingViewController: UIViewController, UITableViewDataS
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupNavigationBar() {
+        // Create a label with the desired text attributes
+        let titleLabel = UILabel()
+        titleLabel.text = "Rent Requests"
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.textAlignment = .center
+        
+        // Set the label as the navigation item's titleView
+        navigationItem.titleView = titleLabel
+        
+        // Ensure the title is centered
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

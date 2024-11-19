@@ -6,6 +6,7 @@
 //
 
 
+
 import UIKit
 
 class RentalRequestsAcceptViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -35,7 +36,7 @@ class RentalRequestsAcceptViewController: UIViewController, UITableViewDataSourc
         
         // View setup
         view.backgroundColor = .white
-        navigationItem.title = "Rent Requests"
+        setupNavigationBar()
         
         // TableView setup
         tableView.dataSource = self
@@ -52,6 +53,21 @@ class RentalRequestsAcceptViewController: UIViewController, UITableViewDataSourc
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupNavigationBar() {
+        // Create a label with the desired text attributes
+        let titleLabel = UILabel()
+        titleLabel.text = "Rent Requests"
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.textAlignment = .center
+        
+        // Set the label as the navigation item's titleView
+        navigationItem.titleView = titleLabel
+        
+        // Ensure the title is centered
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     // MARK: - UITableViewDataSource
@@ -83,5 +99,3 @@ class RentalRequestsAcceptViewController: UIViewController, UITableViewDataSourc
         navigationController?.pushViewController(booksViewController, animated: true)
     }
 }
-
-

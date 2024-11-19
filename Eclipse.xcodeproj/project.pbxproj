@@ -188,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCF50242CEA9734007E4BC1 /* xx.swift */,
+				FF21B1BD2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift */,
 				FFCF501E2CEA8702007E4BC1 /* HomeViewController.swift */,
 				FFCF50202CEA872D007E4BC1 /* BooksCell.swift */,
 				FFCF50222CEA874D007E4BC1 /* RenterCell.swift */,
@@ -199,7 +200,6 @@
 				FF8A24AC2CE353AE000AD96E /* RequestsProcessingTableViewCell.swift */,
 				FF8A24A82CE34BAE000AD96E /* RentalRequestsAcceptViewController.swift */,
 				FF8A24422CDFB841000AD96E /* RequestTableViewCell.swift */,
-				FF21B1BD2CE7C6AF00C85EF8 /* CollectorsEditionViewController.swift */,
 				FF21B1BF2CE7C81000C85EF8 /* BookCoverCell.swift */,
 				FF21B20B2CE9669D00C85EF8 /* RatingPopupView.swift */,
 				FF21B20D2CE9F8B700C85EF8 /* ChatViewController.swift */,
