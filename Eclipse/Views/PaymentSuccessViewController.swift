@@ -2,8 +2,6 @@ import UIKit
 
 class PaymentSuccessViewController: UIViewController {
     
-    // MARK: - UI Components
-    
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,15 +23,13 @@ class PaymentSuccessViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Payment Successful"
         label.textColor = .white
-        label.textAlignment = .center // Added text alignment
+        label.textAlignment = .center
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.alpha = 0
         return label
     }()
     
     private let checkmarkShapeLayer = CAShapeLayer()
-    
-    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +41,10 @@ class PaymentSuccessViewController: UIViewController {
         animateIn()
     }
     
-    // MARK: - Private Methods
     
     private func setupUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
-        // Add views to hierarchy
         view.addSubview(containerView)
         containerView.addSubview(checkmarkView)
         containerView.addSubview(successLabel)
@@ -96,7 +90,6 @@ class PaymentSuccessViewController: UIViewController {
     }
     
     private func animateIn() {
-        // Container animation
         UIView.animate(withDuration: 0.5,
                       delay: 0,
                       usingSpringWithDamping: 0.7,
@@ -105,7 +98,6 @@ class PaymentSuccessViewController: UIViewController {
             self.containerView.transform = .identity
         }
         
-        // Checkmark animation
         let checkmarkAnimation = CABasicAnimation(keyPath: "strokeEnd")
         checkmarkAnimation.duration = 0.5
         checkmarkAnimation.fromValue = 0
@@ -116,12 +108,10 @@ class PaymentSuccessViewController: UIViewController {
         
         checkmarkShapeLayer.add(checkmarkAnimation, forKey: "checkmarkAnimation")
         
-        // Label animation
         UIView.animate(withDuration: 0.3, delay: 0.5) {
             self.successLabel.alpha = 1
         }
         
-        // Auto-dismiss
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
             self?.animateOut()
         }
@@ -148,7 +138,6 @@ class PaymentSuccessViewController: UIViewController {
     }
 }
 
-// MARK: - UIViewController Extension
 
 extension UIViewController {
     func topMostViewController() -> UIViewController {

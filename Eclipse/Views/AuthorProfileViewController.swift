@@ -37,8 +37,8 @@ class AuthorProfileViewController: UIViewController {
         authorImage.layer.cornerRadius = 40
         authorImage.clipsToBounds = true
         
-        numberOfBooks.text = "50"  // Or pass actual data
-        numberOfReadingLists.text = "6"  // Or pass actual data
+        numberOfBooks.text = "50"
+        numberOfReadingLists.text = "6"
         
         readingListLabel.numberOfLines = 0
         

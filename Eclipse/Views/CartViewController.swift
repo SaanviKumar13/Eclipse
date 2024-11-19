@@ -3,7 +3,6 @@ import Foundation
 import UIKit
 
 class CartViewController: UIViewController {
-    // MARK: - UI Components
     
     private var rentalDays: Int = 4
     
@@ -48,7 +47,7 @@ class CartViewController: UIViewController {
     
     private let durationLabel: UILabel = {
         let label = UILabel()
-        label.text = "4 Days" // Set initial text with "Days"
+        label.text = "4 Days"
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +58,7 @@ class CartViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("-", for: .normal)
         button.tintColor = .systemTeal
-        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular) // Increased font size
+        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(decreaseDays), for: .touchUpInside)
         return button
@@ -69,7 +68,7 @@ class CartViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("+", for: .normal)
         button.tintColor = .systemTeal
-        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular) // Increased font size
+        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(increaseDays), for: .touchUpInside)
         return button
@@ -79,7 +78,7 @@ class CartViewController: UIViewController {
         let label = UILabel()
         label.text = "₹40 per day"
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .systemBlue// Changed text color to red
+        label.textColor = .systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -164,10 +163,10 @@ class CartViewController: UIViewController {
     }()
     
     private let infoButton: UIButton = {
-        let button = UIButton(type: .infoDark) // Use infoDark button type
-        button.tintColor = .gray // Customize tint color as needed
+        let button = UIButton(type: .infoDark)
+        button.tintColor = .gray
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showInfoScreen), for: .touchUpInside) // Add target action
+        button.addTarget(self, action: #selector(showInfoScreen), for: .touchUpInside)
         return button
     }()
 
@@ -195,19 +194,16 @@ class CartViewController: UIViewController {
         button.backgroundColor = UIColor(red: 0.2, green: 0.4, blue: 0.6, alpha: 1.0)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(proceedToCheckout), for: .touchUpInside) // Add target
+        button.addTarget(self, action: #selector(proceedToCheckout), for: .touchUpInside)
         return button
     }()
-    
-    
-//MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
 
         let firstBook:Book = bookInCart
         bookTitleLabel.text = firstBook.title
-        // Use the rentalDays variable to initialize the total price
         totalPriceLabel.text = "₹\(40 * rentalDays)"
         bookImageView.image = firstBook.coverImageURL
         userImageView.image = UIImage(named: "profile")
@@ -250,108 +246,81 @@ class CartViewController: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-             
-
-            // Book container constraints
             bookContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             bookContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             bookContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            // Book image view constraints
             bookImageView.topAnchor.constraint(equalTo: bookContainer.topAnchor, constant: 16),
             bookImageView.leadingAnchor.constraint(equalTo: bookContainer.leadingAnchor, constant: 16),
             bookImageView.widthAnchor.constraint(equalToConstant: 80),
             bookImageView.heightAnchor.constraint(equalToConstant: 120),
             bookImageView.bottomAnchor.constraint(equalTo: bookContainer.bottomAnchor, constant: -16),
 
-            // Book title label constraints
             bookTitleLabel.topAnchor.constraint(equalTo: bookImageView.topAnchor),
             bookTitleLabel.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 16),
             bookTitleLabel.trailingAnchor.constraint(equalTo: bookContainer.trailingAnchor, constant: -16),
 
-            // Duration container constraints
             durationContainer.topAnchor.constraint(equalTo: bookTitleLabel.bottomAnchor, constant: 8),
             durationContainer.leadingAnchor.constraint(equalTo: bookTitleLabel.leadingAnchor),
-            durationContainer.trailingAnchor.constraint(lessThanOrEqualTo: bookContainer.trailingAnchor, constant: -32), // Add trailing constraint
-
-            // Minus button constraint
+            durationContainer.trailingAnchor.constraint(lessThanOrEqualTo: bookContainer.trailingAnchor, constant: -32),
+            
             minusButton.leadingAnchor.constraint(equalTo: durationContainer.leadingAnchor),
 
-            // Duration label constraints
             durationLabel.leadingAnchor.constraint(equalTo: minusButton.trailingAnchor, constant: 8),
             durationLabel.trailingAnchor.constraint(equalTo: plusButton.leadingAnchor, constant: -8),
 
-            // Plus button constraint
             plusButton.trailingAnchor.constraint(equalTo: durationContainer.trailingAnchor),
 
-            // Price per day label constraints
             pricePerDayLabel.leadingAnchor.constraint(equalTo: plusButton.trailingAnchor, constant: 8),
             pricePerDayLabel.trailingAnchor.constraint(equalTo: bookContainer.trailingAnchor, constant: 16),
 
-
-            // Total price label constraints
             totalPriceLabel.topAnchor.constraint(equalTo: totalLabel.topAnchor),
             totalPriceLabel.leadingAnchor.constraint(equalTo: totalLabel.trailingAnchor, constant: 8),
             
             totalLabel.topAnchor.constraint(equalTo: durationContainer.bottomAnchor, constant: 8),
             totalLabel.leadingAnchor.constraint(equalTo: bookTitleLabel.leadingAnchor),
 
-            // Address container constraints
             addressContainer.topAnchor.constraint(equalTo: bookContainer.bottomAnchor, constant: 16),
             addressContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             addressContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            // User image view constraints
             userImageView.topAnchor.constraint(equalTo: addressContainer.topAnchor, constant: 16),
             userImageView.leadingAnchor.constraint(equalTo: addressContainer.leadingAnchor, constant: 16),
             userImageView.widthAnchor.constraint(equalToConstant: 40),
             userImageView.heightAnchor.constraint(equalToConstant: 40),
 
-            // User name label constraints
             userNameLabel.topAnchor.constraint(equalTo: userImageView.topAnchor),
             userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 12),
 
-            // Address title label constraints
             addressTitleLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 4),
             addressTitleLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor),
 
-            // Address label constraints
             addressLabel.topAnchor.constraint(equalTo: addressTitleLabel.bottomAnchor, constant: 4),
             addressLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor),
             addressLabel.bottomAnchor.constraint(equalTo: addressContainer.bottomAnchor, constant: -16),
-
-            // Security container constraints
             securityContainer.topAnchor.constraint(equalTo: addressContainer.bottomAnchor, constant: 16),
             securityContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             securityContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            // Security title label constraints
             securityTitleLabel.topAnchor.constraint(equalTo: securityContainer.topAnchor, constant: 16),
             securityTitleLabel.leadingAnchor.constraint(equalTo: securityContainer.leadingAnchor, constant: 16),
             
-            // Info Button
             infoButton.centerYAnchor.constraint(equalTo: securityTitleLabel.centerYAnchor),
             infoButton.leadingAnchor.constraint(equalTo: securityTitleLabel.trailingAnchor, constant: 8),
 
-
-
-            // Security amount label constraints
             securityAmountLabel.topAnchor.constraint(equalTo: securityTitleLabel.bottomAnchor, constant: 8),
             securityAmountLabel.leadingAnchor.constraint(equalTo: securityContainer.leadingAnchor, constant: 16),
             
-            // Security detail label constraints
             securityDetailLabel.topAnchor.constraint(equalTo: securityAmountLabel.bottomAnchor, constant: 8),
             securityDetailLabel.leadingAnchor.constraint(equalTo: securityContainer.leadingAnchor, constant: 16),
             securityDetailLabel.trailingAnchor.constraint(equalTo: securityContainer.trailingAnchor, constant: -16),
             securityDetailLabel.bottomAnchor.constraint(equalTo: securityContainer.bottomAnchor, constant: -16),
 
-            // Checkout button constraints
             checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             checkoutButton.heightAnchor.constraint(equalToConstant: 50),
 
-            // Add width constraints for buttons and durationLabel
             minusButton.widthAnchor.constraint(equalToConstant: 40),
             plusButton.widthAnchor.constraint(equalToConstant: 40),
             durationLabel.widthAnchor.constraint(equalToConstant: 40)
@@ -389,10 +358,6 @@ class CartViewController: UIViewController {
         navigationController?.pushViewController(paymentVC, animated: true)
     }
 
-
-    // MARK: - Helper function
-    
-    
     
     class InfoViewController: UIViewController {
         
@@ -400,8 +365,7 @@ class CartViewController: UIViewController {
             super.viewDidLoad()
             
             view.backgroundColor = .white
-            
-            // Add content to the info screen
+     
             let titleLabel = UILabel()
             titleLabel.text = "Renting Terms & Conditions"
             titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -433,8 +397,6 @@ class CartViewController: UIViewController {
 
             contentView.addSubview(termsLabel)
 
-            
-            // Constraints for scroll view
             NSLayoutConstraint.activate([
                 scrollView.topAnchor.constraint(equalTo: view.topAnchor),
                 scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -458,7 +420,6 @@ class CartViewController: UIViewController {
 
             ])
             
-            // Constraints for terms label
             NSLayoutConstraint.activate([
                 termsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
                 termsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

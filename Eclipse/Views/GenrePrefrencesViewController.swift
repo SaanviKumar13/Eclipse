@@ -58,8 +58,7 @@ class GenrePreferencesViewController: UIViewController {
                 }
             }
         }
-        
-        // Add the next button
+
         let nextButton = UIButton()
         nextButton.setTitle("Next", for: .normal)
         nextButton.backgroundColor = UIColor(hex: "#005C78")
@@ -105,7 +104,7 @@ class GenrePreferencesViewController: UIViewController {
         
         button.layer.borderColor = UIColor(hex: "#005C78").cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 10 // Rounded corners for the bubble buttons
+        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.widthAnchor.constraint(equalToConstant: 140).isActive = true

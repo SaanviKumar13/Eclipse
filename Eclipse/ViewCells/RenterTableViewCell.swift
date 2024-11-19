@@ -54,7 +54,6 @@ class RenterCell: UICollectionViewCell {
 
     func configure(name: String, image: UIImage) {
         nameLabel.text = name
-//        imageView.image = UIImage(named: image)
         imageView.image = image
     }
 }

@@ -6,8 +6,6 @@
 //
 //
 
-        
-
 import UIKit
 
 class RentalRequestsProcessingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -51,16 +49,12 @@ class RentalRequestsProcessingViewController: UIViewController, UITableViewDataS
     }
     
     private func setupNavigationBar() {
-        // Create a label with the desired text attributes
         let titleLabel = UILabel()
         titleLabel.text = "Rent Requests"
         titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textAlignment = .center
-        
-        // Set the label as the navigation item's titleView
         navigationItem.titleView = titleLabel
         
-        // Ensure the title is centered
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.largeTitleDisplayMode = .never
     }
@@ -82,13 +76,11 @@ class RentalRequestsProcessingViewController: UIViewController, UITableViewDataS
     @objc private func profileButtonTapped() {
         let booksViewController = RentersProfileViewController()
 
-        // Customize back button with chevron
         let backButton = UIBarButtonItem()
         backButton.image = UIImage(systemName: "chevron.left")
         backButton.tintColor = UIColor.black
         booksViewController.navigationItem.leftBarButtonItem = backButton
-        
-        // Push the books view controller
+
         navigationController?.pushViewController(booksViewController, animated: true)
     }
 }

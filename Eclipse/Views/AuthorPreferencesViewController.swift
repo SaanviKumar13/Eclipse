@@ -8,11 +8,11 @@ class AuthorPreferencesViewController: UIViewController, UITableViewDelegate, UI
     
     var followedAuthors = [String]()
     let authors = [
-        ("Jane Austen", "aa", "An English novelist known for her romantic fiction. Her works explore themes of love, social class, and women's independence."),
-        ("Michelle Obama", "mb", "An American attorney and author who served as the First Lady of the United States from 2009 to 2017."),
-        ("Sarah James", "sj", "A contemporary author acclaimed for her heartfelt narratives and rich character development."),
-        ("Mark Twain", "bmt", "An American writer, humorist, and lecturer known for his classic novels."),
-        ("Haruki Murakami", "hm", "A Japanese author known for his surreal and imaginative narratives.")
+        ("Jane Austen", "jane_austen", "An English novelist known for her romantic fiction. Her works explore themes of love, social class, and women's independence."),
+        ("Michelle Obama", "michelle_obama", "An American attorney and author who served as the First Lady of the United States from 2009 to 2017."),
+        ("Sarah James", "sarah_james", "A contemporary author acclaimed for her heartfelt narratives and rich character development."),
+        ("Mark Twain", "mark_twain", "An American writer, humorist, and lecturer known for his classic novels."),
+        ("Haruki Murakami", "haruki_murakami", "A Japanese author known for his surreal and imaginative narratives.")
     ]
 
     let tableView = UITableView()
@@ -55,13 +55,9 @@ class AuthorPreferencesViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @objc private func continueButtonTapped() {
-        // Save the flag indicating that preferences have been set
         UserDefaults.standard.set(true, forKey: "hasSetAuthorPreferences")
 
-        // Access the storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        // Instantiate the tab bar controller
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
             tabBarController.modalPresentationStyle = .fullScreen
             present(tabBarController, animated: true, completion: nil)
@@ -80,11 +76,10 @@ class AuthorPreferencesViewController: UIViewController, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuthorCell", for: indexPath) as! AuthorCell
         let author = authors[indexPath.row]
         cell.configure(with: author)
-        cell.delegate = self // Set the delegate
+        cell.delegate = self
         return cell
     }
 
-    // AuthorCellDelegate method
     func didFollowAuthor(_ authorName: String) {
         if !followedAuthors.contains(authorName) {
             followedAuthors.append(authorName)

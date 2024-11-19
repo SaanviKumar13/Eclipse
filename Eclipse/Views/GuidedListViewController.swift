@@ -32,7 +32,6 @@ class GuidedListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
     }
     
-    // TableView delegate and dataSource methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 330
     }
@@ -47,13 +46,12 @@ class GuidedListViewController: UIViewController, UITableViewDelegate, UITableVi
         if let selectedGuidedLists = selectedGuidedLists {
             let guidedList = selectedGuidedLists.list[indexPath.row]
             cell.configure(with: guidedList)
-            cell.bookSelectionDelegate = self  // Set the delegate
+            cell.bookSelectionDelegate = self
         }
         
         return cell
     }
 
-    // Method to handle the book selection
     func didSelectBook(_ book: Book) {
         let bookVC = BookViewController(book: book)
         navigationController?.pushViewController(bookVC, animated: true)

@@ -7,16 +7,14 @@ class SplashViewController: UIViewController {
         
         setupUI()
         
-        // Check UserDefaults to see if onboarding and preferences are set
         let isOnboarded = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
         let hasSetPreferences = UserDefaults.standard.bool(forKey: "hasSetAuthorPreferences")
 
-        // Simulate a delay before checking if user has completed onboarding
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             if isOnboarded && hasSetPreferences {
-                self.navigateToMainScreen() // Go to main content
+                self.navigateToMainScreen()
             } else {
-                self.navigateToOnboardingFlow() // Start onboarding if not completed
+                self.navigateToOnboardingFlow()
             }
         }
     }
@@ -38,15 +36,13 @@ class SplashViewController: UIViewController {
     }
 
     private func navigateToMainScreen() {
-        // Code to navigate to the main screen (Tab Bar or main content)
-        let mainTabBarController = ViewController() // Replace with your main screen
+        let mainTabBarController = ViewController()
         let window = UIApplication.shared.windows.first
         window?.rootViewController = mainTabBarController
         window?.makeKeyAndVisible()
     }
 
     private func navigateToOnboardingFlow() {
-        // Start the onboarding flow if not completed
         let onboardingVC = OnboardingViewController()
         let navigationController = UINavigationController(rootViewController: onboardingVC)
         

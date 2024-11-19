@@ -104,18 +104,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    // MARK: - UITableViewDelegate
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // Handle actions when a cell is tapped
         switch indexPath.section {
         case 0:
-            // Account options
             handleAccountOptionSelection(indexPath.row)
         case 1:
-            // Actions options
             handleActionOptionSelection(indexPath.row)
         default:
             break
@@ -124,16 +118,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func handleAccountOptionSelection(_ row: Int) {
         switch row {
-        case 0: // "Edit Profile"
+        case 0:
             let editProfileVC = EditProfileViewController()
             editProfileVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(editProfileVC, animated: true)
-        case 1: // "Notifications"
+        case 1:
             print("Navigating to Notifications screen")
-        case 2: // "Book Support"
+        case 2:
             let bookSupportVC = BookSupportViewController()
             navigationController?.pushViewController(bookSupportVC, animated: true)
-        case 3: // "Security"
+        case 3:
             print("Navigating to Security screen")
         default:
             break
@@ -142,19 +136,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func handleActionOptionSelection(_ row: Int) {
         switch row {
-        case 0: // "Report a Problem"
+        case 0:
             let raiseProblemVC = RaiseProblemViewController()
             navigationController?.pushViewController(raiseProblemVC, animated: true)
-        case 1: // "Log Out"
+        case 1:
             print("Logging out")
-        case 2: // "Delete Account"
+        case 2:
             print("Deleting account")
         default:
             break
         }
     }
-    
-    // MARK: - UITableViewDelegate (Headers)
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
@@ -166,9 +158,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return nil
         }
     }
-    
-    // MARK: - Custom Header View
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .white
@@ -188,8 +178,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         headerView.addSubview(titleLabel)
-        
-        // Constraints for the title label
+
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
             titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
@@ -197,12 +186,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return headerView
     }
-    
-    // MARK: - Custom Header Height
-    
-    // This method sets the height of the header to increase space between the header and the list
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60 // Adjust height to increase space
+        return 60
     }
 }
 

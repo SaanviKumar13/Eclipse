@@ -42,7 +42,7 @@ class RatingPopupView: UIView {
     private let submitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Submit", for: .normal)
-        button.backgroundColor = UIColor(hex: "005C78") // Teal color
+        button.backgroundColor = UIColor(hex: "005C78")
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -67,7 +67,7 @@ class RatingPopupView: UIView {
     
     private let staticRatingLabel: UILabel = {
         let label = UILabel()
-        label.text = "4.0" // Static rating displayed here
+        label.text = "4.0"
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         label.textAlignment = .center
         return label
@@ -122,12 +122,10 @@ class RatingPopupView: UIView {
         ratingsStackView.translatesAutoresizingMaskIntoConstraints = false
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         
-        // Add static labels to the overall rating stack view
         overallRatingStackView.addArrangedSubview(overallRatingLabel)
         overallRatingStackView.addArrangedSubview(staticRatingLabel)
         overallRatingStackView.addArrangedSubview(basedOnLabel)
         
-        // Add star buttons
         for i in 1...5 {
             let starButton = UIButton(type: .system)
             starButton.setImage(UIImage(systemName: "star"), for: .normal)
@@ -137,7 +135,6 @@ class RatingPopupView: UIView {
             starsStackView.addArrangedSubview(starButton)
         }
         
-        // Add rating bar rows
         addRatingBarRow(to: ratingsStackView, label: "Good", barWidthMultiplier: 0.8)
         addRatingBarRow(to: ratingsStackView, label: "Average", barWidthMultiplier: 0.5)
         addRatingBarRow(to: ratingsStackView, label: "Poor", barWidthMultiplier: 0.2)

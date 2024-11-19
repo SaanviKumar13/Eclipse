@@ -29,15 +29,6 @@ class BookViewController: UIViewController {
         return iv
     }()
 
-//    private let titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = .systemFont(ofSize: 24, weight: .bold)
-//        label.numberOfLines = 0
-//        label.textAlignment = .center
-//        return label
-//    }()
-
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,10 +55,9 @@ class BookViewController: UIViewController {
         button.backgroundColor = UIColor(hex: "#005C78")
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
-//        button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // Button title padding
-           button.contentVerticalAlignment = .center  // Align title vertically
+           button.contentVerticalAlignment = .center
         button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true  // Set a constant width
+        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
            return button
     }()
 
@@ -83,7 +73,7 @@ class BookViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.contentVerticalAlignment = .center
         button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true  // Set a constant width
+        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
         return button
     }()
 
@@ -91,7 +81,7 @@ class BookViewController: UIViewController {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .horizontal
-        sv.spacing = 16 // Space between buttons
+        sv.spacing = 16
         sv.alignment = .center
         return sv
     }()
@@ -122,7 +112,6 @@ class BookViewController: UIViewController {
         buttonStackView.addArrangedSubview(buyButton)
         buttonStackView.addArrangedSubview(rentButton)
 
-        // Setup rating stars
         for _ in 0..<5 {
             let starImageView = UIImageView(image: UIImage(systemName: "star.fill"))
             starImageView.tintColor = .systemYellow
@@ -151,10 +140,6 @@ class BookViewController: UIViewController {
             bookImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             bookImageView.widthAnchor.constraint(equalToConstant: 200),
             bookImageView.heightAnchor.constraint(equalToConstant: 300),
-
-//            titleLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 20),
-//            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
             ratingView.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 12),
             ratingView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

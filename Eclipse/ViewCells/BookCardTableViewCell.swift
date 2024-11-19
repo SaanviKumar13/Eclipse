@@ -7,11 +7,11 @@ import UIKit
 protocol BookCardDelegate: AnyObject {
     func didTapChat(for book: BookData)
 }
-// First, let's create a proper model for the book
+
 struct BookData {
     let title: String
-    let borrowedFrom: String? // for borrowed books
-    let lentTo: String? // for lent books
+    let borrowedFrom: String?
+    let lentTo: String?
     let price: String
     let days: String
     let coverImage: UIImage
@@ -53,7 +53,7 @@ class BookCard: UITableViewCell {
             let label = UILabel()
             label.font = .systemFont(ofSize: 14)
             label.textAlignment = .center
-            label.backgroundColor = UIColor.systemGray5 // Light grey background
+            label.backgroundColor = UIColor.systemGray5
             label.layer.cornerRadius = 5
             label.clipsToBounds = true
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class BookCard: UITableViewCell {
             label.font = .systemFont(ofSize: 14)
             
             label.textAlignment = .center
-            label.backgroundColor = UIColor(hex: "#005C78") // Light grey background
+            label.backgroundColor = UIColor(hex: "#005C78")
             
             label.textColor = .white
             label.layer.cornerRadius = 5
@@ -125,40 +125,34 @@ class BookCard: UITableViewCell {
             contentView.addSubview(separatorLine)
             
             NSLayoutConstraint.activate([
-                // Cover image
+           
                 coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
                 coverImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 coverImageView.widthAnchor.constraint(equalToConstant: 60),
                 coverImageView.heightAnchor.constraint(equalToConstant: 90),
                 
-                // Title
                 titleLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 12),
                 titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
                 titleLabel.trailingAnchor.constraint(equalTo: chatButton.leadingAnchor, constant: -8),
                 
-                // Borrower/Lender label
                 borrowerLenderLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 12),
                 borrowerLenderLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
                 
-                // Price label
                 priceLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 12),
                 priceLabel.topAnchor.constraint(equalTo: borrowerLenderLabel.bottomAnchor, constant: 8),
                 priceLabel.widthAnchor.constraint(equalToConstant: 50),
                 priceLabel.heightAnchor.constraint(equalToConstant: 25),
                 
-                // Days label
                 daysLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 8),
                 daysLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
                 daysLabel.widthAnchor.constraint(equalToConstant: 70),
                 daysLabel.heightAnchor.constraint(equalToConstant: 25),
                 
-                // Chat button
                 chatButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                 chatButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
                 chatButton.widthAnchor.constraint(equalToConstant: 30),
                 chatButton.heightAnchor.constraint(equalToConstant: 30),
                 
-                // Return button
                 returnButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                 returnButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
                 
@@ -181,7 +175,6 @@ class BookCard: UITableViewCell {
             daysLabel.text = book.days
             coverImageView.image = book.coverImage
             
-            // Set minimum height for the cell
             let minHeight: CGFloat = 120
             if frame.height < minHeight {
                 frame.size.height = minHeight
@@ -191,6 +184,5 @@ class BookCard: UITableViewCell {
           guard let book = currentBook else { return }
           delegate?.didTapChat(for: book)
       }
-//
    }
 

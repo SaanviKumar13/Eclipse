@@ -176,18 +176,14 @@ class PaymentAndDeliveryViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
-        // Add container view to main view
         view.addSubview(containerView)
         
-        // Add scroll view to container
         containerView.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        // Add pay button container to main view
         containerView.addSubview(payButtonContainer)
         payButtonContainer.addSubview(payButton)
         
-        // Add content
         contentView.addSubview(deliveryAddressLabel)
         contentView.addSubview(addressContainer)
         addressContainer.addSubview(addressLabel)
@@ -198,38 +194,33 @@ class PaymentAndDeliveryViewController: UIViewController {
         contentView.addSubview(giftCardContainer)
         
         NSLayoutConstraint.activate([
-            // Container View
+         
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            // Pay Button Container
             payButtonContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             payButtonContainer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             payButtonContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             payButtonContainer.heightAnchor.constraint(equalToConstant: 88),
             
-            // Pay Button
             payButton.topAnchor.constraint(equalTo: payButtonContainer.topAnchor),
             payButton.leadingAnchor.constraint(equalTo: payButtonContainer.leadingAnchor, constant: 16),
             payButton.trailingAnchor.constraint(equalTo: payButtonContainer.trailingAnchor, constant: -16),
             payButton.heightAnchor.constraint(equalToConstant: 56),
             
-            // Scroll View
             scrollView.topAnchor.constraint(equalTo: containerView.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: payButtonContainer.topAnchor),
             
-            // Content View
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            // Content Layout
             deliveryAddressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             deliveryAddressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             
@@ -262,8 +253,6 @@ class PaymentAndDeliveryViewController: UIViewController {
             giftCardContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -32)
         ])
     }
-    
-    // MARK: - Actions
     
     @objc private func changeAddress() {
         print("Change Address tapped")

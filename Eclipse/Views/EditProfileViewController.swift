@@ -3,12 +3,11 @@ import PhotosUI
 
 class EditProfileViewController: UIViewController, PHPickerViewControllerDelegate, UINavigationControllerDelegate {
 
-    // UI Elements
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile") // Replace with your default image
+        imageView.image = UIImage(named: "profile")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 60 // Adjusted for smaller image
+        imageView.layer.cornerRadius = 60
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -27,7 +26,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
     private let phoneLabel: UILabel = createLabel(withText: "Phone: 9872664287")
     private let passwordLabel: UILabel = createLabel(withText: "Password: ********")
 
-    // Function to create a label
     private static func createLabel(withText text: String) -> UILabel {
         let label = UILabel()
         label.text = text
@@ -38,7 +36,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         return label
     }
 
-    // Container Views for information boxes
     private func createInfoBox(with label: UILabel) -> UIView {
         let boxView = UIView()
         boxView.layer.borderColor = UIColor.systemGray4.cgColor
@@ -76,7 +73,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         view.addSubview(profileImageView)
         view.addSubview(nameLabel)
 
-        // Creating info boxes for each field
         let dobBox = createInfoBox(with: dobLabel)
         let emailBox = createInfoBox(with: emailLabel)
         let phoneBox = createInfoBox(with: phoneLabel)
@@ -90,35 +86,29 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         nameLabel.text = "John Doe"
 
         NSLayoutConstraint.activate([
-            // Profile Image View Constraints
             profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileImageView.widthAnchor.constraint(equalToConstant: 120),
             profileImageView.heightAnchor.constraint(equalToConstant: 120),
 
-            // Name Label Constraints
             nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            // DOB Box Constraints
             dobBox.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
             dobBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             dobBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             dobBox.heightAnchor.constraint(equalToConstant: 60),
 
-            // Email Box Constraints
             emailBox.topAnchor.constraint(equalTo: dobBox.bottomAnchor, constant: 15),
             emailBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             emailBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailBox.heightAnchor.constraint(equalToConstant: 60),
 
-            // Phone Box Constraints
             phoneBox.topAnchor.constraint(equalTo: emailBox.bottomAnchor, constant: 15),
             phoneBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             phoneBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             phoneBox.heightAnchor.constraint(equalToConstant: 60),
 
-            // Password Box Constraints
             passwordBox.topAnchor.constraint(equalTo: phoneBox.bottomAnchor, constant: 15),
             passwordBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -160,7 +150,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
 
     @objc func editProfileTapped() {
         print("Edit Profile button tapped")
-        // Handle edit button tap (e.g., present another view controller)
     }
 }
 

@@ -39,7 +39,6 @@ class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableV
         cell.seriesInfo.text = book.seriesInfo?.seriesName ?? "Standalone Book"
         cell.bookImage.image = book.coverImageURL ?? UIImage(named: "placeholder_image")
 
-        // Add bookmark button action
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
 

@@ -100,11 +100,9 @@ class FeedbackViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
-        // Add scrollView and contentView
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        // Add subviews
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
         contentView.addSubview(ratingStackView)
@@ -113,7 +111,6 @@ class FeedbackViewController: UIViewController {
         contentView.addSubview(submitButton)
         contentView.addSubview(skipButton)
         
-        // Setup star rating buttons
         setupStarRating()
         
         NSLayoutConstraint.activate([
@@ -160,7 +157,6 @@ class FeedbackViewController: UIViewController {
     }
     
     private func setupStarRating() {
-        // Create and add star buttons
         for i in 1...5 {
             let button = UIButton(type: .system)
             button.setImage(UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -182,24 +178,21 @@ class FeedbackViewController: UIViewController {
         let rating = sender.tag
         selectedRating = rating
         
-        // Update star appearances
         for (index, button) in starButtons.enumerated() {
             let imageName = index < rating ? "star.fill" : "star"
             button.setImage(UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.tintColor = index < rating ? UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0) : .systemGray3
         }
         
-        // Enable submit button if rating is selected
         submitButton.isEnabled = true
         submitButton.alpha = 1.0
     }
     
     @objc private func submitButtonTapped() {
-        // Here you would typically send the feedback to your server
+
         print("Rating: \(selectedRating)")
         print("Comment: \(commentTextView.text ?? "")")
-        
-        // Show thank you alert
+
         let alert = UIAlertController(
             title: "Thank You!",
             message: "Your feedback helps us improve our service.",
@@ -218,12 +211,11 @@ class FeedbackViewController: UIViewController {
     }
     
     private func dismissFeedback() {
-        // Dismiss the feedback screen and return to the main flow
+
         dismiss(animated: true)
     }
 }
 
-// MARK: - UITextViewDelegate
 extension FeedbackViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         placeholderLabel.isHidden = true

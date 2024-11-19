@@ -59,7 +59,7 @@ class RaiseProblemViewController: UIViewController, UIImagePickerControllerDeleg
         uploadImageButton.backgroundColor = UIColor(hex: "#005C78")
         uploadImageButton.layer.cornerRadius = 10
         uploadImageButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-//        uploadImageButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+
         uploadImageButton.translatesAutoresizingMaskIntoConstraints = false
         formCardView.addSubview(uploadImageButton)
         

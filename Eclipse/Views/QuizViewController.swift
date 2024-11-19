@@ -85,14 +85,6 @@ class QuizViewController: UIViewController, UICollectionViewDelegate, UICollecti
         performSegue(withIdentifier: "showResults", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showResults" {
-//            if let resultsViewController = segue.destination as? ResultsViewController {
-//                resultsViewController.selectedOptions = self.selectedOptions
-//            }
-//        }
-    }
-    
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         if currentQuestionIndex == quiz.questions.count - 1 {
             showResults()

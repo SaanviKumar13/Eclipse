@@ -11,7 +11,7 @@ class BookManagementViewController: UIViewController {
     
     private let segmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Lend", "Borrow"])
-        sc.selectedSegmentIndex = 1 // Default to Borrow
+        sc.selectedSegmentIndex = 1
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
@@ -43,8 +43,7 @@ class BookManagementViewController: UIViewController {
         
         borrowedBooksVC.didMove(toParent: self)
         lentBooksVC.didMove(toParent: self)
-        
-        // Initially hide lentBooksVC
+ 
         lentBooksVC.view.isHidden = true
     }
     

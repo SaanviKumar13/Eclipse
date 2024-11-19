@@ -11,7 +11,6 @@ import UIKit
 
 class LentBooksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BookCardDelegate {
 
-    // Rent Requests Button
     private let rentRequestsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Rent Requests(3)", for: .normal)
@@ -21,7 +20,6 @@ class LentBooksViewController: UIViewController, UITableViewDelegate, UITableVie
         return button
     }()
 
-    // Title Label for "Lent Books"
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Lent Books"
@@ -31,17 +29,15 @@ class LentBooksViewController: UIViewController, UITableViewDelegate, UITableVie
         return label
     }()
 
-    // Table View for Lent Books
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(BookCard.self, forCellReuseIdentifier: "BookCard") // Register the custom cell
+        tableView.register(BookCard.self, forCellReuseIdentifier: "BookCard")
         return tableView
     }()
 
-    // Sample data for lent books
     private let lentBooks: [BookData] = [
         BookData(title: "First Term at Malory Towers", borrowedFrom: nil, lentTo: "@janedoe", price: "₹100", days: "2 Days", coverImage: UIImage(named: "malory_towers")!),
         BookData(title: "Flawed", borrowedFrom: nil, lentTo: "@sarahj", price: "₹150", days: "3 Days", coverImage: UIImage(named: "flawed")!),
@@ -90,7 +86,6 @@ class LentBooksViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationController?.pushViewController(processingVC, animated: true)
     }
 
-    // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lentBooks.count
@@ -102,17 +97,14 @@ class LentBooksViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         let book = lentBooks[indexPath.row]
         cell.configure(with: book, isLentBook: true)
-        cell.delegate = self // Set the delegate
+        cell.delegate = self
         return cell
     }
 
-    // MARK: - UITableViewDelegate
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120 // Adjust the row height if needed
+        return 120
     }
 
-    // MARK: - BookCardDelegate
 
     func didTapChat(for book: BookData) {
         let chatVC = ChatViewController()

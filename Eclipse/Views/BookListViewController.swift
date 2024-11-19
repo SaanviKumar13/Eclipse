@@ -121,7 +121,7 @@ class BookCells: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .systemOrange
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 1 // Limit the rating to 1 line
+        label.numberOfLines = 1
         return label
     }()
     
@@ -180,7 +180,7 @@ class BookCells: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
             imageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
-            imageView.heightAnchor.constraint(equalToConstant: 160), // Explicit height constraint for the image
+            imageView.heightAnchor.constraint(equalToConstant: 160), 
             
             stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             stackView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),

@@ -11,7 +11,6 @@ class QuizOptionCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var optionButton: UIButton!
     
-    // Add a property to track selection state
     private var isOptionSelected: Bool = false {
         didSet {
             updateAppearance()

@@ -5,15 +5,10 @@
 //  Created by admin48 on 18/11/24.
 //
 
-
-
-
 import UIKit
 
 class RentHomeViewController: UIViewController {
-    
-    // MARK: - UI Components
-    
+
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -126,16 +121,12 @@ class RentHomeViewController: UIViewController {
         cv.backgroundColor = .clear
         return cv
     }()
-    
-    // MARK: - Data
-    
+
     private let currentlyRentedBooks = ["4", "9"]
     private let renterProfiles = ["profile", "profile", "profile", "profile", "profile"]
     private let renterNames = ["Sara\nMukhija", "Dhruv\nSharma", "Ananya\nSharma", "Raj\nVerma"]
     private let suggestedBooks = ["13", "17", "12", "11", "19"]
-    
-    // MARK: - View Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -144,13 +135,10 @@ class RentHomeViewController: UIViewController {
     
     @objc private func seemoreButtonTapped() {
         let chattVC = BookManagementViewController()
-        // Pass the name from nameLabel to the chat
-        
+
         navigationController?.pushViewController(chattVC, animated: true)
     }
-   
-    // MARK: - Setup
-    
+
     private func setupUI() {
         view.backgroundColor = .white
         
@@ -247,8 +235,6 @@ class RentHomeViewController: UIViewController {
         suggestedBooksCollectionView.register(BooksCell.self, forCellWithReuseIdentifier: "BooksCell")
     }
 }
-
-// MARK: - Extensions
 
 extension RentHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

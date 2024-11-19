@@ -9,7 +9,6 @@
 import UIKit
 
 class RentersProfileViewController: UIViewController {
-    // MARK: - UI Components
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "profile")
@@ -101,10 +100,6 @@ class RentersProfileViewController: UIViewController {
         return collectionView
     }()
 
-    // Sample data
-    let collectorsEditionBooks = ["7", "12", "10"]
-    let regularBooks = ["5", "20", "21", "7", "16", "13", "11", "19", "17", "12", "15", "24", "4", "2", "8", "23", "22", "6", "1", "9", "10"]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -138,9 +133,7 @@ class RentersProfileViewController: UIViewController {
         navigationController?.pushViewController(chatVC, animated: true)
     }
 
-    // MARK: - Setup UI
     private func setupUI() {
-        // Profile Section
         let headerView = UIView()
         headerView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.1)
         view.addSubview(headerView)
@@ -202,7 +195,6 @@ class RentersProfileViewController: UIViewController {
             chatButton.heightAnchor.constraint(equalToConstant: 30)
         ])
 
-        // Collectors Edition Section
         view.addSubview(collectorsContainer)
         collectorsContainer.translatesAutoresizingMaskIntoConstraints = false
         
@@ -227,9 +219,6 @@ class RentersProfileViewController: UIViewController {
             collectorsStackView.bottomAnchor.constraint(equalTo: collectorsContainer.bottomAnchor, constant: -20)
         ])
         
-        
-
-        // Setup three collector's edition books
         for bookID in collectorsEditionBooks {
             let bookImageView = UIImageView()
             let book = getBookByID(bookID)
@@ -246,7 +235,6 @@ class RentersProfileViewController: UIViewController {
             ])
         }
 
-        // Regular Books Collection View
         view.addSubview(booksCollectionView)
         booksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -265,7 +253,6 @@ class RentersProfileViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionView DataSource & Delegate
 extension RentersProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return regularBooks.count
@@ -274,14 +261,11 @@ extension RentersProfileViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as! BookCell
         
-        // Fetch book using the book ID
         let bookId = regularBooks[indexPath.item]
         
-        // Safely unwrap the book using getBookByID
         if let book = getBookByID(bookId) {
             cell.configure(with: book)
         } else {
-            // Handle the case where the book was not found (optional)
             print("Book not found for ID: \(bookId)")
         }
         
@@ -292,22 +276,15 @@ extension RentersProfileViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.booksCollectionView{
             let selectedBookId = regularBooks[indexPath.item]
-            
-            // Assuming getBookByID returns an optional Book
             if let selectedBook = getBookByID(selectedBookId) {
                 let bookVC = BookViewController(book: selectedBook)
                 navigationController?.pushViewController(bookVC, animated: true)
             } else {
-                // Handle case where no book was found (optional)
                 print("Book not found for ID: \(selectedBookId)")
             }
         }
     }
     
-    func getBookByID(_ id: String) -> Book? {
-        return mockBooks.first { $0.id == id }
-    }
-
 }
 
 

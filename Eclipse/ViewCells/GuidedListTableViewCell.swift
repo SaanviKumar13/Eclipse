@@ -33,8 +33,6 @@ class GuidedListTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.reloadData()
     }
     
-    // MARK: - UICollectionView DataSource
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return guidedList?.books.count ?? 0
     }
@@ -49,16 +47,9 @@ class GuidedListTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return cell
     }
     
-    // MARK: - UICollectionView Delegate
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let bookID = guidedList?.books[indexPath.item], let book = getBookByID(bookID) {
             bookSelectionDelegate?.didSelectBook(book)
         }
-    }
-    
-    // Helper method to get book by ID
-    func getBookByID(_ id: String) -> Book? {
-        return mockBooks.first { $0.id == id }
     }
 }

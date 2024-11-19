@@ -5,9 +5,6 @@
 //  Created by admin48 on 17/11/24.
 //
 
-
-
-// ChatViewController.swift
 import UIKit
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -15,7 +12,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var messages: [Message] = []
     private let messageInputBar = UIView()
     private let messageTextField = UITextField()
-    private var isFirstMessage = true // Track first message state
+    private var isFirstMessage = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func setupViews() {
-        // Header setup
+
         let headerView = UIView()
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
@@ -54,7 +51,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         subtitleLabel.textAlignment = .center
         headerView.addSubview(subtitleLabel)
         
-        // TableView setup
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -62,8 +58,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         view.addSubview(tableView)
-        
-        // Message input setup
+
         messageInputBar.translatesAutoresizingMaskIntoConstraints = false
         messageInputBar.backgroundColor = .white
         messageInputBar.layer.borderWidth = 1
@@ -76,8 +71,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         messageTextField.returnKeyType = .send
         messageTextField.delegate = self
         messageInputBar.addSubview(messageTextField)
-        
-        // Constraints
+
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -105,8 +99,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.bottomAnchor.constraint(equalTo: messageInputBar.topAnchor)
         ])
     }
-    
-    // MARK: - TableView DataSource
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -124,21 +117,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 }
 
-// MARK: - UITextField Delegate
 extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, !text.isEmpty else { return true }
-        
-        // Add user message (blue)
+
         messages.append(Message(text: text, isFromUser: true))
         tableView.reloadData()
         textField.text = nil
         
-        // Only respond if this is the first message
         if isFirstMessage {
-            isFirstMessage = false // Set flag to false after first message
-            
-            // Simulate response (grey) after a short delay
+            isFirstMessage = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
                 guard let self = self else { return }
                 self.messages.append(Message(text: "Hi, you can come around by 5:00 PM to pick the book.", isFromUser: false))

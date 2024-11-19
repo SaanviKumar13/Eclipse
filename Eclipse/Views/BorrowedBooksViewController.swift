@@ -82,8 +82,6 @@ class BorrowedBooksViewController: UIViewController, UITableViewDelegate, UITabl
         navigationController?.pushViewController(requestsVC, animated: true)
     }
 
-    // MARK: - UITableViewDataSource
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return borrowedBooks.count
     }
@@ -93,17 +91,13 @@ class BorrowedBooksViewController: UIViewController, UITableViewDelegate, UITabl
             fatalError("Failed to dequeue BookCard")
         }
         cell.configure(with: borrowedBooks[indexPath.row])
-        cell.delegate = self // Set the delegate
+        cell.delegate = self
         return cell
     }
 
-    // MARK: - UITableViewDelegate
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120 // Adjust for spacing
+        return 120
     }
-
-    // MARK: - BookCardDelegate
 
     func didTapChat(for book: BookData) {
         let chatVC = ChatViewController()

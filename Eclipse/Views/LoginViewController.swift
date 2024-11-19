@@ -9,8 +9,7 @@ class LoginViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .white
-        
-        // Title Label
+
         let titleLabel = UILabel()
         titleLabel.text = "Welcome back!"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 32)
@@ -18,23 +17,20 @@ class LoginViewController: UIViewController {
         titleLabel.textAlignment = .left
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
-        
-        // StackView for Input Fields
+
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
-        
-        // Input Fields
+
         let emailTextField = createTextField(placeholder: "Email", labelColor: UIColor(hex: "#005C78"), keyboardType: .emailAddress)
         let passwordTextField = createSecureTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
         
         [emailTextField, passwordTextField].forEach {
             stackView.addArrangedSubview($0)
         }
-        
-        // Login Button
+
         let loginButton = UIButton(type: .system)
         loginButton.setTitle("Log In", for: .normal)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -45,15 +41,13 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         view.addSubview(loginButton)
 
-        // Footer Text
         let alreadyHaveAccountLabel = UILabel()
         alreadyHaveAccountLabel.text = "Don't have an account?"
         alreadyHaveAccountLabel.font = UIFont.systemFont(ofSize: 14)
         alreadyHaveAccountLabel.textColor = .gray
         alreadyHaveAccountLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(alreadyHaveAccountLabel)
-        
-        // Create Account Button
+
         let createAccountButton = UIButton(type: .system)
         createAccountButton.setTitle("Create Account", for: .normal)
         createAccountButton.setTitleColor(UIColor(hex: "#005C78"), for: .normal)
@@ -62,7 +56,6 @@ class LoginViewController: UIViewController {
         createAccountButton.addTarget(self, action: #selector(createAccountTapped), for: .touchUpInside)
         view.addSubview(createAccountButton)
         
-        // Constraints
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
@@ -95,13 +88,11 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func createAccountTapped() {
-        // Present Create Account ViewController
         let createAccountVC = CreateAccountViewController()
         createAccountVC.modalPresentationStyle = .fullScreen
         present(createAccountVC, animated: true, completion: nil)
     }
 
-    // Helper Functions to Create Input Fields
     private func createTextField(placeholder: String, labelColor: UIColor, keyboardType: UIKeyboardType = .default) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder

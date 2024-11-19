@@ -12,8 +12,7 @@ class RentersNearbyViewController: UIViewController, UITableViewDelegate, UITabl
     private let titleLabel = UILabel()
     
     var selectedBook:Book!
-    
-    // Sample data for renters
+
     private var renters = [
         ("John Doe", 2.0, 40, UIImage(named: "profile")!),
         ("Jane Riviera", 2.5, 50, UIImage(named: "profile")!),
@@ -29,12 +28,10 @@ class RentersNearbyViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     private func setupNavigationBar() {
-        // Back button
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         backButton.tintColor = .systemBlue
         navigationItem.leftBarButtonItem = backButton
         
-        // Title
         navigationItem.title = "Johnathan Cahn"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
@@ -77,8 +74,7 @@ class RentersNearbyViewController: UIViewController, UITableViewDelegate, UITabl
             line.translatesAutoresizingMaskIntoConstraints = false
             return line
         }()
-    
-    // MARK: - UITableViewDataSource
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return renters.count
@@ -106,16 +102,6 @@ extension RentersNearbyViewController: NearbyRentersCellDelegate {
         navigationController?.pushViewController(cartVC, animated: true)
     }
 }
-
-//
-//  CustomCell.swift
-//  Eclipse
-//
-//  Created by admin48 on 17/11/24.
-//
-
-import UIKit
-
 
 
 protocol NearbyRentersCellDelegate: AnyObject {
@@ -151,34 +137,27 @@ class CustomCell: UITableViewCell {
     private func setupViews() {
         selectionStyle = .none
         
-        // Profile Image
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.layer.cornerRadius = 25
         profileImageView.clipsToBounds = true
         profileImageView.contentMode = .scaleAspectFill
         
-        // Name Label
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = .systemFont(ofSize: 17, weight: .medium)
         
-        // Location Icon
         locationIcon.image = UIImage(systemName: "location.fill")
         locationIcon.tintColor = .systemGray
         locationIcon.translatesAutoresizingMaskIntoConstraints = false
         locationIcon.contentMode = .scaleAspectFit
         
-        // Distance Label
         distanceLabel.translatesAutoresizingMaskIntoConstraints = false
         distanceLabel.font = .systemFont(ofSize: 15)
         distanceLabel.textColor = .systemGray
         
-        // Price Label
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.font = .systemFont(ofSize: 17, weight: .medium)
         priceLabel.textColor =  UIColor(hex: "A40000")
        
-        
-        // Request Button
         requestButton.setTitle("Request Rent", for: .normal)
         requestButton.setTitleColor(UIColor(hex: "005C78"), for: .normal)
         
@@ -186,7 +165,6 @@ class CustomCell: UITableViewCell {
         requestButton.translatesAutoresizingMaskIntoConstraints = false
         requestButton.addTarget(self, action: #selector(requestRentTapped), for: .touchUpInside)
         
-        // Add subviews
         contentView.addSubview(profileImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(locationIcon)

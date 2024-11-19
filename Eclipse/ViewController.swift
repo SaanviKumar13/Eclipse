@@ -6,7 +6,6 @@ class ViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
-        // Change the background color to a custom off-white
         scrollView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -88,7 +87,6 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -96,8 +94,6 @@ class ViewController: UIViewController {
         setupConstraints()
         applyVisualEffects()
     }
-    
-    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
         
@@ -224,7 +220,6 @@ class ViewController: UIViewController {
             undiscoveredGemsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             undiscoveredGemsCollectionView.heightAnchor.constraint(equalToConstant: 250),
            
-            // Adjust the bottom constraint to provide spacing from the bottom of the contentView
             undiscoveredGemsCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
             
         ])
@@ -243,7 +238,6 @@ class ViewController: UIViewController {
         featuredBooks.layer.shadowOpacity = 0.1
     }
     
-    // MARK: - Collection View Layouts
     private func createUndiscoveredGemsLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -300,7 +294,6 @@ class ViewController: UIViewController {
                 return UICollectionViewCompositionalLayout(section: section)
             }
             
-            // MARK: - Actions
             @objc private func profileButtonTapped() {
                 let profileVC = ProfileViewController()
                 profileVC.hidesBottomBarWhenPushed = true
@@ -308,16 +301,15 @@ class ViewController: UIViewController {
             }
             
             @objc private func seeAllButtonTapped(_ sender: UIButton) {
-                // Handle see all button tap based on tag
+                
                 print("See all tapped for section: \(sender.tag)")
             }
         }
 
-        // MARK: - UICollectionViewDataSource
         extension ViewController: UICollectionViewDataSource {
             func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
                 if collectionView == favoritesCollectionView {
-                    return mockBooks.count // Now using the books array
+                    return mockBooks.count
                 } else if collectionView == undiscoveredGemsCollectionView {
                     return undiscoveredGems.count
                 } else if collectionView == topRentersCollectionView {
@@ -335,7 +327,7 @@ class ViewController: UIViewController {
                         return UICollectionViewCell()
                     }
                     
-                    let book = mockBooks[indexPath.item % mockBooks.count] // Using modulo for safety
+                    let book = mockBooks[indexPath.item % mockBooks.count]
                     cell.configure(with: book)
                     return cell
                 } else if collectionView == undiscoveredGemsCollectionView {
@@ -346,7 +338,7 @@ class ViewController: UIViewController {
                         return UICollectionViewCell()
                     }
                     
-                    let book = mockBooks[indexPath.item % mockBooks.count] // Using mockBooks instead of undiscoveredGems
+                    let book = mockBooks[indexPath.item % mockBooks.count]
                     cell.configure(with: book)
                     return cell
                 } else if collectionView == topRentersCollectionView {
@@ -357,7 +349,6 @@ class ViewController: UIViewController {
                         return UICollectionViewCell()
                     }
                     
-                    // For topRenters, you might want to create mock renters data
                     let mockRenter = topRenters[indexPath.item % topRenters.count]
                     cell.configure(with: mockRenter)
                     return cell
@@ -367,7 +358,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // MARK: - UICollectionViewDelegate
         extension ViewController: UICollectionViewDelegate {
             func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                 if collectionView == favoritesCollectionView {
@@ -387,23 +377,19 @@ class ViewController: UIViewController {
             }
         }
 
-        // MARK: - UISearchBarDelegate
         extension ViewController: UISearchBarDelegate {
             func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-                // Implement search functionality
                 print("Search text changed: \(searchText)")
             }
             
             func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
                 searchBar.resignFirstResponder()
-                // Perform search
                 if let searchText = searchBar.text {
                     print("Perform search for: \(searchText)")
                 }
             }
         }
 
-        // MARK: - Collection View Cells
         class FavoriteBookCell: UICollectionViewCell {
             static let identifier = "FavoriteBookCell"
             
@@ -518,7 +504,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // MARK: - FeaturedBooksView
         class FeaturedBooksView: UIView {
             private let pageControl: UIPageControl = {
                 let control = UIPageControl()
@@ -591,7 +576,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // MARK: - FeaturedBooksView Collection View Methods
         extension FeaturedBooksView: UICollectionViewDataSource, UICollectionViewDelegate {
             func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
                 return featuredBooks.count
@@ -605,8 +589,7 @@ class ViewController: UIViewController {
                     return UICollectionViewCell()
                 }
                 
-                // Assuming mockBooks is an array of Book objects
-                let book = mockBooks[indexPath.item % mockBooks.count] // Use modulo to avoid index out of bounds
+                let book = mockBooks[indexPath.item % mockBooks.count]
                 cell.configure(with: book)
                 return cell
             }
@@ -619,8 +602,6 @@ class ViewController: UIViewController {
             }
         }
 
-
-// MARK: undiscoveredGemCell class
         class UndiscoveredGemCell: UICollectionViewCell {
             static let identifier = "UndiscoveredGemCell"
             
@@ -638,7 +619,7 @@ class ViewController: UIViewController {
             
             private let coverImageView: UIImageView = {
                 let imageView = UIImageView()
-                imageView.contentMode = .scaleAspectFill // Changed to scaleAspectFill to avoid distortion
+                imageView.contentMode = .scaleAspectFill
                 imageView.clipsToBounds = true
                 imageView.layer.cornerRadius = 12
                 imageView.backgroundColor = .systemGray6
@@ -696,8 +677,7 @@ class ViewController: UIViewController {
                 containerView.addSubview(titleLabel)
                 containerView.addSubview(authorLabel)
                 containerView.addSubview(descriptionLabel)
-                containerView.addSubview(ratingContainer) // Add the rating container
-
+                containerView.addSubview(ratingContainer)
                 
                 NSLayoutConstraint.activate([
                     containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -705,9 +685,9 @@ class ViewController: UIViewController {
                     containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
                     containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
                     
-                    coverImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12), // Added top padding
-                    coverImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12), // Added leading padding
-                    coverImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12), // Added bottom padding
+                    coverImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
+                    coverImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
+                    coverImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12),
                     coverImageView.widthAnchor.constraint(equalToConstant: 150),
                     
                     titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
@@ -749,7 +729,7 @@ class ViewController: UIViewController {
                         ratingContainer.addArrangedSubview(ratingLabel)
             }
         }
-        // MARK: - Featured Book Cell
+
  class FeaturedBookCell: UICollectionViewCell {
     static let identifier = "FeaturedBookCell"
     
@@ -859,7 +839,6 @@ class ViewController: UIViewController {
         authorLabel.text = book.author.name
         coverImageView.image = book.coverImageURL
         
-        // Configure rating view
         ratingContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         let starImageView = UIImageView(image: UIImage(systemName: "star.fill"))

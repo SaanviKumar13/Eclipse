@@ -21,13 +21,10 @@ class BookSupportViewController: UIViewController {
     }
     
     private func setupUI() {
-        // Set the navigation title
         navigationItem.title = "Book Support"
-        
-        // Set the background color
+
         view.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        
-        // Create and configure scroll view
+
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
