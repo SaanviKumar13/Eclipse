@@ -53,6 +53,12 @@ class StatusListViewController: UIViewController, UITableViewDataSource, UITable
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBook = filteredBooks[indexPath.item]
+        let bookVC = BookViewController(book: selectedBook)
+        navigationController?.pushViewController(bookVC, animated: true)
+    }
 
     private func configureCell(_ cell: StatusBookTableViewCell, with book: Book) {
         cell.titleLabel.text = book.title

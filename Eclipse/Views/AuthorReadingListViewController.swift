@@ -103,13 +103,11 @@ class AuthorReadingListViewController: UIViewController, UITableViewDelegate, UI
            let destinationVC = segue.destination as? CustomListViewController,
            let indexPath = sender as? IndexPath {
             if indexPath.section == 0 {
-                // Status Lists
                 let publicStatusLists = statusLists.filter { !$0.isPrivate }
                 let selectedStatus = publicStatusLists[indexPath.row]
                 destinationVC.selectedListTitle = selectedStatus.title
                 destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
             } else if indexPath.section == 1 {
-                // Custom Lists
                 let publicCustomLists = customLists.filter { !$0.value.isPrivate }
                 let customListName = Array(publicCustomLists.keys)[indexPath.row]
                 let selectedCustomList = publicCustomLists[customListName]!

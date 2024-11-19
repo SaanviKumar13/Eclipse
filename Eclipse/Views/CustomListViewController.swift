@@ -48,6 +48,12 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBook = allBooks[indexPath.item]
+        let bookVC = BookViewController(book: selectedBook)
+        navigationController?.pushViewController(bookVC, animated: true)
+    }
 
     private func configureCell(_ cell: CustomBookTableViewCell, with book: Book) {
         cell.titleLabel.text = book.title

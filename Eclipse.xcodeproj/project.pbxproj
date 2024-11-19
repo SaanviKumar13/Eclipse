@@ -7,6 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27112FEB2CEB192E00F5510C /* AuthorPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FEA2CEB192E00F5510C /* AuthorPreferencesViewController.swift */; };
+		27112FED2CEB19FA00F5510C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FEC2CEB19FA00F5510C /* OnboardingViewController.swift */; };
+		27112FEF2CEB1A2300F5510C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FEE2CEB1A2300F5510C /* CreateAccountViewController.swift */; };
+		27112FF12CEB1A5000F5510C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FF02CEB1A5000F5510C /* LoginViewController.swift */; };
+		27112FF32CEB1A8000F5510C /* GenrePrefrencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FF22CEB1A8000F5510C /* GenrePrefrencesViewController.swift */; };
+		27112FF52CEB1AAC00F5510C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FF42CEB1AAC00F5510C /* SplashViewController.swift */; };
+		27112FF72CEB2B7200F5510C /* RentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FF62CEB2B7200F5510C /* RentHomeViewController.swift */; };
+		27112FF92CEB2C1C00F5510C /* BookManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FF82CEB2C1C00F5510C /* BookManagementViewController.swift */; };
+		27112FFB2CEB2C3F00F5510C /* LentBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FFA2CEB2C3F00F5510C /* LentBooksViewController.swift */; };
+		27112FFD2CEB2C5500F5510C /* BorrowedBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FFC2CEB2C5500F5510C /* BorrowedBooksViewController.swift */; };
+		27112FFF2CEB2CC800F5510C /* BookCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27112FFE2CEB2CC800F5510C /* BookCardTableViewCell.swift */; };
+		271130012CEB2D4600F5510C /* BookCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130002CEB2D4600F5510C /* BookCellCollectionViewCell.swift */; };
+		271130032CEB2D6700F5510C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130022CEB2D6700F5510C /* ChatViewController.swift */; };
+		271130052CEB2DAD00F5510C /* RentalRequestsProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130042CEB2DAD00F5510C /* RentalRequestsProcessingViewController.swift */; };
+		271130072CEB2DD300F5510C /* RentalRequestsAcceptedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130062CEB2DD300F5510C /* RentalRequestsAcceptedViewController.swift */; };
+		271130092CEB2E1200F5510C /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130082CEB2E1200F5510C /* RequestTableViewCell.swift */; };
+		2711300B2CEB2F3900F5510C /* RequestProcessingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711300A2CEB2F3900F5510C /* RequestProcessingTableViewCell.swift */; };
+		2711300D2CEB2FBA00F5510C /* RentersProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711300C2CEB2FBA00F5510C /* RentersProfileViewController.swift */; };
+		271130102CEB302800F5510C /* RatingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711300F2CEB302800F5510C /* RatingPopupView.swift */; };
+		271130122CEB305600F5510C /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130112CEB305600F5510C /* MessageInputView.swift */; };
+		271130142CEB30B500F5510C /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130132CEB30B500F5510C /* MessageTableViewCell.swift */; };
+		271130162CEB315500F5510C /* RentBooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130152CEB315500F5510C /* RentBooksTableViewCell.swift */; };
+		271130182CEB31A100F5510C /* RenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130172CEB31A100F5510C /* RenterTableViewCell.swift */; };
+		2711301A2CEB31DB00F5510C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130192CEB31DB00F5510C /* Message.swift */; };
+		2711301C2CEB408800F5510C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711301B2CEB408800F5510C /* ProfileViewController.swift */; };
+		2711301E2CEB409E00F5510C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711301D2CEB409E00F5510C /* EditProfileViewController.swift */; };
+		271130202CEB40B700F5510C /* BookSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711301F2CEB40B700F5510C /* BookSupportViewController.swift */; };
+		271130222CEB40D800F5510C /* RaiseProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130212CEB40D800F5510C /* RaiseProblemViewController.swift */; };
+		271130242CEB43F200F5510C /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130232CEB43F200F5510C /* SwipeViewController.swift */; };
+		271130262CEB478D00F5510C /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130252CEB478D00F5510C /* BookViewController.swift */; };
+		271130282CEC58E200F5510C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130272CEC58E200F5510C /* CartViewController.swift */; };
+		2711302C2CEC5A6800F5510C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711302B2CEC5A6800F5510C /* PaymentViewController.swift */; };
+		2711302E2CEC5A8100F5510C /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711302D2CEC5A8100F5510C /* PaymentSuccessViewController.swift */; };
+		271130302CEC5AD100F5510C /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711302F2CEC5AD100F5510C /* FeedbackViewController.swift */; };
+		271130322CEC608100F5510C /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130312CEC608100F5510C /* BookListViewController.swift */; };
+		271130342CEC871300F5510C /* Renter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130332CEC871300F5510C /* Renter.swift */; };
+		271130362CEC875900F5510C /* CuratedListsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130352CEC875900F5510C /* CuratedListsData.swift */; };
+		271130382CEC87C300F5510C /* RenterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130372CEC87C300F5510C /* RenterData.swift */; };
+		2711303A2CECDBBC00F5510C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271130392CECDBBC00F5510C /* Book.swift */; };
 		27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B802CCF8DC2003D3905 /* AppDelegate.swift */; };
 		27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B822CCF8DC2003D3905 /* SceneDelegate.swift */; };
 		27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B842CCF8DC2003D3905 /* ViewController.swift */; };
@@ -63,6 +102,45 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27112FEA2CEB192E00F5510C /* AuthorPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPreferencesViewController.swift; sourceTree = "<group>"; };
+		27112FEC2CEB19FA00F5510C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		27112FEE2CEB1A2300F5510C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		27112FF02CEB1A5000F5510C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		27112FF22CEB1A8000F5510C /* GenrePrefrencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePrefrencesViewController.swift; sourceTree = "<group>"; };
+		27112FF42CEB1AAC00F5510C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		27112FF62CEB2B7200F5510C /* RentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentHomeViewController.swift; sourceTree = "<group>"; };
+		27112FF82CEB2C1C00F5510C /* BookManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementViewController.swift; sourceTree = "<group>"; };
+		27112FFA2CEB2C3F00F5510C /* LentBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentBooksViewController.swift; sourceTree = "<group>"; };
+		27112FFC2CEB2C5500F5510C /* BorrowedBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowedBooksViewController.swift; sourceTree = "<group>"; };
+		27112FFE2CEB2CC800F5510C /* BookCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCardTableViewCell.swift; sourceTree = "<group>"; };
+		271130002CEB2D4600F5510C /* BookCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		271130022CEB2D6700F5510C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		271130042CEB2DAD00F5510C /* RentalRequestsProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsProcessingViewController.swift; sourceTree = "<group>"; };
+		271130062CEB2DD300F5510C /* RentalRequestsAcceptedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalRequestsAcceptedViewController.swift; sourceTree = "<group>"; };
+		271130082CEB2E1200F5510C /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		2711300A2CEB2F3900F5510C /* RequestProcessingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProcessingTableViewCell.swift; sourceTree = "<group>"; };
+		2711300C2CEB2FBA00F5510C /* RentersProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentersProfileViewController.swift; sourceTree = "<group>"; };
+		2711300F2CEB302800F5510C /* RatingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopupView.swift; sourceTree = "<group>"; };
+		271130112CEB305600F5510C /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		271130132CEB30B500F5510C /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		271130152CEB315500F5510C /* RentBooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentBooksTableViewCell.swift; sourceTree = "<group>"; };
+		271130172CEB31A100F5510C /* RenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterTableViewCell.swift; sourceTree = "<group>"; };
+		271130192CEB31DB00F5510C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2711301B2CEB408800F5510C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2711301D2CEB409E00F5510C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		2711301F2CEB40B700F5510C /* BookSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSupportViewController.swift; sourceTree = "<group>"; };
+		271130212CEB40D800F5510C /* RaiseProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaiseProblemViewController.swift; sourceTree = "<group>"; };
+		271130232CEB43F200F5510C /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		271130252CEB478D00F5510C /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		271130272CEC58E200F5510C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		2711302B2CEC5A6800F5510C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		2711302D2CEC5A8100F5510C /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		2711302F2CEC5AD100F5510C /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		271130312CEC608100F5510C /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
+		271130332CEC871300F5510C /* Renter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renter.swift; sourceTree = "<group>"; };
+		271130352CEC875900F5510C /* CuratedListsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedListsData.swift; sourceTree = "<group>"; };
+		271130372CEC87C300F5510C /* RenterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterData.swift; sourceTree = "<group>"; };
+		271130392CECDBBC00F5510C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		27817B7D2CCF8DC2003D3905 /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27817B802CCF8DC2003D3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27817B822CCF8DC2003D3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +209,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2711300E2CEB300D00F5510C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2711300F2CEB302800F5510C /* RatingPopupView.swift */,
+				271130112CEB305600F5510C /* MessageInputView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		27817B742CCF8DC2003D3905 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +237,7 @@
 		27817B7F2CCF8DC2003D3905 /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				2711300E2CEB300D00F5510C /* Components */,
 				27C21B2A2CE792620035C957 /* Helpers */,
 				27817BBD2CD17410003D3905 /* ViewCells */,
 				27817BAE2CD12DEB003D3905 /* MockData */,
@@ -180,6 +268,8 @@
 				27C21B262CE74DD80035C957 /* Quiz.swift */,
 				278366782CE88786003036A9 /* RecommendedList.swift */,
 				278366882CEB003E003036A9 /* GuidedList.swift */,
+				271130192CEB31DB00F5510C /* Message.swift */,
+				271130332CEC871300F5510C /* Renter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +291,31 @@
 				2783667C2CE8F70F003036A9 /* AuthorReadingListViewController.swift */,
 				2783667E2CE8F71C003036A9 /* AuthorBooksViewController.swift */,
 				278366822CEAFCB7003036A9 /* GuidedListViewController.swift */,
+				27112FEA2CEB192E00F5510C /* AuthorPreferencesViewController.swift */,
+				27112FEC2CEB19FA00F5510C /* OnboardingViewController.swift */,
+				27112FEE2CEB1A2300F5510C /* CreateAccountViewController.swift */,
+				27112FF02CEB1A5000F5510C /* LoginViewController.swift */,
+				27112FF22CEB1A8000F5510C /* GenrePrefrencesViewController.swift */,
+				27112FF42CEB1AAC00F5510C /* SplashViewController.swift */,
+				27112FF62CEB2B7200F5510C /* RentHomeViewController.swift */,
+				27112FF82CEB2C1C00F5510C /* BookManagementViewController.swift */,
+				27112FFA2CEB2C3F00F5510C /* LentBooksViewController.swift */,
+				27112FFC2CEB2C5500F5510C /* BorrowedBooksViewController.swift */,
+				271130022CEB2D6700F5510C /* ChatViewController.swift */,
+				271130042CEB2DAD00F5510C /* RentalRequestsProcessingViewController.swift */,
+				271130062CEB2DD300F5510C /* RentalRequestsAcceptedViewController.swift */,
+				2711300C2CEB2FBA00F5510C /* RentersProfileViewController.swift */,
+				2711301B2CEB408800F5510C /* ProfileViewController.swift */,
+				2711301D2CEB409E00F5510C /* EditProfileViewController.swift */,
+				2711301F2CEB40B700F5510C /* BookSupportViewController.swift */,
+				271130212CEB40D800F5510C /* RaiseProblemViewController.swift */,
+				271130232CEB43F200F5510C /* SwipeViewController.swift */,
+				271130252CEB478D00F5510C /* BookViewController.swift */,
+				271130272CEC58E200F5510C /* CartViewController.swift */,
+				2711302B2CEC5A6800F5510C /* PaymentViewController.swift */,
+				2711302D2CEC5A8100F5510C /* PaymentSuccessViewController.swift */,
+				2711302F2CEC5AD100F5510C /* FeedbackViewController.swift */,
+				271130312CEC608100F5510C /* BookListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +329,8 @@
 				27C21B332CE869490035C957 /* CategoryData.swift */,
 				27C21B372CE875230035C957 /* AuthorData.swift */,
 				2783668A2CEB00D3003036A9 /* GuidedListData.swift */,
+				271130352CEC875900F5510C /* CuratedListsData.swift */,
+				271130372CEC87C300F5510C /* RenterData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -236,6 +353,13 @@
 				278366802CE90639003036A9 /* AuthorBookTableViewCell.swift */,
 				278366842CEAFE0B003036A9 /* GuidedListTableViewCell.swift */,
 				278366862CEAFED3003036A9 /* GuidedListCollectionViewCell.swift */,
+				27112FFE2CEB2CC800F5510C /* BookCardTableViewCell.swift */,
+				271130002CEB2D4600F5510C /* BookCellCollectionViewCell.swift */,
+				271130082CEB2E1200F5510C /* RequestTableViewCell.swift */,
+				2711300A2CEB2F3900F5510C /* RequestProcessingTableViewCell.swift */,
+				271130132CEB30B500F5510C /* MessageTableViewCell.swift */,
+				271130152CEB315500F5510C /* RentBooksTableViewCell.swift */,
+				271130172CEB31A100F5510C /* RenterTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -244,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				27C21B2B2CE792710035C957 /* CustomColor.swift */,
+				271130392CECDBBC00F5510C /* Book.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -320,55 +445,94 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27112FF72CEB2B7200F5510C /* RentHomeViewController.swift in Sources */,
 				27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */,
 				27C21B342CE869490035C957 /* CategoryData.swift in Sources */,
+				271130382CEC87C300F5510C /* RenterData.swift in Sources */,
 				27C21B292CE74E030035C957 /* QuizData.swift in Sources */,
 				27C21B382CE875230035C957 /* AuthorData.swift in Sources */,
 				27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */,
+				2711302E2CEC5A8100F5510C /* PaymentSuccessViewController.swift in Sources */,
 				2783667B2CE8CF9C003036A9 /* AuthorProfileViewController.swift in Sources */,
 				2783667D2CE8F70F003036A9 /* AuthorReadingListViewController.swift in Sources */,
 				27817B962CCF8FA3003D3905 /* User.swift in Sources */,
 				27817BB82CD15463003D3905 /* LibraryViewController.swift in Sources */,
 				27817BA02CCF9058003D3905 /* RentRequest.swift in Sources */,
 				27C21B2C2CE792710035C957 /* CustomColor.swift in Sources */,
+				271130282CEC58E200F5510C /* CartViewController.swift in Sources */,
+				27112FFB2CEB2C3F00F5510C /* LentBooksViewController.swift in Sources */,
 				278366752CE88561003036A9 /* RecommendedListTableViewCell.swift in Sources */,
 				27C21B322CE7B6D80035C957 /* ResultsCollectionViewCell.swift in Sources */,
 				27DAA0342CDA1E56002EC79A /* CustomListViewController.swift in Sources */,
+				27112FFD2CEB2C5500F5510C /* BorrowedBooksViewController.swift in Sources */,
 				27817BA22CCF907E003D3905 /* BookSupport.swift in Sources */,
+				2711302C2CEC5A6800F5510C /* PaymentViewController.swift in Sources */,
 				278366772CE88627003036A9 /* RecommendedBookCollectionViewCell.swift in Sources */,
+				271130052CEB2DAD00F5510C /* RentalRequestsProcessingViewController.swift in Sources */,
 				27817BDB2CD68A9C003D3905 /* StatusListViewController.swift in Sources */,
 				27817BB02CD12E05003D3905 /* BookData.swift in Sources */,
+				2711301A2CEB31DB00F5510C /* Message.swift in Sources */,
+				271130242CEB43F200F5510C /* SwipeViewController.swift in Sources */,
+				2711301E2CEB409E00F5510C /* EditProfileViewController.swift in Sources */,
+				2711300D2CEB2FBA00F5510C /* RentersProfileViewController.swift in Sources */,
 				27C21B2E2CE797EB0035C957 /* ResultsViewController.swift in Sources */,
 				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
+				271130302CEC5AD100F5510C /* FeedbackViewController.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
 				278366852CEAFE0B003036A9 /* GuidedListTableViewCell.swift in Sources */,
 				278366832CEAFCB7003036A9 /* GuidedListViewController.swift in Sources */,
 				2783667F2CE8F71C003036A9 /* AuthorBooksViewController.swift in Sources */,
 				27DAA0362CDA1F4D002EC79A /* CustomBookTableViewCell.swift in Sources */,
+				27112FF12CEB1A5000F5510C /* LoginViewController.swift in Sources */,
 				278366892CEB003E003036A9 /* GuidedList.swift in Sources */,
+				271130072CEB2DD300F5510C /* RentalRequestsAcceptedViewController.swift in Sources */,
+				2711301C2CEB408800F5510C /* ProfileViewController.swift in Sources */,
+				271130032CEB2D6700F5510C /* ChatViewController.swift in Sources */,
+				27112FF32CEB1A8000F5510C /* GenrePrefrencesViewController.swift in Sources */,
 				27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */,
 				27817BC82CD17C07003D3905 /* Category.swift in Sources */,
+				271130092CEB2E1200F5510C /* RequestTableViewCell.swift in Sources */,
 				27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */,
 				27C21B232CE740010035C957 /* QuizViewController.swift in Sources */,
 				27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */,
+				271130122CEB305600F5510C /* MessageInputView.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				278366812CE90639003036A9 /* AuthorBookTableViewCell.swift in Sources */,
 				27C21B362CE8741E0035C957 /* AuthorCollectionViewCell.swift in Sources */,
 				27817BBA2CD16E04003D3905 /* ReadingListViewController.swift in Sources */,
+				2711300B2CEB2F3900F5510C /* RequestProcessingTableViewCell.swift in Sources */,
+				271130182CEB31A100F5510C /* RenterTableViewCell.swift in Sources */,
 				27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */,
 				278366872CEAFED3003036A9 /* GuidedListCollectionViewCell.swift in Sources */,
+				27112FED2CEB19FA00F5510C /* OnboardingViewController.swift in Sources */,
+				271130342CEC871300F5510C /* Renter.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
+				27112FEB2CEB192E00F5510C /* AuthorPreferencesViewController.swift in Sources */,
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
+				271130102CEB302800F5510C /* RatingPopupView.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
 				27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */,
 				2783668B2CEB00D3003036A9 /* GuidedListData.swift in Sources */,
+				27112FEF2CEB1A2300F5510C /* CreateAccountViewController.swift in Sources */,
+				27112FFF2CEB2CC800F5510C /* BookCardTableViewCell.swift in Sources */,
+				271130322CEC608100F5510C /* BookListViewController.swift in Sources */,
+				271130222CEB40D800F5510C /* RaiseProblemViewController.swift in Sources */,
 				27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */,
+				271130012CEB2D4600F5510C /* BookCellCollectionViewCell.swift in Sources */,
 				27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */,
 				27C21B272CE74DD80035C957 /* Quiz.swift in Sources */,
+				271130262CEB478D00F5510C /* BookViewController.swift in Sources */,
+				271130142CEB30B500F5510C /* MessageTableViewCell.swift in Sources */,
+				27112FF92CEB2C1C00F5510C /* BookManagementViewController.swift in Sources */,
+				271130202CEB40B700F5510C /* BookSupportViewController.swift in Sources */,
+				2711303A2CECDBBC00F5510C /* Book.swift in Sources */,
+				271130162CEB315500F5510C /* RentBooksTableViewCell.swift in Sources */,
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
 				27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */,
 				278366792CE88786003036A9 /* RecommendedList.swift in Sources */,
+				271130362CEC875900F5510C /* CuratedListsData.swift in Sources */,
+				27112FF52CEB1AAC00F5510C /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

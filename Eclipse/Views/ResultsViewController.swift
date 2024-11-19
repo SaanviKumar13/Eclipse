@@ -16,8 +16,7 @@ class ResultsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Ensure results is properly initialized
+
         results = sampleResults
         
         collectionView.delegate = self
@@ -42,16 +41,23 @@ class ResultsViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     @IBAction func menuButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Menu", message: "Did you find the book recommendations helpful?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Menu", message: "Did you find the book recommendations helpful?", preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
             print("User found recommendations helpful")
         }))
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: { _ in
             print("User did not find recommendations helpful")
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = sender as? UIView
+            popoverController.sourceRect = (sender as? UIView)?.bounds ?? CGRect.zero
+        }
+
         present(alertController, animated: true, completion: nil)
     }
+
 }

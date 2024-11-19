@@ -24,35 +24,36 @@ class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
-    // MARK: - TableView DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "authorBookCell", for: indexPath) as? AuthorBookTableViewCell else {
             return UITableViewCell()
         }
-        
+
         let book = books[indexPath.row]
-        print(book)
         cell.title.text = book.title
         cell.rating.text = "Rating: \(book.rating)"
-        
-        if let seriesInfo = book.seriesInfo {
-            cell.seriesInfo.text = "\(seriesInfo.seriesName) - Book \(seriesInfo.bookOrder)"
-        } else {
-            cell.seriesInfo.text = "Standalone Book"
-        }
-        
+        cell.seriesInfo.text = book.seriesInfo?.seriesName ?? "Standalone Book"
         cell.bookImage.image = book.coverImageURL ?? UIImage(named: "placeholder_image")
-        
+
+        // Add bookmark button action
+        cell.bookmarkButton.tag = indexPath.row
+        cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
+
         return cell
     }
 
-    // MARK: - TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedBook = books[indexPath.row]
+        let bookVC = BookViewController(book: selectedBook)
+        navigationController?.pushViewController(bookVC, animated: true)
+    }
+
+    @objc private func bookmarkButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "showBookmark", sender: sender)
     }
 }
-

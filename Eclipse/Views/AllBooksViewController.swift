@@ -49,6 +49,12 @@ class AllBooksViewController: UIViewController, UICollectionViewDataSource, UICo
             collectionView.reloadData()
             displayBooksForSelectedCategory()
         }
+        if collectionView == self.booksCollectionView{
+            let selectedBook = displayedBooks[indexPath.item]
+            let bookVC = BookViewController(book: selectedBook)
+            navigationController?.pushViewController(bookVC, animated: true)
+
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

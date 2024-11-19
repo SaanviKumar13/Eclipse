@@ -15,6 +15,8 @@ class AuthorBookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var rating: UILabel!
     
+    var bookmarkButtonAction: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,4 +28,6 @@ class AuthorBookTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    @IBAction func bookmarkButtonAction(_ sender: Any) {
+    }
 }

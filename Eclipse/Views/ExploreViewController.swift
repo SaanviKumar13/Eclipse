@@ -18,7 +18,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var bookRight: UIImageView!
     @IBOutlet weak var authorCollectionView: UICollectionView!
     @IBOutlet weak var recommendedListTableView: UITableView!
-
+    @IBOutlet weak var swipeBook: UIImageView!
+    
     var selectedCategoryIndex: Int = 0
 
     override func viewDidLoad() {
@@ -26,6 +27,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         quizText.numberOfLines = 0
         quizText.lineBreakMode = .byWordWrapping
+        
+        swipeBook.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(swipeBookTapped))
+          swipeBook.addGestureRecognizer(tapGesture)
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -45,6 +50,13 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         setBooksView()
         addGradientToView()
     }
+    
+    @objc func swipeBookTapped() {
+        let swipeVC = SwipeScreen()
+        swipeVC.modalPresentationStyle = .fullScreen
+        present(swipeVC, animated: true, completion: nil)
+    }
+
 
     func setBooksView() {
         bookMiddle.layer.cornerRadius = 30
@@ -74,11 +86,12 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         quizView.layer.insertSublayer(gradientLayer, at: 0)
     }
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recommendedLists.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedListCell", for: indexPath) as! RecommendedListTableViewCell
 
@@ -88,12 +101,13 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         cell.bookCollectionView.dataSource = self
         cell.bookCollectionView.delegate = self
+
         cell.bookCollectionView.tag = indexPath.row
         cell.bookCollectionView.reloadData()
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 330
     }
@@ -130,13 +144,32 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         return UICollectionViewCell()
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.authorCollectionView {
+        switch collectionView {
+        case authorCollectionView:
             let selectedAuthor = authors[indexPath.item]
             performSegue(withIdentifier: "showAuthorProfileSegue", sender: selectedAuthor)
+
+        case self.collectionView:
+            let selectedCategory = categories[indexPath.item]
+            let bookListVC = BookListViewController()
+            bookListVC.selectedGenre = selectedCategory
+            bookListVC.title = selectedCategory
+            navigationController?.pushViewController(bookListVC, animated: true)
+
+        default:
+            if let recommendedList = recommendedLists[safe: collectionView.tag] {
+                let bookID = recommendedList.books[indexPath.item]
+                if let selectedBook = mockBooks.first(where: { $0.id == bookID }) {
+                    let bookVC = BookViewController(book: selectedBook)
+                    navigationController?.pushViewController(bookVC, animated: true)
+                }
+            }
         }
     }
+
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAuthorProfileSegue" {
@@ -152,7 +185,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         if collectionView == self.authorCollectionView {
             return CGSize(width: 100, height: collectionView.bounds.height)
         }
-        return CGSize(width: 126, height: 189)
+        return CGSize(width: 150, height: 200)
     }
 }
 
