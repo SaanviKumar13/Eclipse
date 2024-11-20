@@ -24,27 +24,27 @@ class RentHomeViewController: UIViewController {
     
     private let searchContainer: UIView = {
         let view = UIView()
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
         return view
     }()
     
-    private let searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.translatesAutoresizingMaskIntoConstraints = false
-        search.placeholder = "Search"
-        search.backgroundImage = UIImage()
-        search.searchTextField.backgroundColor = .clear
-        return search
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Rent your next read..."
+        searchBar.searchBarStyle = .minimal
+        searchBar.searchTextField.backgroundColor = .secondarySystemBackground
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
     }()
     
     private let profileButton: UIButton = {
         let button = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+        let image = UIImage(named: "profile")
+        button.setImage(image, for: .normal)
+        button.tintColor = .systemBlue
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "profile1"), for: .normal)
-        button.layer.cornerRadius = 20
-        button.clipsToBounds = true
         return button
     }()
     
@@ -170,15 +170,14 @@ class RentHomeViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            searchContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            searchContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            searchContainer.trailingAnchor.constraint(equalTo: profileButton.leadingAnchor, constant: -10),
+            searchContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
+            searchContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            searchContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             searchContainer.heightAnchor.constraint(equalToConstant: 50),
             
-            searchBar.topAnchor.constraint(equalTo: searchContainer.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: searchContainer.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: searchContainer.trailingAnchor),
-            searchBar.bottomAnchor.constraint(equalTo: searchContainer.bottomAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: searchContainer.leadingAnchor, constant: 8),
+            searchBar.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: profileButton.leadingAnchor, constant: -8),
             
             profileButton.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor),
             profileButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),

@@ -28,7 +28,7 @@ class RentersNearbyViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     private func setupNavigationBar() {
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "< Back", style: .plain, target: nil, action: nil)
         backButton.tintColor = .systemBlue
         navigationItem.leftBarButtonItem = backButton
         

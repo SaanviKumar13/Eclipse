@@ -102,12 +102,14 @@ class RentersProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "John Doe"
+        navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .white
         booksCollectionView.dataSource = self
         booksCollectionView.delegate = self
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Back",
+            title: "< Back",
             style: .plain,
             target: self,
             action: #selector(backButtonTapped)

@@ -6,6 +6,7 @@ import UIKit
 
 protocol BookCardDelegate: AnyObject {
     func didTapChat(for book: BookData)
+    func didTapReturn(for book: BookData)
 }
 
 struct BookData {
@@ -102,7 +103,7 @@ class BookCard: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
             setupCell()
-            
+            returnButton.addTarget(self, action: #selector(returnButtonTapped), for: .touchUpInside)
             chatButton.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         }
         
@@ -184,5 +185,11 @@ class BookCard: UITableViewCell {
           guard let book = currentBook else { return }
           delegate?.didTapChat(for: book)
       }
+    
+    @objc private func returnButtonTapped() {
+        guard let book = currentBook else { return }
+        delegate?.didTapReturn(for: book)
+    }
+
    }
 

@@ -191,7 +191,7 @@ class CartViewController: UIViewController {
     private let checkoutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Proceed to Checkout", for: .normal)
-        button.backgroundColor = UIColor(red: 0.2, green: 0.4, blue: 0.6, alpha: 1.0)
+        button.backgroundColor = UIColor(hex: "005C78", alpha: 1.0)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(proceedToCheckout), for: .touchUpInside)

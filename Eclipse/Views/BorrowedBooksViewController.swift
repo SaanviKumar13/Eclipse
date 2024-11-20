@@ -104,4 +104,9 @@ class BorrowedBooksViewController: UIViewController, UITableViewDelegate, UITabl
         chatVC.title = "Chat with \(book.borrowedFrom ?? "User")"
         navigationController?.pushViewController(chatVC, animated: true)
     }
+    
+    func didTapReturn(for book: BookData) {
+           let feedbackVC = FeedbackViewController()
+           navigationController?.pushViewController(feedbackVC, animated: true)
+       }
 }

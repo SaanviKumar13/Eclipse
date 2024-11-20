@@ -10,8 +10,8 @@ class OnboardingViewController: UIViewController {
         view.backgroundColor = .white
         
         let cardStack = UIStackView(arrangedSubviews: [
-            CardView(imageName: "books.vertical", title: "Personalized Recommendations", description: "Enjoy swiping on all the books you like and add them to your reading list to rent them all out!", isSystemImage: true),
-            CardView(imageName: "cart", title: "Rent From Those Near You", description: "You can now rent all your favorite books from those who live less than 5km away from you!", isSystemImage: true)
+            CardView(imageName: "books.vertical.fill", title: "Personalized Recommendations", description: "Enjoy swiping on all the books you like and add them to your reading list to rent them all out!", isSystemImage: true),
+            CardView(imageName: "cart.fill", title: "Rent From Those Near You", description: "You can now rent all your favorite books from those who live less than 5km away from you!", isSystemImage: true)
         ])
         
         cardStack.axis = .vertical
@@ -61,7 +61,7 @@ class OnboardingViewController: UIViewController {
         }
         
         private func setupView(imageName: String, title: String, description: String, isSystemImage: Bool) {
-            backgroundColor = UIColor(hex: "#F2F2F2")
+            backgroundColor = .white/*UIColor(hex: "#F2F2F2")*/
             layer.cornerRadius = 12
             translatesAutoresizingMaskIntoConstraints = false
             

@@ -72,7 +72,7 @@ class FeedbackViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Submit Feedback", for: .normal)
-        button.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 0.7, alpha: 1.0)
+        button.backgroundColor = UIColor(hex: "005C78", alpha: 1.0)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.layer.cornerRadius = 12
@@ -83,7 +83,7 @@ class FeedbackViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Skip", for: .normal)
-        button.setTitleColor(.systemGray, for: .normal)
+        button.setTitleColor(.systemTeal, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         return button
     }()

@@ -106,11 +106,11 @@ class ViewController: UIViewController {
         searchBarContainer.addSubview(profileButton)
         
         contentView.addSubview(featuredBooks)
-        contentView.addSubview(createSectionHeader(title: "⭐️ Your Favorites", tag: 1))
+        contentView.addSubview(createSectionHeader(title: " Your Favorites", tag: 1))
         contentView.addSubview(favoritesCollectionView)
-        contentView.addSubview(createSectionHeader(title: "👥 Top Renters", tag: 2))
+        contentView.addSubview(createSectionHeader(title: " Top Renters", tag: 2))
         contentView.addSubview(topRentersCollectionView)
-        contentView.addSubview(createSectionHeader(title: "💎 Undiscovered Gems", tag: 3))
+        contentView.addSubview(createSectionHeader(title: "Undiscovered Gems", tag: 3))
         contentView.addSubview(undiscoveredGemsCollectionView)
     }
     
@@ -367,6 +367,7 @@ class ViewController: UIViewController {
                 } else if collectionView == topRentersCollectionView {
                     let renter = topRenters[indexPath.item]
                     let renterProfileVC = RentersProfileViewController()
+                    renterProfileVC.hidesBottomBarWhenPushed = true
                     navigationController?.pushViewController(renterProfileVC, animated: true)
                 }
                 else if collectionView == self.undiscoveredGemsCollectionView{

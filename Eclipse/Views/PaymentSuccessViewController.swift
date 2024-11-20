@@ -5,7 +5,7 @@ class PaymentSuccessViewController: UIViewController {
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 0.7, alpha: 1.0)
+        view.backgroundColor = UIColor(hex: "005C78", alpha: 1.0)
         view.layer.cornerRadius = 20
         view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         return view

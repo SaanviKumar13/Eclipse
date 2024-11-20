@@ -100,7 +100,7 @@ class PaymentAndDeliveryViewController: UIViewController {
     private let payButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Pay ₹399", for: .normal)
-        button.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 0.7, alpha: 1.0)
+        button.backgroundColor = UIColor(hex: "005C78", alpha: 1.0)
         button.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.layer.cornerRadius = 12

@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-        cell.textLabel?.textColor = UIColor(hex: "#005C78")
+        cell.textLabel?.textColor = .black
         cell.accessoryType = .disclosureIndicator
         
         return cell

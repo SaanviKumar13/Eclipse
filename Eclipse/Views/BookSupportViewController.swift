@@ -97,8 +97,8 @@ class BookSupportViewController: UIViewController {
         cardView.addSubview(titleLabel)
         
         let chatButton = UIButton(type: .system)
-        chatButton.setImage(UIImage(systemName: "message"), for: .normal)
-        chatButton.tintColor = UIColor.systemBlue
+        chatButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
+        chatButton.tintColor = UIColor(named: "#005C78") ?? .systemBlue
         chatButton.translatesAutoresizingMaskIntoConstraints = false
         cardView.addSubview(chatButton)
         
