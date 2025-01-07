@@ -85,6 +85,7 @@
 		27BC97A72CECEFAC004EC100 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A62CECEFAC004EC100 /* RequestData.swift */; };
 		27BC97A92CED0F77004EC100 /* CustomerChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */; };
 		27BC97AB2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97AA2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift */; };
+		27BC97B02D2B95ED004EC100 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BC97AF2D2B95ED004EC100 /* BookAPI.swift */; };
 		27C21B212CE71FDA0035C957 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B202CE71FDA0035C957 /* ExploreViewController.swift */; };
 		27C21B232CE740010035C957 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B222CE740010035C957 /* QuizViewController.swift */; };
 		27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */; };
@@ -186,6 +187,7 @@
 		27BC97A62CECEFAC004EC100 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerChatViewController.swift; sourceTree = "<group>"; };
 		27BC97AA2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMessageTableViewCell.swift; sourceTree = "<group>"; };
+		27BC97AF2D2B95ED004EC100 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 		27C21B202CE71FDA0035C957 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		27C21B222CE740010035C957 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		27C21B242CE74D770035C957 /* QuizOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				27C21B2B2CE792710035C957 /* CustomColor.swift */,
 				27BC97A22CECE155004EC100 /* BookIDHelper.swift */,
+				27BC97AF2D2B95ED004EC100 /* BookAPI.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				27C21B232CE740010035C957 /* QuizViewController.swift in Sources */,
 				27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */,
 				27BC97A72CECEFAC004EC100 /* RequestData.swift in Sources */,
+				27BC97B02D2B95ED004EC100 /* BookAPI.swift in Sources */,
 				271130122CEB305600F5510C /* MessageInputView.swift in Sources */,
 				27817B9E2CCF901F003D3905 /* Author.swift in Sources */,
 				278366812CE90639003036A9 /* AuthorBookTableViewCell.swift in Sources */,

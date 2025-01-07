@@ -3,7 +3,7 @@ import UIKit
 class BookListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var selectedGenre: String?
-    var books: [Book] = []
+    var books: [BookF] = []
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -25,16 +25,14 @@ class BookListViewController: UIViewController, UICollectionViewDataSource, UICo
         setupHeaderLabel()
         setupCollectionView()
         self.tabBarController?.tabBar.isHidden = true
-
+        
         if let selectedGenre = selectedGenre {
             headerLabel.text = "   🌟 Explore books in \(selectedGenre.capitalized)!"
-            books = mockBooks.filter { $0.genre == selectedGenre }
+            fetchBooks(for: selectedGenre)
         } else {
             headerLabel.text = "🌟 Explore all available books!"
-            books = mockBooks
+            fetchBooks(for: "all")
         }
-
-        collectionView.reloadData()
     }
     
     private func setupHeaderLabel() {
@@ -73,76 +71,71 @@ class BookListViewController: UIViewController, UICollectionViewDataSource, UICo
         ])
     }
     
+    private func fetchBooks(for genre: String) {
+        BookAPI.shared.fetchBooks(query: genre) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let books):
+                    self?.books = books
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print("Error fetching books: \(error.localizedDescription)")  // Handle error
+                }
+            }
+        }
+    }
+    
+    // MARK: - CollectionView DataSource and Delegate Methods
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCells", for: indexPath) as! BookCells
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCells", for: indexPath) as? BookCells else {
+            return UICollectionViewCell()
+        }
+        
         let book = books[indexPath.item]
-        cell.configure(title: book.title, subtitle: book.author.name, rating: "\(book.rating)", image: book.coverImageURL)
+        cell.configure(book: book)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedBook = books[indexPath.item]
-        let bookVC = BookViewController(book: selectedBook)
-        navigationController?.pushViewController(bookVC, animated: true)
     }
 }
 
 class BookCells: UICollectionViewCell {
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = .black
         label.numberOfLines = 2
         return label
     }()
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .darkGray
         label.numberOfLines = 1
         return label
     }()
     
     private let ratingLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .systemOrange
-        label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 1
         return label
     }()
     
-    private let heartButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = .red
-        return button
+    private let bookImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
+        return imageView
     }()
     
-    private let cardView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 12
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowRadius = 8
-        view.layer.masksToBounds = false
-        view.backgroundColor = .white
-        return view
-    }()
+    private var imageCache = NSCache<NSString, UIImage>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -154,49 +147,82 @@ class BookCells: UICollectionViewCell {
     }
     
     private func setupViews() {
-        contentView.addSubview(cardView)
+        contentView.addSubview(bookImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(subtitleLabel)
+        contentView.addSubview(ratingLabel)
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, ratingLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 4
-        stackView.alignment = .leading
-        stackView.distribution = .fill
-        
-        cardView.addSubview(imageView)
-        cardView.addSubview(stackView)
-        cardView.addSubview(heartButton)
-        
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        heartButton.translatesAutoresizingMaskIntoConstraints = false
+        bookImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        ratingLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            bookImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            bookImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            bookImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            bookImageView.heightAnchor.constraint(equalToConstant: 180),
             
-            imageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 16),
-            imageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
-            imageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
-            imageView.heightAnchor.constraint(equalToConstant: 160), 
+            titleLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
-            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
-            heartButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 20),
-            heartButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
-            heartButton.widthAnchor.constraint(equalToConstant: 24),
-            heartButton.heightAnchor.constraint(equalToConstant: 24)
+            ratingLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 4),
+            ratingLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            ratingLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            ratingLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         ])
     }
     
-    func configure(title: String, subtitle: String, rating: String, image: UIImage?) {
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        ratingLabel.text = "⭐ \(rating)"
-        imageView.image = image ?? UIImage(systemName: "book")
+    func configure(book: BookF) {
+        titleLabel.text = book.title
+        subtitleLabel.text = book.authors?.joined(separator: ", ") ?? "Unknown Author"
+        
+        if let rating = book.averageRating {
+            ratingLabel.text = "⭐️ \(String(rating))"
+        } else {
+            ratingLabel.text = "⭐️ N/A"
+        }
+        
+        if let imageUrl = book.imageLinks?.smallThumbnail {
+            loadImage(from: imageUrl)
+        } else {
+            bookImageView.image = UIImage(systemName: "book.fill")
+        }
+    }
+
+    
+    private func loadImage(from urlString: String) {
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+            bookImageView.image = cachedImage
+            return
+        }
+        
+        guard let imageUrl = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        let session = URLSession(configuration: .default)
+        let downloadTask = session.dataTask(with: imageUrl) { [weak self] (data, response, error) in
+            if let error = error {
+                print("Error downloading image: \(error)")
+                return
+            }
+            
+            if let data = data, let image = UIImage(data: data) {
+                self?.imageCache.setObject(image, forKey: urlString as NSString)
+                DispatchQueue.main.async {
+                    self?.bookImageView.image = image
+                }
+            }
+        }
+        
+        downloadTask.resume()
     }
 }
+

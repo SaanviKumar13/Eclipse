@@ -8,6 +8,26 @@
 import Foundation
 import UIKit
 
+import Foundation
+
+struct BookF {
+    var title: String
+    var subtitle: String?
+    var authors: [String]?
+    var description: String?
+    var averageRating: Double?
+    var ratingsCount: Int?
+    var imageLinks: ImageLinks?
+    var previewLink: String?
+    var pageCount: Int?
+}
+
+struct ImageLinks {
+    var smallThumbnail: String?
+    var thumbnail: String?
+}
+
+
 struct Book {
     var id: String
     var title: String
