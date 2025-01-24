@@ -1,12 +1,18 @@
 import UIKit
+import FirebaseAuth
 
 class CreateAccountViewController: UIViewController {
+
+    private var nameTextField: UITextField!
+    private var emailTextField: UITextField!
+    private var birthdateTextField: UITextField!
+    private var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
+
     private func setupUI() {
         view.backgroundColor = .white
         
@@ -33,10 +39,10 @@ class CreateAccountViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         
-        let nameTextField = createTextField(placeholder: "Name", labelColor: UIColor(hex: "#005C78"))
-        let emailTextField = createTextField(placeholder: "Email", labelColor: UIColor(hex: "#005C78"), keyboardType: .emailAddress)
-        let birthdateTextField = createTextField(placeholder: "Birthdate", labelColor: UIColor(hex: "#005C78"))
-        let passwordTextField = createSecureTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
+        nameTextField = createTextField(placeholder: "Name", labelColor: UIColor(hex: "#005C78"))
+        emailTextField = createTextField(placeholder: "Email", labelColor: UIColor(hex: "#005C78"), keyboardType: .emailAddress)
+        birthdateTextField = createTextField(placeholder: "Birthdate (optional)", labelColor: UIColor(hex: "#005C78"))
+        passwordTextField = createSecureTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
         
         [nameTextField, emailTextField, birthdateTextField, passwordTextField].forEach {
             stackView.addArrangedSubview($0)
@@ -93,17 +99,52 @@ class CreateAccountViewController: UIViewController {
             footerStack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    
+
     @objc private func createAccountTapped() {
-        let nextViewController = GenrePreferencesViewController()
-        nextViewController.modalPresentationStyle = .fullScreen
-        present(nextViewController, animated: true, completion: nil)
+        guard let name = nameTextField.text, !name.isEmpty,
+              let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(message: "Please fill in all required fields.")
+            return
+        }
+
+        // Firebase Authentication
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                self.showAlert(message: "Error: \(error.localizedDescription)")
+                return
+            }
+
+            // Save additional user information if needed
+            if let user = authResult?.user {
+                let changeRequest = user.createProfileChangeRequest()
+                changeRequest.displayName = name
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        print("Error updating profile: \(error.localizedDescription)")
+                    } else {
+                        print("Profile updated for \(user.uid)")
+                    }
+                }
+            }
+
+            // Navigate to Genre Preferences screen
+            let nextViewController = GenrePreferencesViewController()
+            nextViewController.modalPresentationStyle = .fullScreen
+            self.present(nextViewController, animated: true, completion: nil)
+        }
     }
-    
+
     @objc private func loginTapped() {
         let nextViewController = LoginViewController()
         nextViewController.modalPresentationStyle = .fullScreen
         present(nextViewController, animated: true, completion: nil)
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true, completion: nil)
     }
 
     private func createTextField(placeholder: String, labelColor: UIColor, keyboardType: UIKeyboardType = .default) -> UITextField {
@@ -117,7 +158,7 @@ class CreateAccountViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }
-    
+
     private func createSecureTextField(placeholder: String, labelColor: UIColor) -> UITextField {
         let textField = createTextField(placeholder: placeholder, labelColor: labelColor)
         textField.isSecureTextEntry = true

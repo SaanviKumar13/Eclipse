@@ -1,6 +1,10 @@
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
+
+    private var emailTextField: UITextField!
+    private var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +28,8 @@ class LoginViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
 
-        let emailTextField = createTextField(placeholder: "Email", labelColor: UIColor(hex: "#005C78"), keyboardType: .emailAddress)
-        let passwordTextField = createSecureTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
+        emailTextField = createTextField(placeholder: "Email", labelColor: UIColor(hex: "#005C78"), keyboardType: .emailAddress)
+        passwordTextField = createSecureTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
         
         [emailTextField, passwordTextField].forEach {
             stackView.addArrangedSubview($0)
@@ -78,12 +82,27 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginTapped() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-            tabBarController.modalPresentationStyle = .fullScreen
-            present(tabBarController, animated: true, completion: nil)
-        } else {
-            print("Failed to instantiate TabBarController from storyboard.")
+        guard let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(message: "Please fill in all required fields.")
+            return
+        }
+
+        // Firebase Authentication for Login
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                self?.showAlert(message: "Error: \(error.localizedDescription)")
+                return
+            }
+
+            // Navigate to Main Screen (Tab Bar)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+                tabBarController.modalPresentationStyle = .fullScreen
+                self?.present(tabBarController, animated: true, completion: nil)
+            } else {
+                print("Failed to instantiate TabBarController from storyboard.")
+            }
         }
     }
     
@@ -109,6 +128,12 @@ class LoginViewController: UIViewController {
         let textField = createTextField(placeholder: placeholder, labelColor: labelColor)
         textField.isSecureTextEntry = true
         return textField
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true, completion: nil)
     }
 }
 
