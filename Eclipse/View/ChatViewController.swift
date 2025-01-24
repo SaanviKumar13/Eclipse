@@ -130,7 +130,7 @@ extension ChatViewController: UITextFieldDelegate {
         guard let text = textField.text, !text.isEmpty else { return true }
         
         // Add user message (blue)
-        messages.append(Message(text: text, isFromUser: true))
+        messages.append(Message(text: text, isFromUser: true, isImage: false, imageName: nil))
         tableView.reloadData()
         textField.text = nil
         
@@ -141,7 +141,7 @@ extension ChatViewController: UITextFieldDelegate {
             // Simulate response (grey) after a short delay
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
                 guard let self = self else { return }
-                self.messages.append(Message(text: "Hi, you can come around by 5:00 PM to pick the book.", isFromUser: false))
+                self.messages.append(Message(text: "Hi, you can come around by 5:00 PM to pick the book.", isFromUser: false, isImage: false, imageName: nil))
                 self.tableView.reloadData()
             }
         }
