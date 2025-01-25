@@ -1,21 +1,19 @@
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let tableView = UITableView()
     
-  
     private let accountOptions = [
         "Edit Profile",
         "Notifications",
-        "Book Support",
-        "Security"
+        "Book Support"
     ]
     
     private let actionOptions = [
         "Report a Problem",
-        "Log Out",
-        "Delete Account"
+        "Log Out"
     ]
     
     override func viewDidLoad() {
@@ -34,7 +32,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(profileImageView)
         
-    
         let nameLabel = UILabel()
         nameLabel.text = "Narendra Singh Rathore"
         nameLabel.font = UIFont.boldSystemFont(ofSize: 26)
@@ -42,7 +39,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameLabel)
         
-       
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +47,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.tableHeaderView = UIView()
         view.addSubview(tableView)
         
-       
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -67,8 +62,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-  
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -123,12 +116,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             editProfileVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(editProfileVC, animated: true)
         case 1:
-            print("Navigating to Notifications screen")
+            showNotificationConfirmationPopup()
         case 2:
             let bookSupportVC = BookSupportViewController()
             navigationController?.pushViewController(bookSupportVC, animated: true)
-        case 3:
-            print("Navigating to Security screen")
         default:
             break
         }
@@ -140,12 +131,89 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let raiseProblemVC = RaiseProblemViewController()
             navigationController?.pushViewController(raiseProblemVC, animated: true)
         case 1:
-            print("Logging out")
-        case 2:
-            print("Deleting account")
+            showLogoutConfirmationPopup()
         default:
             break
         }
+    }
+    
+    private func showNotificationConfirmationPopup() {
+        let alertController = UIAlertController(
+            title: "Enable Notifications",
+            message: "Are you sure you want to turn on notifications?",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil
+        ))
+        
+        alertController.addAction(UIAlertAction(
+            title: "Enable",
+            style: .default,
+            handler: { [weak self] _ in
+                print("Notifications enabled")
+                let confirmationAlert = UIAlertController(
+                    title: "Notifications Enabled",
+                    message: "You will now receive notifications.",
+                    preferredStyle: .alert
+                )
+                confirmationAlert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: nil
+                ))
+                self?.present(confirmationAlert, animated: true, completion: nil)
+            }
+        ))
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showLogoutConfirmationPopup() {
+        let alertController = UIAlertController(
+            title: "Log Out",
+            message: "Are you sure you want to log out of your account?",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil
+        ))
+        
+        alertController.addAction(UIAlertAction(
+            title: "Log Out",
+            style: .destructive,
+            handler: { [weak self] _ in
+                do {
+                    try Auth.auth().signOut()
+                    let loginVC = LoginViewController()
+                    let navController = UINavigationController(rootViewController: loginVC)
+                    navController.modalPresentationStyle = .fullScreen
+                    self?.view.window?.rootViewController = navController
+                    self?.view.window?.makeKeyAndVisible()
+                } catch let error as NSError {
+                    print("Error signing out: \(error.localizedDescription)")
+                    let errorAlert = UIAlertController(
+                        title: "Error",
+                        message: "Failed to log out. Please try again.",
+                        preferredStyle: .alert
+                    )
+                    errorAlert.addAction(UIAlertAction(
+                        title: "OK",
+                        style: .default,
+                        handler: nil
+                    ))
+                    self?.present(errorAlert, animated: true, completion: nil)
+                }
+            }
+        ))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -158,7 +226,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return nil
         }
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .white
@@ -178,7 +246,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         headerView.addSubview(titleLabel)
-
+        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
             titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
@@ -186,7 +254,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
