@@ -46,10 +46,5 @@ class GuidedListTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let bookID = guidedList?.books[indexPath.item], let book = getBookByID(bookID) {
-            bookSelectionDelegate?.didSelectBook(book)
-        }
-    }
 }
+

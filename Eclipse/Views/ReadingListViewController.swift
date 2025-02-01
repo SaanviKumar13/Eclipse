@@ -131,7 +131,6 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
                 let customListName = Array(customLists.keys)[indexPath.row]
                 let selectedCustomList = customLists[customListName]!
                 destinationVC.selectedListTitle = selectedCustomList.title
-                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
             }
         }
     }

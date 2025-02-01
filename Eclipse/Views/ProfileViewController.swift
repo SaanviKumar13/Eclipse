@@ -33,7 +33,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(profileImageView)
         
         let nameLabel = UILabel()
-        nameLabel.text = "Narendra Singh Rathore"
+        if let user = Auth.auth().currentUser {
+                    nameLabel.text = user.displayName ?? "No Name Available"
+                } else {
+                    nameLabel.text = "User not signed in"
+                }
         nameLabel.font = UIFont.boldSystemFont(ofSize: 26)
         nameLabel.textAlignment = .center
         nameLabel.translatesAutoresizingMaskIntoConstraints = false

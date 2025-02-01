@@ -1,8 +1,11 @@
 import UIKit
+import FirebaseFirestore
 
 class BookViewController: UIViewController {
 
-    var book: Book?
+    var book: BookF?
+    private let db = Firestore.firestore()
+    private var customLists: [String] = []
 
     private let scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -22,10 +25,6 @@ class BookViewController: UIViewController {
         iv.contentMode = .scaleAspectFit
         iv.layer.cornerRadius = 12
         iv.clipsToBounds = true
-        iv.layer.shadowColor = UIColor.black.cgColor
-        iv.layer.shadowOffset = CGSize(width: 0, height: 4)
-        iv.layer.shadowOpacity = 0.3
-        iv.layer.shadowRadius = 5
         return iv
     }()
 
@@ -47,36 +46,6 @@ class BookViewController: UIViewController {
         return sv
     }()
 
-    private let buyButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Buy for $19.99", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        button.backgroundColor = UIColor(hex: "#005C78")
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
-           button.contentVerticalAlignment = .center
-        button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-           return button
-    }()
-
-    private let rentButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Rent for $4.99", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        button.backgroundColor = .clear
-        button.setTitleColor(UIColor(hex: "#005C78"), for: .normal)
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor(hex: "#005C78").cgColor
-        button.layer.cornerRadius = 12
-        button.contentVerticalAlignment = .center
-        button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        return button
-    }()
-
     private let buttonStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +55,39 @@ class BookViewController: UIViewController {
         return sv
     }()
 
-    init(book: Book) {
+    private let bookmarkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.tintColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private let buyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Buy", for: .normal)
+        button.setTitleColor(UIColor(hex: "005C78"), for: .normal)
+        button.layer.borderColor = UIColor(hex: "005C78").cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 4
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        return button
+    }()
+
+    private let rentButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Rent", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(hex: "005C78")
+        button.layer.cornerRadius = 4
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    init(book: BookF) {
         self.book = book
         super.init(nibName: nil, bundle: nil)
     }
@@ -97,32 +98,30 @@ class BookViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = book?.title
         setupUI()
         configureUI()
+        buyButton.addTarget(self, action: #selector(navigateToRentersNearby), for: .touchUpInside)
+        rentButton.addTarget(self, action: #selector(navigateToRentersNearby), for: .touchUpInside)
     }
 
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.title = book?.title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bookmarkButton)
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
 
         [bookImageView, ratingView, descriptionLabel, buttonStackView].forEach { contentView.addSubview($0) }
-        buttonStackView.addArrangedSubview(buyButton)
-        buttonStackView.addArrangedSubview(rentButton)
 
         for _ in 0..<5 {
             let starImageView = UIImageView(image: UIImage(systemName: "star.fill"))
-            starImageView.tintColor = .systemYellow
+            starImageView.tintColor = .systemGray
             ratingView.addArrangedSubview(starImageView)
         }
 
-        let ratingLabel = UILabel()
-        ratingLabel.text = "4.5 (2.3k reviews)"
-        ratingLabel.font = .systemFont(ofSize: 14)
-        ratingLabel.textColor = .darkGray
-        ratingView.addArrangedSubview(ratingLabel)
+        buttonStackView.addArrangedSubview(buyButton)
+        buttonStackView.addArrangedSubview(rentButton)
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -153,29 +152,65 @@ class BookViewController: UIViewController {
             buttonStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
 
-        buyButton.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
-        rentButton.addTarget(self, action: #selector(rentButtonTapped), for: .touchUpInside)
+        bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
     }
 
-    func configureUI() {
-        if let book = book {
-            bookImageView.image = book.coverImageURL
-            descriptionLabel.text = book.description
+    private func configureUI() {
+        guard let book = book else { return }
+
+        if let imageUrl = book.imageLinks?.thumbnail, let url = URL(string: imageUrl) {
+            loadImage(from: url)
         } else {
-            print("Error: Book data is nil")
+            bookImageView.image = UIImage(systemName: "book.fill")
+        }
+
+        descriptionLabel.text = book.description
+
+        for (index, star) in ratingView.arrangedSubviews.enumerated() {
+            if index < Int(book.averageRating ?? 0) {
+                (star as? UIImageView)?.tintColor = .systemYellow
+            } else {
+                (star as? UIImageView)?.tintColor = .systemGray
+            }
         }
     }
 
-    @objc private func buyButtonTapped() {
-        let cartVC = CartViewController()
-        cartVC.bookInCart = book
-        navigationController?.pushViewController(cartVC, animated: true)
+    private func loadImage(from url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            if let error = error {
+                print("Error loading image: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self?.bookImageView.image = UIImage(systemName: "book.fill")
+                }
+                return
+            }
+
+            guard let data = data, let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self?.bookImageView.image = image
+            }
+        }
+        task.resume()
     }
 
-    @objc private func rentButtonTapped() {
-       let rentVC = RentersNearbyViewController()
-        rentVC.selectedBook = book
-       navigationController?.pushViewController(rentVC, animated: true)
+
+    @objc private func bookmarkButtonTapped() {
+        guard let book = book else { return }
+
+        let addToLibraryVC = AddToLibraryViewController()
+        addToLibraryVC.book = book
+
+        let navController = UINavigationController(rootViewController: addToLibraryVC)
+        navController.modalPresentationStyle = .formSheet
+        present(navController, animated: true, completion: nil)
+    }
+    
+    @objc private func navigateToRentersNearby(sender: UIButton) {
+        let rentersNearbyVC = RentersNearbyViewController()
+        rentersNearbyVC.selectedBook = book
+        rentersNearbyVC.actionType = sender == buyButton ? "Buy" : "Rent"
+        navigationController?.pushViewController(rentersNearbyVC, animated: true)
     }
 }
 

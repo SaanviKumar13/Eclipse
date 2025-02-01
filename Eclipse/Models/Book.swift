@@ -10,23 +10,23 @@ import UIKit
 
 import Foundation
 
-struct BookF {
-    var title: String
-    var subtitle: String?
-    var authors: [String]?
-    var description: String?
-    var averageRating: Double?
-    var ratingsCount: Int?
-    var imageLinks: ImageLinks?
-    var previewLink: String?
-    var pageCount: Int?
+struct BookF: Codable {
+    let id: String
+    let title: String
+    let subtitle: String?
+    let authors: [String]?
+    let description: String?
+    let averageRating: Double?
+    let ratingsCount: Int?
+    let imageLinks: ImageLinks?
+    let previewLink: String?
+    let pageCount: Int?
 }
 
-struct ImageLinks {
-    var smallThumbnail: String?
-    var thumbnail: String?
+struct ImageLinks: Codable {
+    let smallThumbnail: String?
+    let thumbnail: String?
 }
-
 
 struct Book {
     var id: String

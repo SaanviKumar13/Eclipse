@@ -6,7 +6,7 @@ class CartViewController: UIViewController {
     
     private var rentalDays: Int = 4
     
-    var bookInCart: Book!
+    var bookInCart: BookF!
 
     private let bookContainer: UIView = {
         let view = UIView()
@@ -202,12 +202,39 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 
-        let firstBook:Book = bookInCart
+        let firstBook: BookF = bookInCart
         bookTitleLabel.text = firstBook.title
         totalPriceLabel.text = "₹\(40 * rentalDays)"
-        bookImageView.image = firstBook.coverImageURL
         userImageView.image = UIImage(named: "profile")
+
+        // Load book thumbnail image
+        if let thumbnailUrlString = firstBook.imageLinks?.thumbnail, let thumbnailUrl = URL(string: thumbnailUrlString) {
+            // Asynchronously download the thumbnail
+            let session = URLSession(configuration: .default)
+            let downloadTask = session.dataTask(with: thumbnailUrl) { [weak self] data, response, error in
+                if let error = error {
+                    print("Error loading thumbnail: \(error)")
+                    return
+                }
+                
+                // Check and assign the image
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.bookImageView.image = image
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.bookImageView.image = UIImage(systemName: "book.fill") // Fallback image
+                    }
+                }
+            }
+            downloadTask.resume()
+        } else {
+            // Use fallback image if URL is invalid
+            bookImageView.image = UIImage(systemName: "book.fill")
+        }
     }
+
     
     private func setupUI() {
         view.backgroundColor = .systemBackground

@@ -52,6 +52,7 @@
 		277CAC012D43F67000B744CA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 277CAC002D43F67000B744CA /* FirebaseDatabase */; };
 		277CAC032D43F67000B744CA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 277CAC022D43F67000B744CA /* FirebaseFirestore */; };
 		277CAC052D43F67000B744CA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 277CAC042D43F67000B744CA /* FirebaseStorage */; };
+		277CAC072D45488100B744CA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277CAC062D45488100B744CA /* DataManager.swift */; };
 		27817B812CCF8DC2003D3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B802CCF8DC2003D3905 /* AppDelegate.swift */; };
 		27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B822CCF8DC2003D3905 /* SceneDelegate.swift */; };
 		27817B852CCF8DC2003D3905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817B842CCF8DC2003D3905 /* ViewController.swift */; };
@@ -70,7 +71,6 @@
 		27817BC12CD17474003D3905 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */; };
 		27817BC82CD17C07003D3905 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BC72CD17C07003D3905 /* Category.swift */; };
 		27817BCB2CD181DF003D3905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27817BCA2CD181DF003D3905 /* Assets.xcassets */; };
-		27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */; };
 		27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */; };
 		27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */; };
 		27817BD92CD60F71003D3905 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27817BD82CD60F71003D3905 /* ListData.swift */; };
@@ -153,6 +153,7 @@
 		271130352CEC875900F5510C /* CuratedListsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedListsData.swift; sourceTree = "<group>"; };
 		271130372CEC87C300F5510C /* RenterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterData.swift; sourceTree = "<group>"; };
 		277CABF72D43F4AB00B744CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		277CAC062D45488100B744CA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		27817B7D2CCF8DC2003D3905 /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27817B802CCF8DC2003D3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27817B822CCF8DC2003D3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,7 +174,6 @@
 		27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		27817BC72CD17C07003D3905 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		27817BCA2CD181DF003D3905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
 		27817BD82CD60F71003D3905 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				27817BC02CD17474003D3905 /* CategoryCollectionViewCell.swift */,
-				27817BCC2CD28569003D3905 /* BookCollectionViewCell.swift */,
 				27817BCE2CD54C2B003D3905 /* CustomHeaderView.swift */,
 				27817BD02CD54D0D003D3905 /* ReadingListTableViewCell.swift */,
 				27DAA02F2CD68EC9002EC79A /* StatusBookTableViewCell.swift */,
@@ -399,6 +398,7 @@
 				27C21B2B2CE792710035C957 /* CustomColor.swift */,
 				27BC97A22CECE155004EC100 /* BookIDHelper.swift */,
 				27BC97AF2D2B95ED004EC100 /* BookAPI.swift */,
+				277CAC062D45488100B744CA /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -519,7 +519,6 @@
 				2711301E2CEB409E00F5510C /* EditProfileViewController.swift in Sources */,
 				2711300D2CEB2FBA00F5510C /* RentersProfileViewController.swift in Sources */,
 				27C21B2E2CE797EB0035C957 /* ResultsViewController.swift in Sources */,
-				27817BCD2CD28569003D3905 /* BookCollectionViewCell.swift in Sources */,
 				271130302CEC5AD100F5510C /* FeedbackViewController.swift in Sources */,
 				27817BCF2CD54C2B003D3905 /* CustomHeaderView.swift in Sources */,
 				278366852CEAFE0B003036A9 /* GuidedListTableViewCell.swift in Sources */,
@@ -538,6 +537,7 @@
 				27DAA0322CDA07DF002EC79A /* CreateCollectionViewController.swift in Sources */,
 				27C21B232CE740010035C957 /* QuizViewController.swift in Sources */,
 				27817BBC2CD16E12003D3905 /* AllBooksViewController.swift in Sources */,
+				277CAC072D45488100B744CA /* DataManager.swift in Sources */,
 				27BC97A72CECEFAC004EC100 /* RequestData.swift in Sources */,
 				27BC97B02D2B95ED004EC100 /* BookAPI.swift in Sources */,
 				271130122CEB305600F5510C /* MessageInputView.swift in Sources */,

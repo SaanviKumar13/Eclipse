@@ -52,7 +52,7 @@ class GuidedListViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
 
-    func didSelectBook(_ book: Book) {
+    func didSelectBook(_ book: BookF) {
         let bookVC = BookViewController(book: book)
         navigationController?.pushViewController(bookVC, animated: true)
     }

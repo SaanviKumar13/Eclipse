@@ -79,13 +79,11 @@ class BookListViewController: UIViewController, UICollectionViewDataSource, UICo
                     self?.books = books
                     self?.collectionView.reloadData()
                 case .failure(let error):
-                    print("Error fetching books: \(error.localizedDescription)")  // Handle error
+                    print("Error fetching books: \(error.localizedDescription)")  
                 }
             }
         }
     }
-    
-    // MARK: - CollectionView DataSource and Delegate Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
@@ -100,6 +98,13 @@ class BookListViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.configure(book: book)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBook = books[indexPath.item]
+        let bookDetailVC = BookViewController(book: selectedBook)
+        navigationController?.pushViewController(bookDetailVC, animated: true)
+    }
+
 }
 
 class BookCells: UICollectionViewCell {

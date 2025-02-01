@@ -274,18 +274,18 @@ extension RentersProfileViewController: UICollectionViewDataSource, UICollection
         return cell
     }
 
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.booksCollectionView{
-            let selectedBookId = regularBooks[indexPath.item]
-            if let selectedBook = getBookByID(selectedBookId) {
-                let bookVC = BookViewController(book: selectedBook)
-                navigationController?.pushViewController(bookVC, animated: true)
-            } else {
-                print("Book not found for ID: \(selectedBookId)")
-            }
-        }
-    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if collectionView == self.booksCollectionView{
+//            let selectedBookId = regularBooks[indexPath.item]
+//            if let selectedBook = getBookByID(selectedBookId) {
+//                let bookVC = BookViewController(book: selectedBook)
+//                navigationController?.pushViewController(bookVC, animated: true)
+//            } else {
+//                print("Book not found for ID: \(selectedBookId)")
+//            }
+//        }
+//    }
     
 }
 

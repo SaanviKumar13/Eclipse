@@ -11,7 +11,7 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
 
-    var allBooks: [Book] = []
+    var allBooks: [BookF] = []
     var selectedListTitle: String = ""
 
     override func viewDidLoad() {
@@ -55,11 +55,44 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
         navigationController?.pushViewController(bookVC, animated: true)
     }
 
-    private func configureCell(_ cell: CustomBookTableViewCell, with book: Book) {
+    private func configureCell(_ cell: CustomBookTableViewCell, with book: BookF) {
+        
         cell.titleLabel.text = book.title
-        cell.authorLabel.text = book.author.name
-        cell.descriptionLabel.text = book.description
-        cell.bookImage.image = book.coverImageURL ?? UIImage(systemName: "book")
-        cell.book = book
+        
+        if let authors = book.authors, !authors.isEmpty {
+            cell.authorLabel.text = authors.joined(separator: ", ")
+        } else {
+            cell.authorLabel.text = "Unknown Author"
+        }
+        
+        cell.descriptionLabel.text = book.description ?? "No description available"
+        
+        if let thumbnailURL = book.imageLinks?.thumbnail, let url = URL(string: thumbnailURL) {
+            let session = URLSession(configuration: .default)
+            let downloadTask = session.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error loading thumbnail: \(error)")
+                    DispatchQueue.main.async {
+                        cell.bookImage.image = UIImage(systemName: "book")
+                    }
+                    return
+                }
+                
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.bookImage.image = image
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        cell.bookImage.image = UIImage(systemName: "book")
+                    }
+                }
+            }
+            downloadTask.resume()
+        } else {
+            cell.bookImage.image = UIImage(systemName: "book") 
+        }
     }
+
+
 }

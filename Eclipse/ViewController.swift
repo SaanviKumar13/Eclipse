@@ -362,8 +362,8 @@ class ViewController: UIViewController {
             func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                 if collectionView == favoritesCollectionView {
                     let selectedBook = mockBooks[indexPath.item]
-                    let bookVC = BookViewController(book: selectedBook)
-                    navigationController?.pushViewController(bookVC, animated: true)
+//                    let bookVC = BookViewController(book: selectedBook)
+//                    navigationController?.pushViewController(bookVC, animated: true)
                 } else if collectionView == topRentersCollectionView {
                     let renter = topRenters[indexPath.item]
                     let renterProfileVC = RentersProfileViewController()
@@ -372,8 +372,8 @@ class ViewController: UIViewController {
                 }
                 else if collectionView == self.undiscoveredGemsCollectionView{
                     let selectedBook = mockBooks[indexPath.item]
-                    let bookVC = BookViewController(book: selectedBook)
-                    navigationController?.pushViewController(bookVC, animated: true)
+//                    let bookVC = BookViewController(book: selectedBook)
+//                    navigationController?.pushViewController(bookVC, animated: true)
                 }
             }
         }

@@ -4,15 +4,15 @@ class BookAPI {
     
     static let shared = BookAPI()
     
-    private let apiKey = "" // Replace with API key
+    private let apiKey = ""
     private var cachedBooks: [String: [BookF]] = [:]
     
     private init() {}
+
     private func createURLSession() -> URLSession {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 30
         config.timeoutIntervalForResource = 60
-        
         return URLSession(configuration: config)
     }
     
@@ -23,7 +23,7 @@ class BookAPI {
         }
         
         guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(encodedQuery)&key=\(apiKey)") else {
+              let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=subject:\(encodedQuery)&key=\(apiKey)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))
             return
         }
@@ -49,9 +49,10 @@ class BookAPI {
                     
                     for item in itemsArray {
                         if let volumeInfo = item["volumeInfo"] as? [String: Any] {
+                            let id = item["id"] as? String ?? "Unknown ID"
                             let title = (volumeInfo["title"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
                             let subtitle = (volumeInfo["subtitle"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
-                            let authors = (volumeInfo["authors"] as? [String])
+                            let authors = volumeInfo["authors"] as? [String]
                             let description = (volumeInfo["description"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
                             let averageRating = volumeInfo["averageRating"] as? Double
                             let ratingsCount = volumeInfo["ratingsCount"] as? Int
@@ -66,6 +67,7 @@ class BookAPI {
                             }
                             
                             let book = BookF(
+                                id: id,
                                 title: title ?? "Unknown Title",
                                 subtitle: subtitle,
                                 authors: authors,
@@ -82,7 +84,6 @@ class BookAPI {
                     }
                     
                     self.cachedBooks[query] = books
-                    
                     completion(.success(books))
                 } else {
                     completion(.failure(NSError(domain: "Invalid JSON structure", code: 500, userInfo: nil)))

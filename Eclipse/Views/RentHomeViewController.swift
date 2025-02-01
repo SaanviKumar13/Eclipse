@@ -301,30 +301,30 @@ extension RentHomeViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView {
-        case currentlyRentedCollectionView:
-            let bookID = currentlyRentedBooks[indexPath.item]
-            if let book = getBookByID(bookID) {
-                let bookVC = BookViewController(book: book)
-                navigationController?.pushViewController(bookVC, animated: true)
-            }
-            
-        case rentersCollectionView:
-            let renterProfileVC = RentersProfileViewController()
-            renterProfileVC.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(renterProfileVC, animated: true)
-            
-        case suggestedBooksCollectionView:
-            let bookID = suggestedBooks[indexPath.item]
-            if let book = getBookByID(bookID) {
-                let bookVC = BookViewController(book: book)
-                navigationController?.pushViewController(bookVC, animated: true)
-            }
-            
-        default:
-            break
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        switch collectionView {
+//        case currentlyRentedCollectionView:
+//            let bookID = currentlyRentedBooks[indexPath.item]
+//            if let book = getBookByID(bookID) {
+//                let bookVC = BookViewController(book: book)
+//                navigationController?.pushViewController(bookVC, animated: true)
+//            }
+//            
+//        case rentersCollectionView:
+//            let renterProfileVC = RentersProfileViewController()
+//            renterProfileVC.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(renterProfileVC, animated: true)
+//            
+//        case suggestedBooksCollectionView:
+//            let bookID = suggestedBooks[indexPath.item]
+//            if let book = getBookByID(bookID) {
+//                let bookVC = BookViewController(book: book)
+//                navigationController?.pushViewController(bookVC, animated: true)
+//            }
+//            
+//        default:
+//            break
+//        }
+//    }
 
 }

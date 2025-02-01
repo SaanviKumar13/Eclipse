@@ -16,12 +16,6 @@ let whodunitList: [String] = ["1", "6"]
 let sciFiAdventuresList: [String] = ["2", "3"]
 let historicalDramaList: [String] = ["5", "4"]
 
-struct List {
-    let title: String
-    let bookIDs: [String]
-    let isPrivate: Bool
-}
-
 var statusLists: [List] = [
     List(title: "Want To Read", bookIDs: wantToReadList, isPrivate: false),
     List(title: "Currently Reading", bookIDs: currentlyReadingList, isPrivate: true),

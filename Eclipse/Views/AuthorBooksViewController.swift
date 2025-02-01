@@ -12,17 +12,38 @@ class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
 
     var author: Author?
-    var books: [Book] = []
+    var books: [BookF] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.dataSource = self
         tableView.delegate = self
 
+        // Fetch books for the specific author
         if let author = author {
-            books = mockBooks.filter { $0.author.authorID == author.authorID }
+            fetchBooksByAuthor(authorName: author.name)
         }
     }
+
+    /// Fetch books by the given author using the Google Books API
+    private func fetchBooksByAuthor(authorName: String) {
+        BookAPI.shared.fetchBooks(query: "inauthor:\(authorName)") { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedBooks):
+                    self.books = fetchedBooks
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print("Failed to fetch books for author \(authorName): \(error.localizedDescription)")
+                    // Optionally show an alert to the user
+                }
+            }
+        }
+    }
+
+    // MARK: - TableView DataSource and Delegate Methods
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
@@ -35,9 +56,24 @@ class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableV
 
         let book = books[indexPath.row]
         cell.title.text = book.title
-        cell.rating.text = "Rating: \(book.rating)"
-        cell.seriesInfo.text = book.seriesInfo?.seriesName ?? "Standalone Book"
-        cell.bookImage.image = book.coverImageURL ?? UIImage(named: "placeholder_image")
+        if let averageRating = book.averageRating {
+            cell.rating.text = "Rating: \(averageRating)"
+        } else {
+            cell.rating.text = "Rating: N/A"
+        }
+        cell.seriesInfo.text = book.subtitle ?? "Standalone Book"
+
+        // Load the book cover image (from URL or placeholder)
+        if let thumbnailUrlString = book.imageLinks?.thumbnail,
+           let thumbnailUrl = URL(string: thumbnailUrlString) {
+            loadImage(from: thumbnailUrl) { image in
+                DispatchQueue.main.async {
+                    cell.bookImage.image = image
+                }
+            }
+        } else {
+            cell.bookImage.image = UIImage(named: "placeholder_image")
+        }
 
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
@@ -53,6 +89,23 @@ class AuthorBooksViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     @objc private func bookmarkButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "showBookmark", sender: sender)
+        let selectedBookIndex = sender.tag
+        let selectedBook = books[selectedBookIndex]
+        // Perform any actions for bookmarking the book here
+        print("Bookmark button tapped for book: \(selectedBook.title)")
+    }
+
+    /// Helper method to load an image from a URL
+    private func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                print("Failed to load image from \(url): \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            completion(UIImage(data: data))
+        }
+        task.resume()
     }
 }
+

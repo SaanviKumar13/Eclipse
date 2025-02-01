@@ -106,13 +106,13 @@ class AuthorReadingListViewController: UIViewController, UITableViewDelegate, UI
                 let publicStatusLists = statusLists.filter { !$0.isPrivate }
                 let selectedStatus = publicStatusLists[indexPath.row]
                 destinationVC.selectedListTitle = selectedStatus.title
-                destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
+//                destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
             } else if indexPath.section == 1 {
                 let publicCustomLists = customLists.filter { !$0.value.isPrivate }
                 let customListName = Array(publicCustomLists.keys)[indexPath.row]
                 let selectedCustomList = publicCustomLists[customListName]!
                 destinationVC.selectedListTitle = selectedCustomList.title
-                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
+//                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
             }
         }
     }

@@ -19,25 +19,36 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var authorCollectionView: UICollectionView!
     @IBOutlet weak var recommendedListTableView: UITableView!
     @IBOutlet weak var swipeBook: UIImageView!
-    
+
     var selectedCategoryIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
+        setupCollectionView()
+        setupTableView()
+        setBooksView()
+        addGradientToQuizView()
+    }
+
+    // MARK: - Setup Methods
+
+    private func setupUI() {
         quizText.numberOfLines = 0
         quizText.lineBreakMode = .byWordWrapping
-        
+
         swipeBook.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(swipeBookTapped))
-          swipeBook.addGestureRecognizer(tapGesture)
+        swipeBook.addGestureRecognizer(tapGesture)
+    }
 
+    private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+
         authorCollectionView.dataSource = self
         authorCollectionView.delegate = self
-        recommendedListTableView.dataSource = self
-        recommendedListTableView.delegate = self
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -46,25 +57,18 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         if let layout = authorCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
-
-        setBooksView()
-        addGradientToView()
-    }
-    
-    @objc func swipeBookTapped() {
-        let swipeVC = SwipeScreen()
-        swipeVC.modalPresentationStyle = .fullScreen
-        present(swipeVC, animated: true, completion: nil)
     }
 
+    private func setupTableView() {
+        recommendedListTableView.dataSource = self
+        recommendedListTableView.delegate = self
+    }
 
-    func setBooksView() {
-        bookMiddle.layer.cornerRadius = 30
-        bookMiddle.clipsToBounds = true
-        bookLeft.layer.cornerRadius = 30
-        bookLeft.clipsToBounds = true
-        bookRight.layer.cornerRadius = 30
-        bookRight.clipsToBounds = true
+    private func setBooksView() {
+        [bookMiddle, bookLeft, bookRight].forEach {
+            $0?.layer.cornerRadius = 30
+            $0?.clipsToBounds = true
+        }
 
         bookLeft.alpha = 0.7
         bookRight.alpha = 0.7
@@ -72,7 +76,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         bookRight.transform = CGAffineTransform(rotationAngle: 0.2)
     }
 
-    func addGradientToView() {
+    private func addGradientToQuizView() {
         quizView.layer.cornerRadius = 10
         quizView.clipsToBounds = true
 
@@ -86,14 +90,25 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         quizView.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
-    
+
+    // MARK: - Actions
+
+    @objc private func swipeBookTapped() {
+        let swipeVC = SwipeScreen()
+        swipeVC.modalPresentationStyle = .fullScreen
+        present(swipeVC, animated: true, completion: nil)
+    }
+
+    // MARK: - TableView DataSource and Delegate
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recommendedLists.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedListCell", for: indexPath) as! RecommendedListTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedListCell", for: indexPath) as? RecommendedListTableViewCell else {
+            return UITableViewCell()
+        }
 
         let recommendedList = recommendedLists[indexPath.row]
         cell.listTitle.text = recommendedList.title
@@ -101,7 +116,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         cell.bookCollectionView.dataSource = self
         cell.bookCollectionView.delegate = self
-
         cell.bookCollectionView.tag = indexPath.row
         cell.bookCollectionView.reloadData()
 
@@ -112,15 +126,17 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         return 330
     }
 
+    // MARK: - CollectionView DataSource and Delegate
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectionView {
+        switch collectionView {
+        case self.collectionView:
             return categories.count
-        } else if collectionView == self.authorCollectionView {
+        case authorCollectionView:
             return authors.count
-        } else if let recommendedList = recommendedLists[safe: collectionView.tag] {
-            return recommendedList.books.count
+        default:
+            return recommendedLists[safe: collectionView.tag]?.books.count ?? 0
         }
-        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -129,68 +145,64 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             let category = categories[indexPath.item]
             cell.configure(for: category, isSelected: indexPath.item == selectedCategoryIndex)
             return cell
-        } else if collectionView == self.authorCollectionView {
+        } else if collectionView == authorCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "authorCell", for: indexPath) as! AuthorCollectionViewCell
             let author = authors[indexPath.item]
             cell.configure(for: author)
             return cell
-        } else if let recommendedList = recommendedLists[safe: collectionView.tag] {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendedBookCell", for: indexPath) as! RecommendedBookCollectionViewCell
-            let bookID = recommendedList.books[indexPath.item]
-            if let book = mockBooks.first(where: { $0.id == bookID }) {
+            if let bookID = recommendedLists[safe: collectionView.tag]?.books[indexPath.item],
+               let book = mockBooks.first(where: { $0.id == bookID }) {
                 cell.bookImage.image = book.coverImageURL
             }
             return cell
         }
-        return UICollectionViewCell()
     }
-   
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case authorCollectionView:
             let selectedAuthor = authors[indexPath.item]
             performSegue(withIdentifier: "showAuthorProfileSegue", sender: selectedAuthor)
-
         case self.collectionView:
             let selectedCategory = categories[indexPath.item]
             let bookListVC = BookListViewController()
             bookListVC.selectedGenre = selectedCategory
             bookListVC.title = selectedCategory
             navigationController?.pushViewController(bookListVC, animated: true)
-
         default:
-            if let recommendedList = recommendedLists[safe: collectionView.tag] {
-                let bookID = recommendedList.books[indexPath.item]
-                if let selectedBook = mockBooks.first(where: { $0.id == bookID }) {
-                    let bookVC = BookViewController(book: selectedBook)
-                    navigationController?.pushViewController(bookVC, animated: true)
-                }
+            if let bookID = recommendedLists[safe: collectionView.tag]?.books[indexPath.item],
+               let selectedBook = mockBooks.first(where: { $0.id == bookID }) {
+//                let bookVC = BookViewController(book: selectedBook)
+//                navigationController?.pushViewController(bookVC, animated: true)
             }
         }
     }
-
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showAuthorProfileSegue" {
-            if let authorProfileVC = segue.destination as? AuthorProfileViewController,
-               let selectedAuthor = sender as? Author {
-                authorProfileVC.author = selectedAuthor
-            }
+        if segue.identifier == "showAuthorProfileSegue",
+           let authorProfileVC = segue.destination as? AuthorProfileViewController,
+           let selectedAuthor = sender as? Author {
+            authorProfileVC.author = selectedAuthor
         }
     }
 
+    // MARK: - CollectionView Layout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.authorCollectionView {
+        if collectionView == authorCollectionView {
             return CGSize(width: 100, height: collectionView.bounds.height)
         }
         return CGSize(width: 150, height: 200)
     }
 }
 
+// MARK: - Array Safe Subscript Extension
+
 extension Array {
     subscript(safe index: Int) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
