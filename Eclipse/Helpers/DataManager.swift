@@ -4,7 +4,6 @@
 //
 //  Created by user@87 on 25/01/25.
 //
-
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
@@ -19,7 +18,6 @@ class DataManager {
 
     private init() {}
 
-    // Fetch Status Lists
     func fetchStatusLists(completion: @escaping (Result<[List], Error>) -> Void) {
         guard let userID = userID else {
             completion(.failure(NSError(domain: "Auth", code: 401, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
@@ -39,14 +37,15 @@ class DataManager {
                 let title = data["title"] as? String ?? "Untitled"
                 let bookIDs = data["bookIDs"] as? [String] ?? []
                 let isPrivate = data["isPrivate"] as? Bool ?? false
+                let id = document.documentID
+                let createdAt = (data["createdAt"] as? Timestamp)?.dateValue() ?? Date()
 
-                statusLists.append(List(title: title, bookIDs: bookIDs, isPrivate: isPrivate))
+                statusLists.append(List(id: id, title: title, bookIDs: bookIDs, isPrivate: isPrivate, createdAt: createdAt))
             }
             completion(.success(statusLists))
         }
     }
 
-    // Fetch Custom Lists
     func fetchCustomLists(completion: @escaping (Result<[List], Error>) -> Void) {
         guard let userID = userID else {
             completion(.failure(NSError(domain: "Auth", code: 401, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
@@ -66,14 +65,15 @@ class DataManager {
                 let title = data["title"] as? String ?? "Untitled"
                 let bookIDs = data["bookIDs"] as? [String] ?? []
                 let isPrivate = data["isPrivate"] as? Bool ?? false
+                let id = document.documentID // Add the document ID as the unique ID for List
+                let createdAt = (data["createdAt"] as? Timestamp)?.dateValue() ?? Date()
 
-                customLists.append(List(title: title, bookIDs: bookIDs, isPrivate: isPrivate))
+                customLists.append(List(id: id, title: title, bookIDs: bookIDs, isPrivate: isPrivate, createdAt: createdAt))
             }
             completion(.success(customLists))
         }
     }
 
-    // Add New Custom List
     func addCustomList(list: List, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let userID = userID else {
             completion(.failure(NSError(domain: "Auth", code: 401, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
@@ -81,13 +81,14 @@ class DataManager {
         }
 
         let customListsRef = db.collection("users").document(userID).collection("customLists")
+        
         let newList = [
             "title": list.title,
             "bookIDs": list.bookIDs,
             "isPrivate": list.isPrivate
         ] as [String: Any]
 
-        customListsRef.addDocument(data: newList) { error in
+        customListsRef.document(list.id).setData(newList) { error in
             if let error = error {
                 completion(.failure(error))
                 return

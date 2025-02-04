@@ -61,28 +61,47 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func fetchCustomLists() {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user logged in.")
-            return
-        }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
         
         let db = Firestore.firestore()
         db.collection("users").document(userID).collection("customLists").getDocuments { [weak self] (snapshot, error) in
-            if let error = error {
-                print("Error fetching custom lists: \(error)")
-                return
-            }
+            if let error = error { return }
             
             if let snapshot = snapshot {
                 self?.customLists = [:]
                 for document in snapshot.documents {
                     let listName = document.documentID
-                    self?.customLists[listName] = List(title: listName, bookIDs: [], isPrivate: false)
+                    if let list = List.from(document: document) {
+                        self?.customLists[listName] = list
+                    }
                 }
                 self?.tableView.reloadData()
             }
         }
     }
+
+    private func createNewCustomList(named listName: String) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        let db = Firestore.firestore()
+        let newList = List(
+            id: UUID().uuidString, 
+            title: listName,
+            bookIDs: [],
+            isPrivate: false,
+            createdAt: Date()
+        )
+        
+        db.collection("users").document(userID).collection("customLists").document(newList.id).setData(newList.toDictionary()) { [weak self] error in
+            if let error = error {
+                print("Error creating custom list: \(error.localizedDescription)")
+                return
+            }
+            self?.fetchCustomLists()
+        }
+    }
+
+
     
     @objc private func addCustomListTapped() {
         let alertController = UIAlertController(title: "New Custom List", message: "Enter the name of your new list.", preferredStyle: .alert)
@@ -103,23 +122,6 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
         present(alertController, animated: true)
     }
     
-    private func createNewCustomList(named listName: String) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user logged in.")
-            return
-        }
-        
-        let db = Firestore.firestore()
-        let newList = List(title: listName, bookIDs: [], isPrivate: false)
-        
-        db.collection("users").document(userID).collection("customLists").document(listName).setData(newList.toDictionary()) { [weak self] error in
-            if let error = error {
-                print("Error creating custom list: \(error)")
-            } else {
-                self?.fetchCustomLists()
-            }
-        }
-    }
     
     @objc private func saveButtonTapped() {
         saveToUserBookmarks()
@@ -131,23 +133,31 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func saveToUserBookmarks() {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user logged in.")
-            return
-        }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
         
         let db = Firestore.firestore()
         
         if let selectedStatus = selectedStatus, let book = book {
             let listRef = db.collection("users").document(userID).collection("lists").document(selectedStatus.rawValue)
+            
             listRef.updateData([
                 "bookIDs": FieldValue.arrayUnion([book.id]),
+                "title": selectedStatus.rawValue,
                 "timestamp": FieldValue.serverTimestamp()
             ]) { error in
-                if let error = error {
-                    print("Error saving to status list: \(error)")
-                } else {
-                    print("Book saved to status list: \(selectedStatus.rawValue)")
+                if let error = error { return }
+            }
+        }
+        
+        for customListName in selectedCustomLists {
+            if let book = book {
+                let customListRef = db.collection("users").document(userID).collection("customLists").document(customListName)
+                
+                customListRef.updateData([
+                    "bookIDs": FieldValue.arrayUnion([book.id]),
+                    "timestamp": FieldValue.serverTimestamp()
+                ]) { error in
+                    if let error = error { return }
                 }
             }
         }
@@ -155,22 +165,25 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
         for customListName in selectedCustomLists {
             if let book = book {
                 let customListRef = db.collection("users").document(userID).collection("customLists").document(customListName)
-                customListRef.updateData([
-                    "bookIDs": FieldValue.arrayUnion([book.id]),
-                    "timestamp": FieldValue.serverTimestamp()
-                ]) { error in
-                    if let error = error {
-                        print("Error saving to custom list \(customListName): \(error)")
-                    } else {
-                        print("Book saved to custom list: \(customListName)")
+                
+                customListRef.getDocument { (document, error) in
+                    if let error = error { return }
+                    
+                    if document?.exists == false {
+                        customListRef.setData([
+                            "bookIDs": [book.id],
+                            "timestamp": FieldValue.serverTimestamp()
+                        ]) { error in
+                            if let error = error { return }
+                        }
                     }
                 }
             }
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -189,13 +202,18 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
             cell.textLabel?.text = status.rawValue
             cell.accessoryType = selectedStatus == status ? .checkmark : .none
         } else {
-            let customListName = Array(customLists.keys)[indexPath.row]
-            cell.textLabel?.text = customListName
-            cell.accessoryType = selectedCustomLists.contains(customListName) ? .checkmark : .none
+            let customListKeys = Array(customLists.keys)
+            let customListKey = customListKeys[indexPath.row]
+            if let customList = customLists[customListKey] {
+                let customListName = customList.title
+                cell.textLabel?.text = customListName
+                cell.accessoryType = selectedCustomLists.contains(customListName) ? .checkmark : .none
+            }
         }
         
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {

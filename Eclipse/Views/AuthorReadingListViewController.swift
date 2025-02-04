@@ -22,11 +22,12 @@ class AuthorReadingListViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return statusLists.filter { !$0.isPrivate }.count
-        } else {
-            return customLists.filter { !$0.value.isPrivate }.keys.count
-        }
+//        if section == 0 {
+//            return statusLists.filter { !$0.isPrivate }.count
+//        } else {
+//            return customLists.filter { !$0.value.isPrivate }.keys.count
+//        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,16 +35,16 @@ class AuthorReadingListViewController: UIViewController, UITableViewDelegate, UI
             return UITableViewCell()
         }
 
-        if indexPath.section == 0 {
-            let publicStatusLists = statusLists.filter { !$0.isPrivate }
-            let statusList = publicStatusLists[indexPath.row]
-            configure(cell, with: statusList, using: mockBooks)
-        } else {
-            let publicCustomLists = customLists.filter { !$0.value.isPrivate }
-            let customListName = Array(publicCustomLists.keys)[indexPath.row]
-            let customList = publicCustomLists[customListName]!
-            configure(cell, with: customList, using: mockBooks)
-        }
+//        if indexPath.section == 0 {
+//            let publicStatusLists = statusLists.filter { !$0.isPrivate }
+//            let statusList = publicStatusLists[indexPath.row]
+//            configure(cell, with: statusList, using: mockBooks)
+//        } else {
+//            let publicCustomLists = customLists.filter { !$0.value.isPrivate }
+//            let customListName = Array(publicCustomLists.keys)[indexPath.row]
+//            let customList = publicCustomLists[customListName]!
+//            configure(cell, with: customList, using: mockBooks)
+//        }
 
         return cell
     }
@@ -103,15 +104,15 @@ class AuthorReadingListViewController: UIViewController, UITableViewDelegate, UI
            let destinationVC = segue.destination as? CustomListViewController,
            let indexPath = sender as? IndexPath {
             if indexPath.section == 0 {
-                let publicStatusLists = statusLists.filter { !$0.isPrivate }
-                let selectedStatus = publicStatusLists[indexPath.row]
-                destinationVC.selectedListTitle = selectedStatus.title
+//                let publicStatusLists = statusLists.filter { !$0.isPrivate }
+//                let selectedStatus = publicStatusLists[indexPath.row]
+//                destinationVC.selectedListTitle = selectedStatus.title
 //                destinationVC.allBooks = mockBooks.filter { selectedStatus.bookIDs.contains($0.id) }
             } else if indexPath.section == 1 {
-                let publicCustomLists = customLists.filter { !$0.value.isPrivate }
-                let customListName = Array(publicCustomLists.keys)[indexPath.row]
-                let selectedCustomList = publicCustomLists[customListName]!
-                destinationVC.selectedListTitle = selectedCustomList.title
+//                let publicCustomLists = customLists.filter { !$0.value.isPrivate }
+//                let customListName = Array(publicCustomLists.keys)[indexPath.row]
+//                let selectedCustomList = publicCustomLists[customListName]!
+//                destinationVC.selectedListTitle = selectedCustomList.title
 //                destinationVC.allBooks = mockBooks.filter { selectedCustomList.bookIDs.contains($0.id) }
             }
         }
