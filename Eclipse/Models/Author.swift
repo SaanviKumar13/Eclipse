@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
+import UIKit
 
-struct Author: Identifiable {
-    var id = UUID()
+struct Author {
+    var authorID: String
     var name: String
     var bio: String
-    var image: String
-    var books: [Book]
+    var image: UIImage
 }

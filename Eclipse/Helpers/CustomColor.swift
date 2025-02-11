@@ -2,23 +2,30 @@
 //  CustomColor.swift
 //  Eclipse
 //
-//  Created by admin48 on 09/11/24.
+//  Created by user@87 on 15/11/24.
 //
 
 import Foundation
 import UIKit
 
+import UIKit
+
 extension UIColor {
-    convenience init(hex: String) {
+    convenience init(hex: String, alpha: CGFloat? = nil) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.hasPrefix("#") ? String(hexSanitized.dropFirst()) : hexSanitized
-
-        var rgb: UInt64 = 0
-        Scanner(string: hexSanitized).scanHexInt64(&rgb)
-
-        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgb & 0x0000FF) / 255.0
-        self.init(red: red, green: green, blue: blue, alpha: 1.0)
+        if hexSanitized.hasPrefix("#") {
+            hexSanitized.removeFirst()
+        }
+        if hexSanitized.count == 6 {
+            var rgb: UInt64 = 0
+            Scanner(string: hexSanitized).scanHexInt64(&rgb)
+            let red = CGFloat((rgb >> 16) & 0xFF) / 255.0
+            let green = CGFloat((rgb >> 8) & 0xFF) / 255.0
+            let blue = CGFloat(rgb & 0xFF) / 255.0
+            let finalAlpha = alpha ?? 1.0
+            self.init(red: red, green: green, blue: blue, alpha: finalAlpha)
+        } else {
+            self.init(white: 0.0, alpha: 1.0)
+        }
     }
 }

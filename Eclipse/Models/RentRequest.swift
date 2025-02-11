@@ -5,12 +5,14 @@
 //  Created by user@87 on 28/10/24.
 //
 
-import Foundation
+import UIKit
 
-struct RentRequest {
-    var id: String
-    var user: User
-    var book: Book
-    var days: Int
-    var money: Double
+struct BookRequest {
+    let title: String
+    let renter: String
+    let profileImage: UIImage
+    let price: String
+    let days: String
+    let bookCover: UIImage
+    let status: String
 }
