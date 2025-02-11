@@ -40,3 +40,5 @@ class BookCell: UICollectionViewCell {
         imageView.image = book.coverImageURL
     }
 }
+
+

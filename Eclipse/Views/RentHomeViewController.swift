@@ -456,15 +456,15 @@ class RentHomeViewController: UIViewController {
         return searchBar
     }()
     
-    private let profileButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
-        let image = UIImage(named: "profile")
-        button.setImage(image, for: .normal)
-        button.tintColor = .systemBlue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+//    private let profileButton: UIButton = {
+//        let button = UIButton()
+//        let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+//        let image = UIImage(named: "profile")
+//        button.setImage(image, for: .normal)
+//        button.tintColor = .systemBlue
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -564,7 +564,7 @@ class RentHomeViewController: UIViewController {
         view.addSubview(seeMoreButton)
         scrollView.addSubview(contentView)
         
-        [searchContainer, profileButton, titleLabel, currentlyRentedLabel, seeMoreButton,
+        [searchContainer, /*profileButton,*/ titleLabel, currentlyRentedLabel, seeMoreButton,
          currentlyRentedCollectionView, rentersLabel, rentersCollectionView,
          suggestedBooksLabel, suggestedBooksCollectionView].forEach {
             contentView.addSubview($0)
@@ -595,13 +595,13 @@ class RentHomeViewController: UIViewController {
             
             searchBar.leadingAnchor.constraint(equalTo: searchContainer.leadingAnchor, constant: 8),
             searchBar.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: profileButton.leadingAnchor, constant: -8),
+            searchBar.trailingAnchor.constraint(equalTo: searchContainer.trailingAnchor, constant: -8),
             
-            profileButton.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor),
-            profileButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            profileButton.widthAnchor.constraint(equalToConstant: 40),
-            profileButton.heightAnchor.constraint(equalToConstant: 40),
-            
+//            profileButton.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor),
+//            profileButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+//            profileButton.widthAnchor.constraint(equalToConstant: 40),
+//            profileButton.heightAnchor.constraint(equalToConstant: 40),
+//            
             titleLabel.topAnchor.constraint(equalTo: searchContainer.bottomAnchor, constant: 30),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             

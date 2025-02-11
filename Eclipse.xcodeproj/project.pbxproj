@@ -111,6 +111,9 @@
 		27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */; };
 		27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */; };
 		27F9830A2CE319050055C114 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 27F983092CE319050055C114 /* .gitignore */; };
+		FFE122252D5BBF6A008129D2 /* RentalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122242D5BBF6A008129D2 /* RentalModels.swift */; };
+		FFE122272D5BBFBA008129D2 /* RentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122262D5BBFBA008129D2 /* RentalService.swift */; };
+		FFE122292D5BC2BF008129D2 /* GoogleBooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +217,9 @@
 		27DAA0372CDA2880002EC79A /* AddToLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryViewController.swift; sourceTree = "<group>"; };
 		27DAA0392CDA2D48002EC79A /* AddToLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToLibraryTableViewCell.swift; sourceTree = "<group>"; };
 		27F983092CE319050055C114 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FFE122242D5BBF6A008129D2 /* RentalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalModels.swift; sourceTree = "<group>"; };
+		FFE122262D5BBFBA008129D2 /* RentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalService.swift; sourceTree = "<group>"; };
+		FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +289,10 @@
 		27817B942CCF8F96003D3905 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FFE122242D5BBF6A008129D2 /* RentalModels.swift */,
+				FFE122262D5BBFBA008129D2 /* RentalService.swift */,
 				27817B952CCF8FA3003D3905 /* User.swift */,
+				FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */,
 				27817B972CCF8FC3003D3905 /* Book.swift */,
 				27817B992CCF8FDC003D3905 /* Library.swift */,
 				27817B9D2CCF901F003D3905 /* Author.swift */,
@@ -491,6 +500,7 @@
 				27DAA03A2CDA2D48002EC79A /* AddToLibraryTableViewCell.swift in Sources */,
 				27C21B342CE869490035C957 /* CategoryData.swift in Sources */,
 				271130382CEC87C300F5510C /* RenterData.swift in Sources */,
+				FFE122292D5BC2BF008129D2 /* GoogleBooksAPI.swift in Sources */,
 				27C21B292CE74E030035C957 /* QuizData.swift in Sources */,
 				27C21B382CE875230035C957 /* AuthorData.swift in Sources */,
 				27DAA0382CDA2880002EC79A /* AddToLibraryViewController.swift in Sources */,
@@ -557,6 +567,7 @@
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
 				271130102CEB302800F5510C /* RatingPopupView.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
+				FFE122272D5BBFBA008129D2 /* RentalService.swift in Sources */,
 				27DAA0302CD68EC9002EC79A /* StatusBookTableViewCell.swift in Sources */,
 				2783668B2CEB00D3003036A9 /* GuidedListData.swift in Sources */,
 				27112FEF2CEB1A2300F5510C /* CreateAccountViewController.swift in Sources */,
@@ -576,6 +587,7 @@
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
 				27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */,
+				FFE122252D5BBF6A008129D2 /* RentalModels.swift in Sources */,
 				278366792CE88786003036A9 /* RecommendedList.swift in Sources */,
 				271130362CEC875900F5510C /* CuratedListsData.swift in Sources */,
 				27BC97A52CECE347004EC100 /* RentersNearbyViewController.swift in Sources */,
