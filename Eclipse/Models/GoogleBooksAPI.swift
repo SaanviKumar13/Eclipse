@@ -31,6 +31,7 @@ struct GoogleVolumeInfo: Codable {  // Renamed to avoid conflicts
 
 struct GoogleImageLinks: Codable { // Renamed to avoid conflicts
     let thumbnail: String?
+    let smallThumbnail: String?
 }
 
 // MARK: - API Service

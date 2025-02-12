@@ -59,13 +59,13 @@ class RentalRequestsAcceptViewController: UIViewController, UITableViewDataSourc
     }
         
     @objc private func profileButtonTapped() {
-        let booksViewController = RentersProfileViewController()
+//        let booksViewController = RentersProfileViewController()
 
         let backButton = UIBarButtonItem()
         backButton.image = UIImage(systemName: "chevron.left")
         backButton.tintColor = UIColor.black
-        booksViewController.navigationItem.leftBarButtonItem = backButton
-
-        navigationController?.pushViewController(booksViewController, animated: true)
+//        booksViewController.navigationItem.leftBarButtonItem = backButton
+//
+//        navigationController?.pushViewController(booksViewController, animated: true)
     }
 }

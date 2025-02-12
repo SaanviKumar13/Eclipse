@@ -366,9 +366,9 @@ class ViewController: UIViewController {
 //                    navigationController?.pushViewController(bookVC, animated: true)
                 } else if collectionView == topRentersCollectionView {
                     let renter = topRenters[indexPath.item]
-                    let renterProfileVC = RentersProfileViewController()
-                    renterProfileVC.hidesBottomBarWhenPushed = true
-                    navigationController?.pushViewController(renterProfileVC, animated: true)
+//                    let renterProfileVC = RentersProfileViewController()
+//                    renterProfileVC.hidesBottomBarWhenPushed = true
+//                    navigationController?.pushViewController(renterProfileVC, animated: true)
                 }
                 else if collectionView == self.undiscoveredGemsCollectionView{
                     let selectedBook = mockBooks[indexPath.item]

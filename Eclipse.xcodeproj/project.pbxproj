@@ -114,6 +114,10 @@
 		FFE122252D5BBF6A008129D2 /* RentalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122242D5BBF6A008129D2 /* RentalModels.swift */; };
 		FFE122272D5BBFBA008129D2 /* RentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122262D5BBFBA008129D2 /* RentalService.swift */; };
 		FFE122292D5BC2BF008129D2 /* GoogleBooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */; };
+		FFE1222B2D5C4112008129D2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE1222A2D5C4112008129D2 /* ImageLoader.swift */; };
+		FFE1222E2D5C4226008129D2 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FFE1222D2D5C4226008129D2 /* SDWebImage */; };
+		FFE122302D5C4226008129D2 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFE1222F2D5C4226008129D2 /* SDWebImageMapKit */; };
+		FFE122322D5C7809008129D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE122312D5C7808008129D2 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +224,8 @@
 		FFE122242D5BBF6A008129D2 /* RentalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalModels.swift; sourceTree = "<group>"; };
 		FFE122262D5BBFBA008129D2 /* RentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalService.swift; sourceTree = "<group>"; };
 		FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksAPI.swift; sourceTree = "<group>"; };
+		FFE1222A2D5C4112008129D2 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		FFE122312D5C7808008129D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,8 +236,10 @@
 				277CABFB2D43F67000B744CA /* FirebaseAnalytics in Frameworks */,
 				277CABFF2D43F67000B744CA /* FirebaseCore in Frameworks */,
 				277CAC012D43F67000B744CA /* FirebaseDatabase in Frameworks */,
+				FFE1222E2D5C4226008129D2 /* SDWebImage in Frameworks */,
 				277CAC032D43F67000B744CA /* FirebaseFirestore in Frameworks */,
 				277CABFD2D43F67000B744CA /* FirebaseAuth in Frameworks */,
+				FFE122302D5C4226008129D2 /* SDWebImageMapKit in Frameworks */,
 				277CAC052D43F67000B744CA /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +301,7 @@
 				FFE122262D5BBFBA008129D2 /* RentalService.swift */,
 				27817B952CCF8FA3003D3905 /* User.swift */,
 				FFE122282D5BC2BF008129D2 /* GoogleBooksAPI.swift */,
+				FFE1222A2D5C4112008129D2 /* ImageLoader.swift */,
 				27817B972CCF8FC3003D3905 /* Book.swift */,
 				27817B992CCF8FDC003D3905 /* Library.swift */,
 				27817B9D2CCF901F003D3905 /* Author.swift */,
@@ -352,6 +361,7 @@
 				271130312CEC608100F5510C /* BookListViewController.swift */,
 				27BC97A42CECE347004EC100 /* RentersNearbyViewController.swift */,
 				27BC97A82CED0F77004EC100 /* CustomerChatViewController.swift */,
+				FFE122312D5C7808008129D2 /* SearchViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -435,6 +445,8 @@
 				277CAC002D43F67000B744CA /* FirebaseDatabase */,
 				277CAC022D43F67000B744CA /* FirebaseFirestore */,
 				277CAC042D43F67000B744CA /* FirebaseStorage */,
+				FFE1222D2D5C4226008129D2 /* SDWebImage */,
+				FFE1222F2D5C4226008129D2 /* SDWebImageMapKit */,
 			);
 			productName = Eclipse;
 			productReference = 27817B7D2CCF8DC2003D3905 /* Eclipse.app */;
@@ -466,6 +478,7 @@
 			mainGroup = 27817B742CCF8DC2003D3905;
 			packageReferences = (
 				277CABF92D43F67000B744CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FFE1222C2D5C4226008129D2 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 27817B7E2CCF8DC2003D3905 /* Products */;
 			projectDirPath = "";
@@ -564,6 +577,7 @@
 				27BC97AB2CED0FA2004EC100 /* CustomerMessageTableViewCell.swift in Sources */,
 				27817B982CCF8FC3003D3905 /* Book.swift in Sources */,
 				27112FEB2CEB192E00F5510C /* AuthorPreferencesViewController.swift in Sources */,
+				FFE1222B2D5C4112008129D2 /* ImageLoader.swift in Sources */,
 				27817BD12CD54D0D003D3905 /* ReadingListTableViewCell.swift in Sources */,
 				271130102CEB302800F5510C /* RatingPopupView.swift in Sources */,
 				27817B832CCF8DC2003D3905 /* SceneDelegate.swift in Sources */,
@@ -587,6 +601,7 @@
 				27817B9A2CCF8FDC003D3905 /* Library.swift in Sources */,
 				27817BD92CD60F71003D3905 /* ListData.swift in Sources */,
 				27C21B252CE74D770035C957 /* QuizOptionCollectionViewCell.swift in Sources */,
+				FFE122322D5C7809008129D2 /* SearchViewController.swift in Sources */,
 				FFE122252D5BBF6A008129D2 /* RentalModels.swift in Sources */,
 				278366792CE88786003036A9 /* RecommendedList.swift in Sources */,
 				271130362CEC875900F5510C /* CuratedListsData.swift in Sources */,
@@ -822,6 +837,14 @@
 				minimumVersion = 11.7.0;
 			};
 		};
+		FFE1222C2D5C4226008129D2 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -854,6 +877,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 277CABF92D43F67000B744CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FFE1222D2D5C4226008129D2 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE1222C2D5C4226008129D2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		FFE1222F2D5C4226008129D2 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE1222C2D5C4226008129D2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

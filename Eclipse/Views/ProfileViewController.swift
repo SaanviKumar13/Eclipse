@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let actionOptions = [
         "Report a Problem",
+        "Add Books to Profile",
         "Log Out"
     ]
     
@@ -135,6 +136,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let raiseProblemVC = RaiseProblemViewController()
             navigationController?.pushViewController(raiseProblemVC, animated: true)
         case 1:
+            let searchVC = SearchViewController() // Navigate to SearchViewController
+            navigationController?.pushViewController(searchVC, animated: true)
+        case 2:
             showLogoutConfirmationPopup()
         default:
             break
@@ -162,13 +166,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let confirmationAlert = UIAlertController(
                     title: "Notifications Enabled",
                     message: "You will now receive notifications.",
-                    preferredStyle: .alert
-                )
-                confirmationAlert.addAction(UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: nil
-                ))
+                                    preferredStyle: .alert
+                                )
+                                confirmationAlert.addAction(UIAlertAction(
+                                    title: "OK",
+                                    style: .default,
+                                    handler: nil
+                                ))
                 self?.present(confirmationAlert, animated: true, completion: nil)
             }
         ))
