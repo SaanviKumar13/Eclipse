@@ -90,9 +90,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         setupUI()
+        setupLongPressGesture()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         checkUserLoginStatus()
         loadRenterData()
-        setupLongPressGesture()
     }
 
     // MARK: - UI Setup

@@ -421,17 +421,20 @@ func fetchRecommendedLists(completion: @escaping ([RecommendedList]?, Error?) ->
 // MARK: - 1. Search for Books (Cache or API)
 
 func searchBooks(query: String, completion: @escaping (Result<[BookF], Error>) -> Void) {
+    // Check if books are available in Core Data cache
     if let cachedBooks = CoreDataManager.shared.fetchBooks(for: query), !cachedBooks.isEmpty {
         completion(.success(cachedBooks))
         return
     }
 
+    // Encode the query and construct the API URL
     guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
           let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(encodedQuery)&key=\(apiKey)") else {
         completion(.failure(NSError(domain: "com.app.invalidURL", code: 400, userInfo: nil)))
         return
     }
 
+    // Fetch data from API
     URLSession.shared.dataTask(with: url) { data, _, error in
         if let error = error {
             completion(.failure(error))
@@ -444,10 +447,14 @@ func searchBooks(query: String, completion: @escaping (Result<[BookF], Error>) -
         }
 
         do {
+            // Decode the API response
             let response = try JSONDecoder().decode(BookResponse.self, from: data)
-            let books = response.items ?? []
-
+            
+            // Map BookItem to BookF using the adapter
+            let books = response.items?.compactMap { BookAdapter.adapt($0) } ?? []
+            
             DispatchQueue.main.async {
+                // Save fetched books to Core Data for future caching
                 CoreDataManager.shared.saveBooks(books, for: query)
                 completion(.success(books))
             }
@@ -485,9 +492,12 @@ func fetchBooks(query: String, completion: @escaping (Result<[BookF], Error>) ->
         }
 
         do {
+            // Decode the API response
             let response = try JSONDecoder().decode(BookResponse.self, from: data)
-            let books = response.items ?? []
-
+            
+            // Map BookItem to BookF using the adapter
+            let books = response.items?.compactMap { BookAdapter.adapt($0) } ?? []
+            
             DispatchQueue.main.async {
                 // Save fetched books to Core Data for future caching
                 CoreDataManager.shared.saveBooks(books, for: query)

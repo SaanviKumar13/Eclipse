@@ -38,6 +38,35 @@ struct List {
     }
 }
 
+struct BookResponse: Codable {
+    let items: [BookItem]?
+}
+
+struct BookItem: Codable {
+    let id: String
+    let volumeInfo: VolumeInfo
+}
+
+// MARK: - Adapter
+struct BookAdapter {
+    static func adapt(_ bookItem: BookItem) -> BookF {
+        let volumeInfo = bookItem.volumeInfo
+        
+        return BookF(
+            id: bookItem.id,
+            title: volumeInfo.title ?? "No Title",
+            subtitle: nil, // Not available in the API response
+            authors: volumeInfo.authors,
+            description: volumeInfo.description,
+            averageRating: volumeInfo.averageRating,
+            ratingsCount: volumeInfo.ratingsCount,
+            imageLinks: volumeInfo.imageLinks,
+            previewLink: volumeInfo.previewLink,
+            pageCount: volumeInfo.pageCount
+        )
+    }
+}
+
 // MARK: - ImageLinks Model
 struct ImageLinks: Codable {
     let smallThumbnail: String?
@@ -73,10 +102,6 @@ struct VolumeInfo: Codable {
     let imageLinks: ImageLinks?
     let previewLink: String?
     let pageCount: Int?
-}
-
-struct BookResponse: Encodable, Decodable {
-    let items: [BookF]?
 }
 
 struct RecommendedList{

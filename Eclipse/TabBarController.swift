@@ -10,9 +10,9 @@ class TabBarController: UITabBarController {
     
     private func configureTabBar() {
         tabBar.isTranslucent = false
-        tabBar.backgroundImage = UIImage()  // Ensures a solid background
-        tabBar.shadowImage = UIImage()  // Removes the shadow line
-        tabBar.barTintColor = .white  // Ensures tab bar is white
+        tabBar.backgroundImage = UIImage()  
+        tabBar.shadowImage = UIImage()
+        tabBar.barTintColor = .white
         tabBar.backgroundColor = .white
     }
 
@@ -27,9 +27,13 @@ class TabBarController: UITabBarController {
 
     private func createNavController(viewController: UIViewController, title: String, imageName: String) -> UINavigationController {
         viewController.view.backgroundColor = .white
+        viewController.title = title
+        viewController.navigationItem.largeTitleDisplayMode = .always
+
         let navController = UINavigationController(rootViewController: viewController)
+        navController.navigationBar.prefersLargeTitles = true
         navController.tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: imageName), tag: 0)
+
         return navController
     }
 }
-

@@ -151,6 +151,7 @@ class BookViewController: UIViewController {
             }
         }
     }
+    
     @objc private func addToLibraryTapped() {
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
