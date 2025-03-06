@@ -4,7 +4,7 @@ import Firebase
 import FirebaseFirestore
 import CoreData
 
-let apiKey = "AIzaSyBt1YPMwzU2Yzlc0gKAUDPKJnG_UQ4UgRc" // Replace with your actual API key
+let apiKey = "" // Replace with your actual API key
 let db = Firestore.firestore()
 
 /// Adapter to convert Firestore data into a `BookF` model.
@@ -52,7 +52,7 @@ func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
 ///   - userID: The ID of the user.
 ///   - completion: A completion handler returning a `Result` with an array of `List` objects or an `Error`.
 func fetchStatusLists(userID: String, completion: @escaping (Result<[List], Error>) -> Void) {
-    let ref = db.collection("users").document(userID).collection("statusLists")
+    let ref = db.collection("users").document(userID).collection("lists")
     ref.getDocuments { snapshot, error in
         if let error = error {
             completion(.failure(error))
@@ -143,6 +143,47 @@ func fetchBookDetails(bookID: String, completion: @escaping (BookF?) -> Void) {
         completion(BookFAdapter.fromFirestoreData(data))
     }
 }
+
+func fetchBookIds(from collection: String, userID: String, completion: @escaping (Result<Set<String>, Error>) -> Void) {
+       db.collection("users").document(userID).collection(collection).getDocuments { snapshot, error in
+           if let error = error {
+               print("Error fetching \(collection): \(error.localizedDescription)")
+               completion(.failure(error))
+               return
+           }
+           
+           let bookIds = snapshot?.documents.compactMap { document -> [String]? in
+               document.data()["bookIDs"] as? [String]
+           }.flatMap { $0 } ?? []
+           
+           completion(.success(Set(bookIds)))
+       }
+   }
+
+func fetchAllBookIds(userID: String, completion: @escaping (Result<Set<String>, Error>) -> Void) {
+       let group = DispatchGroup()
+       var allBookIds = Set<String>()
+
+       group.enter()
+       fetchBookIds(from: "lists", userID: userID) { result in
+           defer { group.leave() }
+           if case .success(let ids) = result {
+               allBookIds.formUnion(ids)
+           }
+       }
+
+       group.enter()
+       fetchBookIds(from: "customLists", userID: userID) { result in
+           defer { group.leave() }
+           if case .success(let ids) = result {
+               allBookIds.formUnion(ids)
+           }
+       }
+
+       group.notify(queue: .main) {
+           completion(.success(allBookIds))
+       }
+   }
 
 /// Fetches details of a renter.
 /// - Parameters:

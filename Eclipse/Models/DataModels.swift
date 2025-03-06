@@ -104,6 +104,11 @@ struct VolumeInfo: Codable {
     let pageCount: Int?
 }
 
+struct VolumeItem: Codable {
+    let id: String
+    let volumeInfo: VolumeInfo?
+}
+
 struct RecommendedList{
     var title: String
     var subtitle: String

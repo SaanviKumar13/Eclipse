@@ -80,6 +80,26 @@ class RecommendedListCollectionViewCell: UICollectionViewCell, UICollectionViewD
         cell.configure(with: book)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBook = books[indexPath.item] // Get the selected book
+        let bookVC = BookViewController(book: selectedBook) // Pass the book to the view controller
+        if let parentVC = findParentViewController() {
+            parentVC.navigationController?.pushViewController(bookVC, animated: true)
+        }
+    }
+
+    // Helper function to find the parent view controller
+    private func findParentViewController() -> UIViewController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let viewController = nextResponder as? UIViewController {
+                return viewController
+            }
+            responder = nextResponder
+        }
+        return nil
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120, height: 180) // Adjusted size for book cells

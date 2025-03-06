@@ -18,7 +18,7 @@ class LibraryViewController: UIViewController {
         title = "Library"
         view.backgroundColor = .systemBackground
         setupLayout()
-        showViewController(allBooksVC)  // Default to AllBooksViewController
+        showViewController(allBooksVC)
     }
 
     private func setupLayout() {
