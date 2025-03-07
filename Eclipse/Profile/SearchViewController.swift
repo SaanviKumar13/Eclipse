@@ -124,7 +124,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBook = searchResults[indexPath.row]
-        let bookVC = BookViewController(book: selectedBook)
+        let bookVC = ProfileBookViewController(book: selectedBook)
         navigationController?.pushViewController(bookVC, animated: true)
     }
 }

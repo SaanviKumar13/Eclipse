@@ -75,6 +75,8 @@
 		27EEB8962D7A0F6900A867D3 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8952D7A0F6900A867D3 /* ReadingListTableViewCell.swift */; };
 		27EEB8982D7A0F8C00A867D3 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8972D7A0F8C00A867D3 /* StatusListViewController.swift */; };
 		27EEB89A2D7AA50F00A867D3 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8992D7AA50F00A867D3 /* BookTableViewCell.swift */; };
+		27EEB89C2D7AC8C300A867D3 /* ProfileBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB89B2D7AC8C300A867D3 /* ProfileBookViewController.swift */; };
+		27EEB89E2D7ACD3000A867D3 /* RentBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB89D2D7ACD3000A867D3 /* RentBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +140,8 @@
 		27EEB8952D7A0F6900A867D3 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
 		27EEB8972D7A0F8C00A867D3 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		27EEB8992D7AA50F00A867D3 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		27EEB89B2D7AC8C300A867D3 /* ProfileBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBookViewController.swift; sourceTree = "<group>"; };
+		27EEB89D2D7ACD3000A867D3 /* RentBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +214,7 @@
 			children = (
 				2791BD572D66EC7C00A6CB52 /* ViewCells */,
 				276D6D2B2D646D020041317C /* HomeViewController.swift */,
+				276D6D572D64911B0041317C /* BookViewController.swift */,
 				276D6D3D2D648E070041317C /* BookListViewController.swift */,
 				276D6D3F2D648E5F0041317C /* SwipeViewController.swift */,
 			);
@@ -221,10 +226,10 @@
 			children = (
 				276D6D862D64E1770041317C /* ViewCells */,
 				276D6D312D646D740041317C /* ProfileViewController.swift */,
-				276D6D572D64911B0041317C /* BookViewController.swift */,
 				276D6D802D64DC7A0041317C /* EditProfileController.swift */,
 				276D6D822D64DCA40041317C /* BookSupportViewController.swift */,
 				276D6D842D64DCE20041317C /* SearchViewController.swift */,
+				27EEB89B2D7AC8C300A867D3 /* ProfileBookViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				276D6D702D649DEB0041317C /* RentersProfileViewController.swift */,
 				276D6D762D649ECD0041317C /* ChatViewController.swift */,
 				276D6D782D64A0080041317C /* RatingPopupView.swift */,
+				27EEB89D2D7ACD3000A867D3 /* RentBookViewController.swift */,
 			);
 			path = Rent;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				276D6D852D64DCE20041317C /* SearchViewController.swift in Sources */,
 				276D6D292D646CD40041317C /* TabBarController.swift in Sources */,
 				276D6D302D646D600041317C /* LibraryViewController.swift in Sources */,
+				27EEB89E2D7ACD3000A867D3 /* RentBookViewController.swift in Sources */,
 				2791BD5F2D67169000A6CB52 /* RentalRequestsProcessingViewController.swift in Sources */,
 				2791BD562D66EC7500A6CB52 /* RecommendedListCollectionViewCell.swift in Sources */,
 				276D6D152D64649C0041317C /* AppDelegate.swift in Sources */,
@@ -463,6 +470,7 @@
 				276D6D882D64E1920041317C /* BookCell.swift in Sources */,
 				276D6D8B2D64E9850041317C /* LoginViewController.swift in Sources */,
 				276D6D402D648E5F0041317C /* SwipeViewController.swift in Sources */,
+				27EEB89C2D7AC8C300A867D3 /* ProfileBookViewController.swift in Sources */,
 				27EEB8942D7A0F5100A867D3 /* ReadingListViewController.swift in Sources */,
 				2791BD642D676A6700A6CB52 /* CachedBook.xcdatamodeld in Sources */,
 				276D6D582D64911B0041317C /* BookViewController.swift in Sources */,

@@ -37,18 +37,6 @@
 //        return label
 //    }()
 //
-//    private let buyButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Buy", for: .normal)
-//        button.setTitleColor(UIColor(hex: "005C78"), for: .normal)
-//        button.layer.borderColor = UIColor(hex: "005C78").cgColor
-//        button.layer.borderWidth = 2
-//        button.layer.cornerRadius = 8
-//        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//
 //    private let rentButton: UIButton = {
 //        let button = UIButton(type: .system)
 //        button.setTitle("Rent", for: .normal)
@@ -151,7 +139,7 @@
 //            }
 //        }
 //    }
-//    
+//
 //    @objc private func addToLibraryTapped() {
 //        guard let userID = Auth.auth().currentUser?.uid else { return }
 //
@@ -170,7 +158,7 @@
 //            guard let self = self,
 //                  let priceText = alert.textFields?.first?.text,
 //                  let price = Double(priceText) else { return }
-//            
+//
 //            // Prepare book data with price
 //            let bookData: [String: Any] = [
 //                "id": self.book.id,
@@ -222,7 +210,7 @@
 //        navController.modalPresentationStyle = .formSheet
 //        present(navController, animated: true, completion: nil)
 //    }
-//    
+//
 //    private func showConfirmationAlert() {
 //        let alert = UIAlertController(title: "Success", message: "Book added to your rentals!", preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -236,7 +224,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class BookViewController: UIViewController {
+class ProfileBookViewController: UIViewController {
     private let book: BookF
     private let db = Firestore.firestore()
     private var isBookAdded: Bool = false
@@ -284,19 +272,12 @@ class BookViewController: UIViewController {
 
     private let rentButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Rent", for: .normal)
+        button.setTitle("Add Book", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(hex: "005C78")
         button.layer.cornerRadius = 8
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
         button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    private let bookmarkButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        button.tintColor = .systemBlue
         return button
     }()
 
@@ -315,16 +296,12 @@ class BookViewController: UIViewController {
         configureUI()
         checkIfBookIsAdded()
 
-        rentButton.addTarget(self, action: #selector(navigateToRentersNearby), for: .touchUpInside)
-        bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
+        rentButton.addTarget(self, action: #selector(rentButtonTapped), for: .touchUpInside)
     }
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = book.title
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(customView: bookmarkButton)
-        ]
 
         // Add scrollView to the main view
         view.addSubview(scrollView)
@@ -419,16 +396,62 @@ class BookViewController: UIViewController {
         }
     }
 
-    @objc private func navigateToRentersNearby() {
-        // Navigation code here
-    }
-
-    @objc private func bookmarkButtonTapped() {
-        let addToLibraryVC = AddToLibraryViewController()
-        addToLibraryVC.book = book
-
-        let navController = UINavigationController(rootViewController: addToLibraryVC)
-        navController.modalPresentationStyle = .formSheet
-        present(navController, animated: true, completion: nil)
-    }
+    @objc private func rentButtonTapped() {
+            guard let userID = Auth.auth().currentUser?.uid else { return }
+    
+            let alert = UIAlertController(title: "Enter Price", message: "Enter the price you want to rent the book for per day", preferredStyle: .alert)
+    
+            alert.addTextField { textField in
+                textField.placeholder = "Price per day"
+                textField.keyboardType = .decimalPad
+            }
+    
+            // Cancel button
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    
+            // Save button
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+                guard let self = self,
+                      let priceText = alert.textFields?.first?.text,
+                      let price = Double(priceText) else { return }
+    
+                // Prepare book data with price
+                let bookData: [String: Any] = [
+                    "id": self.book.id,
+                    "title": self.book.title,
+                    "authors": self.book.authors ?? [],
+                    "imageURL": self.book.imageLinks?.thumbnail ?? "",
+                    "addedAt": Timestamp(),
+                    "description": self.book.description ?? "",
+                    "price": price // Store the entered price
+                ]
+    
+                // Store book data in Firestore
+                self.db.collection("renters").document(userID).setData([
+                    "rentedBooks": FieldValue.arrayUnion([bookData])
+                ], merge: true) { error in
+                    if error == nil {
+                        self.isBookAdded = true
+                        self.showConfirmationAlert()
+                    } else {
+                        // Handle error if any
+                        self.showErrorMessage("Failed to add the book to your library.")
+                    }
+                }
+            })
+    
+            present(alert, animated: true)
+        }
+    
+    private func showConfirmationAlert() {
+            let alert = UIAlertController(title: "Success", message: "Book added to your rentals!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    
+        private func showErrorMessage(_ message: String) {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
 }

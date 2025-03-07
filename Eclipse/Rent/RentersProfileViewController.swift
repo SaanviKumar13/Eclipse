@@ -253,8 +253,8 @@ extension RentersProfileViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedBook = rentedBooks[indexPath.item]
-//        let bookVC = BookViewController(book: selectedBook)
-//        navigationController?.pushViewController(bookVC, animated: true)
+        let bookVC = RentBookViewController(book: selectedBook)
+        navigationController?.pushViewController(bookVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

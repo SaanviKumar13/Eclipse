@@ -185,10 +185,6 @@ struct RentersBook: Codable {
     let imageURL: String
     let id: String
     let addedAt: Date
-
-//    enum CodingKeys: String, CodingKey {
-//        case title, authors, description, price, imageURL, id, addedAt
-//    }
 }
 
 
