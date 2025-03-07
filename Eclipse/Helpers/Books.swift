@@ -123,6 +123,84 @@ func addCustomList(userID: String, list: List, completion: @escaping (Result<Voi
         completion(.success(()))
     }
 }
+    // Move a book from one list to another
+func moveBook(_ bookID: String, from currentStatus: String, to newStatus: String, userID: String, completion: @escaping (Error?) -> Void) {
+    let userListsRef = db.collection("users").document(userID).collection("lists")
+    let batch = db.batch()
+    
+    // Remove the book from the current list
+    let currentStatusRef = userListsRef.document(currentStatus)
+    batch.updateData(["bookIDs": FieldValue.arrayRemove([bookID])], forDocument: currentStatusRef)
+    
+    // Check if the new list exists
+    let newStatusRef = userListsRef.document(newStatus)
+    newStatusRef.getDocument { document, error in
+        if let error = error {
+            completion(error)
+            return
+        }
+        
+        if let document = document, document.exists {
+            // If the document exists, update it
+            batch.updateData(["bookIDs": FieldValue.arrayUnion([bookID])], forDocument: newStatusRef)
+        } else {
+            // If the document does not exist, create it with all required fields
+            let newListData: [String: Any] = [
+                "bookIDs": [bookID], // Array of book IDs
+                "timestamp": FieldValue.serverTimestamp(), // Current server timestamp
+                "title": newStatus // Title of the list
+            ]
+            batch.setData(newListData, forDocument: newStatusRef)
+        }
+        
+        // Commit the batch
+        batch.commit { error in
+            completion(error)
+        }
+    }
+}
+
+func deleteBook(_ bookID: String, userID: String, completion: @escaping (Error?) -> Void) {
+    let userListsRef = db.collection("users").document(userID).collection("lists")
+    
+    userListsRef.getDocuments { snapshot, error in
+        if let error = error {
+            completion(error)
+            return
+        }
+        
+        let batch = db.batch()
+        snapshot?.documents.forEach { document in
+            let docRef = userListsRef.document(document.documentID)
+            batch.updateData(["bookIDs": FieldValue.arrayRemove([bookID])], forDocument: docRef)
+        }
+        
+        batch.commit { error in
+            completion(error)
+        }
+    }
+}
+    
+func getCurrentStatus(for bookID: String, userID: String, completion: @escaping (String) -> Void) {
+    let userStatusListsRef = db.collection("users").document(userID).collection("lists")
+
+    userStatusListsRef.getDocuments { snapshot, error in
+        if let error = error {
+            print("Error fetching status lists: \(error.localizedDescription)")
+            completion("Currently Reading")
+            return
+        }
+
+        for document in snapshot!.documents {
+            if let books = document["bookIDs"] as? [String], books.contains(bookID) {
+                completion(document.documentID)
+                return
+            }
+        }
+
+        completion("Currently Reading")
+    }
+}
 
 /// Fetches book details from Firestore.
 /// - Parameters:

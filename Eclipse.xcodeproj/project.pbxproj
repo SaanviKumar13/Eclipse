@@ -74,6 +74,7 @@
 		27EEB8942D7A0F5100A867D3 /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8932D7A0F5100A867D3 /* ReadingListViewController.swift */; };
 		27EEB8962D7A0F6900A867D3 /* ReadingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8952D7A0F6900A867D3 /* ReadingListTableViewCell.swift */; };
 		27EEB8982D7A0F8C00A867D3 /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8972D7A0F8C00A867D3 /* StatusListViewController.swift */; };
+		27EEB89A2D7AA50F00A867D3 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB8992D7AA50F00A867D3 /* BookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		27EEB8932D7A0F5100A867D3 /* ReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
 		27EEB8952D7A0F6900A867D3 /* ReadingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListTableViewCell.swift; sourceTree = "<group>"; };
 		27EEB8972D7A0F8C00A867D3 /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
+		27EEB8992D7AA50F00A867D3 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 				27EEB8852D79F4D600A867D3 /* BookCollectionViewCell.swift */,
 				27EEB88F2D7A0E5000A867D3 /* CustomBookTableViewCell.swift */,
 				27EEB8952D7A0F6900A867D3 /* ReadingListTableViewCell.swift */,
+				27EEB8992D7AA50F00A867D3 /* BookTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				27EEB8922D7A0E7700A867D3 /* CustomListViewController.swift in Sources */,
 				276D6D6F2D649DD10041317C /* BorrowedBooksViewController.swift in Sources */,
 				276D6D2C2D646D020041317C /* HomeViewController.swift in Sources */,
+				27EEB89A2D7AA50F00A867D3 /* BookTableViewCell.swift in Sources */,
 				276D6D192D64649C0041317C /* ViewController.swift in Sources */,
 				276D6D2E2D646D3F0041317C /* RentHomeViewController.swift in Sources */,
 				276D6D392D646E730041317C /* Color.swift in Sources */,

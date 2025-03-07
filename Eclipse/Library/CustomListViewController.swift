@@ -13,20 +13,34 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup UI elements programmatically
         setupNavigationBar()
         setupTableView()
-        
-        // Check if there's a custom list and fetch books
-        print(customList)
         if let list = customList, !list.bookIDs.isEmpty {
             fetchBooksForList(list)
         }
     }
     
     private func setupNavigationBar() {
+        // Set the navigation bar title
         navigationItem.title = customList?.title
+        
+        // Enable large titles
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // Configure navigation bar appearance
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground // Use system background color
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.label] // Use system label color for title
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label] // Use system label color for large title
+        
+        // Apply the appearance to the navigation bar
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        
+        // Ensure the navigation bar is not translucent
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     private func setupTableView() {
@@ -37,6 +51,10 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CustomBookTableViewCell.self, forCellReuseIdentifier: "CustomListBookCell")
+        
+        // Add long-press gesture recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        tableView.addGestureRecognizer(longPressGesture)
         
         view.addSubview(tableView)
         
@@ -49,80 +67,76 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
         ])
     }
     
+    @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        guard gestureRecognizer.state == .began else { return }
+        
+        // Get the location of the long press
+        let location = gestureRecognizer.location(in: tableView)
+        
+        // Get the index path of the pressed cell
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            let book = allBooks[indexPath.row]
+            showRemoveBookActionSheet(for: book)
+        }
+    }
+    
+    private func showRemoveBookActionSheet(for book: BookF) {
+        let actionSheet = UIAlertController(title: "Remove Book", message: "Are you sure you want to remove '\(book.title)' from this list?", preferredStyle: .actionSheet)
+        
+        // Add "Remove" action
+        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { [weak self] _ in
+            self?.removeBookFromList(book)
+        }
+        
+        // Add "Cancel" action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(removeAction)
+        actionSheet.addAction(cancelAction)
+        
+        // Present the action sheet
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func removeBookFromList(_ book: BookF) {
+        guard let userID = Auth.auth().currentUser?.uid,
+              let listID = customList?.id else {
+            print("User ID or list ID is missing.")
+            return
+        }
+        
+        // Reference to the user's custom list in Firestore
+        let listRef = db.collection("users").document(userID).collection("customLists").document(listID)
+        
+        // Remove the book ID from the list's bookIDs array
+        listRef.updateData([
+            "bookIDs": FieldValue.arrayRemove([book.id])
+        ]) { [weak self] error in
+            if let error = error {
+                print("Error removing book from list: \(error.localizedDescription)")
+            } else {
+                print("Book removed from list successfully.")
+                // Remove the book from the local data source and reload the table view
+                self?.allBooks.removeAll { $0.id == book.id }
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
     private func fetchBooksForList(_ list: List) {
         let bookIDs = list.bookIDs
         allBooks.removeAll()
         tableView.reloadData()
-        fetchBooksByIDs(bookIDs)
-    }
-    
-    private func fetchBooksByIDs(_ bookIDs: [String]) {
-        let group = DispatchGroup()
-        var fetchedBooks: [BookF] = []
         
-        for bookID in bookIDs {
-            group.enter()
-            fetchGoogleBook(volumeId: bookID) { [weak self] result in
-                switch result {
-                case .success(let book):
-                    if let book = book {
-                        fetchedBooks.append(book)
-                    }
-                case .failure(let error):
-                    print("Error fetching book \(bookID): \(error.localizedDescription)")
-                }
-                group.leave()
+        fetchBooksByIDs(bookIDs: bookIDs) { [weak self] result in
+            switch result {
+            case .success(let books):
+                self?.allBooks = books
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print("Error fetching books: \(error.localizedDescription)")
             }
         }
-        
-        group.notify(queue: .main) {
-            print("Books fetched: \(fetchedBooks.count)")
-            self.allBooks = fetchedBooks
-            self.tableView.reloadData()
-        }
-    }
-    
-    private func fetchGoogleBook(volumeId: String, completion: @escaping (Result<BookF?, Error>) -> Void) {
-        let baseUrlString = "https://www.googleapis.com/books/v1/volumes/\(volumeId)"
-        guard let url = URL(string: baseUrlString) else {
-            completion(.failure(URLError(.badURL)))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(URLError(.zeroByteResource)))
-                return
-            }
-            
-            do {
-                let item = try JSONDecoder().decode(VolumeItem.self, from: data)
-                if let volumeInfo = item.volumeInfo {
-                    let book = BookF(
-                        id: item.id,
-                        title: volumeInfo.title,
-                        subtitle: volumeInfo.subtitle ?? "",
-                        authors: volumeInfo.authors ?? [],
-                        description: volumeInfo.description ?? "",
-                        averageRating: volumeInfo.averageRating ?? 0.0,
-                        ratingsCount: volumeInfo.ratingsCount ?? 0,
-                        imageLinks: volumeInfo.imageLinks,
-                        previewLink: volumeInfo.previewLink ?? "",
-                        pageCount: volumeInfo.pageCount ?? 0
-                    )
-                    completion(.success(book))
-                } else {
-                    completion(.success(nil))
-                }
-            } catch {
-                completion(.failure(error))
-            }
-        }.resume()
     }
     
     // MARK: - TableView DataSource and Delegate
@@ -184,6 +198,3 @@ class CustomListViewController: UIViewController, UITableViewDataSource, UITable
         }.resume()
     }
 }
-
-
-

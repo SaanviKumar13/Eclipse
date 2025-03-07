@@ -96,6 +96,8 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
         present(navController, animated: true)
     }
     
+    // MARK: - TableView DataSource and Delegate
+    
     func numberOfSections(in tableView: UITableView) -> Int { return 2 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -134,7 +136,38 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    
+    // MARK: - Swipe to Delete Custom Lists
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 1 // Only allow editing for custom lists
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let list = customLists[indexPath.row]
+            deleteCustomList(list)
+        }
+    }
+    
+    private func deleteCustomList(_ list: List) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        let listRef = db.collection("users").document(userID).collection("customLists").document(list.id)
+        
+        listRef.delete { [weak self] error in
+            if let error = error {
+                print("Error deleting list: \(error.localizedDescription)")
+            } else {
+                print("List deleted successfully.")
+                self?.customLists.removeAll { $0.id == list.id }
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Configure Cells
+    
     private func configure(_ cell: ReadingListTableViewCell, with list: StatusList) {
         cell.titleLabel.text = list.category
         cell.subtitleLabel.text = "\(list.bookIDs.count) books"
@@ -149,35 +182,17 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     private func loadBookImages(for cell: ReadingListTableViewCell, with bookIDs: [String]) {
-        let imageViews = [cell.book1, cell.book2, cell.book3]
-        
-        // If the list is empty, show placeholder images and return
-        if bookIDs.isEmpty {
-            for imageView in imageViews { imageView?.image = UIImage(named: "grey_bg") }
-            return
-        }
-        
         // Fetch the first 3 books
         fetchBooksByIDs(bookIDs: Array(bookIDs.prefix(3))) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let books):
-                    for (index, book) in books.enumerated() {
-                        if let imageUrl = book.imageLinks?.thumbnail, let url = URL(string: imageUrl) {
-                            URLSession.shared.dataTask(with: url) { data, _, _ in
-                                if let data = data, let image = UIImage(data: data) {
-                                    self?.bookImageCache[book.id] = image
-                                    DispatchQueue.main.async { imageViews[index]?.image = image }
-                                }
-                            }.resume()
-                        }
-                    }
+                    let images = books.compactMap { self?.bookImageCache[$0.id] }
+                    cell.configure(with: images)
                 case .failure:
-                    // If fetching fails, show placeholder images
-                    for imageView in imageViews { imageView?.image = UIImage(named: "grey_bg") }
+                    cell.configure(with: []) // Show no images if fetching fails
                 }
             }
         }
     }
 }
-

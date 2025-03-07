@@ -168,7 +168,6 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
             // Use `setData` with `merge: true` to create or update the document
             customListRef.setData([
                 "bookIDs": FieldValue.arrayUnion([book.id]), // Add the book ID to the array
-                "title": customListName, // Ensure the title is set
                 "timestamp": FieldValue.serverTimestamp() // Add a timestamp
             ], merge: true) { error in
                 if let error = error {
@@ -193,6 +192,20 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
         return section == 0 ? "Status Lists" : "Collections"
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            selectedStatus = statusLists[indexPath.row]
+        } else {
+            let customListID = Array(customLists.keys)[indexPath.row] // Get document ID
+            if selectedCustomLists.contains(customListID) {
+                selectedCustomLists.remove(customListID)
+            } else {
+                selectedCustomLists.insert(customListID)
+            }
+        }
+        tableView.reloadData()
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -202,30 +215,15 @@ class AddToLibraryViewController: UIViewController, UITableViewDataSource, UITab
             cell.accessoryType = selectedStatus == status ? .checkmark : .none
         } else {
             let customListKeys = Array(customLists.keys)
-            let customListKey = customListKeys[indexPath.row]
-            if let customList = customLists[customListKey] {
+            let customListID = customListKeys[indexPath.row] // Get document ID
+            if let customList = customLists[customListID] {
                 let customListName = customList.title
                 cell.textLabel?.text = customListName
-                cell.accessoryType = selectedCustomLists.contains(customListName) ? .checkmark : .none
+                cell.accessoryType = selectedCustomLists.contains(customListID) ? .checkmark : .none // Use document ID
             }
         }
         
         return cell
-    }
-
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            selectedStatus = statusLists[indexPath.row]
-        } else {
-            let customListName = Array(customLists.keys)[indexPath.row]
-            if selectedCustomLists.contains(customListName) {
-                selectedCustomLists.remove(customListName)
-            } else {
-                selectedCustomLists.insert(customListName)
-            }
-        }
-        tableView.reloadData()
     }
 }
 

@@ -27,10 +27,8 @@ class CustomBookTableViewCell: UITableViewCell {
         authorLabel = UILabel()
         titleLabel = UILabel()
         bookImage = UIImageView()
-        bookmarkButton = UIButton(type: .system)
 
         setupUI()
-        setupBookmarkButton()
 
         addSubviews()
         setupConstraints()
@@ -41,38 +39,35 @@ class CustomBookTableViewCell: UITableViewCell {
     }
 
     private func setupUI() {
+        // Configure description label
         descriptionLabel.numberOfLines = 3
         descriptionLabel.lineBreakMode = .byTruncatingTail
-        
-        bookImage.layer.cornerRadius = 10
+        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.textColor = .darkGray
+
+        // Configure book image
+        bookImage.layer.cornerRadius = 8
         bookImage.layer.masksToBounds = true
-        bookImage.layer.borderWidth = 1.0
-        bookImage.layer.borderColor = UIColor.lightGray.cgColor
+        bookImage.contentMode = .scaleAspectFill
 
-        self.layer.cornerRadius = 10
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowRadius = 4
-
+        // Style labels
         styleLabels()
+
+        // Add shadow and corner radius to the cell's contentView
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.2
+        contentView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        contentView.layer.shadowRadius = 4
+        contentView.backgroundColor = .white
     }
 
     private func styleLabels() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = .black
         authorLabel.font = UIFont.systemFont(ofSize: 14)
-        authorLabel.textColor = UIColor.gray
-    }
-
-    private func setupBookmarkButton() {
-        bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
-    }
-
-    @objc private func bookmarkButtonTapped() {
-        guard let book = book else { return }
-        delegate?.didSelectBookmark(for: book)
+        authorLabel.textColor = .gray
     }
 
     private func updateUI() {
@@ -81,6 +76,7 @@ class CustomBookTableViewCell: UITableViewCell {
         authorLabel.text = book.authors?.joined(separator: ", ") ?? "Unknown Author"
         descriptionLabel.text = book.description ?? "No description available."
 
+        // Load book image
         if let urlString = book.imageLinks?.thumbnail, let url = URL(string: urlString) {
             downloadImage(from: url) { [weak self] image in
                 DispatchQueue.main.async {
@@ -92,13 +88,26 @@ class CustomBookTableViewCell: UITableViewCell {
         }
     }
 
+    private func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error downloading image: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
 
     private func addSubviews() {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(authorLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(bookImage)
-        contentView.addSubview(bookmarkButton)
     }
 
     private func setupConstraints() {
@@ -106,34 +115,30 @@ class CustomBookTableViewCell: UITableViewCell {
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         bookImage.translatesAutoresizingMaskIntoConstraints = false
-        bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            // Book image constraints
+            bookImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            bookImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            bookImage.widthAnchor.constraint(equalToConstant: 80),
+            bookImage.heightAnchor.constraint(equalToConstant: 120),
+            bookImage.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16),
 
-            authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            // Title label constraints
+            titleLabel.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: bookImage.topAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 5),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            // Author label constraints
+            authorLabel.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 16),
+            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
 
-            bookImage.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-            bookImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            bookImage.widthAnchor.constraint(equalToConstant: 60),
-            bookImage.heightAnchor.constraint(equalToConstant: 80),
-
-            bookmarkButton.topAnchor.constraint(equalTo: bookImage.topAnchor),
-            bookmarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            bookmarkButton.widthAnchor.constraint(equalToConstant: 30),
-            bookmarkButton.heightAnchor.constraint(equalToConstant: 30),
-            bookmarkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            // Description label constraints
+            descriptionLabel.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            descriptionLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
+            descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16),
         ])
     }
 }
-
-
-
