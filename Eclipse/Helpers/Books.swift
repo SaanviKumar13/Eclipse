@@ -2,9 +2,10 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 import CoreData
 
-let apiKey = "" // Replace with your actual API key
+let apiKey = "AIzaSyBt1YPMwzU2Yzlc0gKAUDPKJnG_UQ4UgRc" // Replace with your actual API key
 let db = Firestore.firestore()
 
 /// Adapter to convert Firestore data into a `BookF` model.
@@ -501,37 +502,90 @@ func updateRenterRating(_ rating: Rating, renterID: String) {
     }
 }
 
-func fetchRecommendedLists(completion: @escaping ([RecommendedList]?, Error?) -> Void) {
+func fetchRecommendedLists(completion: @escaping ([RecommendedList], Error?) -> Void) {
+    print("🔍 fetchRecommendedLists called")
     let db = Firestore.firestore()
     
-    db.collection("curatedLists").getDocuments { snapshot, error in
+    guard let userID = Auth.auth().currentUser?.uid else {
+        print("👤 User is not logged in, fetching curated lists...")
+        db.collection("curatedLists")
+            .order(by: "title")
+            .limit(to: 5)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("❌ Error fetching curated lists: \(error.localizedDescription)")
+                    completion([], error)
+                    return
+                }
+                print("📄 Firestore query for curated lists completed")
+                
+                let recommendedLists = snapshot?.documents.compactMap { document -> RecommendedList? in
+                    let data = document.data()
+                    guard let title = data["title"] as? String,
+                          let subtitle = data["subtitle"] as? String,
+                          let bookIDs = data["bookIds"] as? [String],
+                          let tags = data["tags"] as? [String] else {
+                        print("⚠️ Skipping document due to missing fields: \(data)")
+                        return nil
+                    }
+                    return RecommendedList(title: title, subtitle: subtitle, books: bookIDs, tags: tags)
+                } ?? []
+                
+                print("✅ Successfully fetched \(recommendedLists.count) curated lists for non-logged-in user.")
+                completion(recommendedLists, nil)
+            }
+        return
+    }
+
+    print("👤 User is logged in, fetching genre preferences...")
+    let userRef = db.collection("users").document(userID).collection("userData").document("details")
+    userRef.getDocument { userSnapshot, error in
         if let error = error {
-            print("Error fetching curated lists: \(error.localizedDescription)")
-            completion(nil, error)
+            print("❌ Error fetching user preferences: \(error.localizedDescription)")
+            completion([], error)
             return
         }
+        print("📄 Firestore query for user preferences completed")
         
-        guard let documents = snapshot?.documents else {
+        guard let userData = userSnapshot?.data(),
+              let preferredGenres = userData["genrePreferences"] as? [String] else {
+            print("⚠️ No genre preferences found for user.")
             completion([], nil)
             return
         }
         
-        var recommendedLists: [RecommendedList] = []
+        let lowercaseGenres = preferredGenres.map { $0.lowercased() }
         
-        for document in documents {
-            let data = document.data()
-            
-            if let title = data["title"] as? String,
-               let subtitle = data["subtitle"] as? String,
-               let bookIDs = data["bookIds"] as? [String] {
-                
-                let recommendedList = RecommendedList(title: title, subtitle: subtitle, books: bookIDs)
-                recommendedLists.append(recommendedList)
-            } else {
-                print("Skipping document due to missing fields: \(data)")
+        db.collection("curatedLists").getDocuments { snapshot, error in
+            if let error = error {
+                print("❌ Error fetching curated lists: \(error.localizedDescription)")
+                completion([], error)
+                return
             }
+            print("📄 Firestore query for curated lists completed")
+            
+            let recommendedLists = snapshot?.documents.compactMap { document -> RecommendedList? in
+                let data = document.data()
+                
+                guard let title = data["title"] as? String,
+                      let subtitle = data["subtitle"] as? String,
+                      let bookIDs = data["bookIds"] as? [String],
+                      let tags = data["tags"] as? [String] else {
+                    print("⚠️ Skipping document due to missing fields: \(data)")
+                    return nil
+                }
+                
+                let listTagsLower = tags.map { $0.lowercased() }
+                if listTagsLower.contains(where: lowercaseGenres.contains) {
+                    return RecommendedList(title: title, subtitle: subtitle, books: bookIDs, tags: tags)
+                } else {
+                    return nil
+                }
+            } ?? []
+            
+            print("✅ Successfully fetched \(recommendedLists.count) curated lists for user with preferred genres: \(preferredGenres).")
+            completion(recommendedLists, nil)
         }
-        completion(recommendedLists, nil)
     }
 }
 

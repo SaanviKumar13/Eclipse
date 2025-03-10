@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27244A1D2D7DE98300ADBBAA /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27244A1C2D7DE98300ADBBAA /* SwipeViewController.swift */; };
+		27244A1F2D7DE99D00ADBBAA /* BookRecommendationSystem.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 27244A1E2D7DE99D00ADBBAA /* BookRecommendationSystem.mlmodel */; };
+		27244A212D7DF3F700ADBBAA /* BookRecommender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27244A202D7DF3F700ADBBAA /* BookRecommender.swift */; };
+		27244A232D7DF6E000ADBBAA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27244A222D7DF6E000ADBBAA /* ResultsViewController.swift */; };
 		276D6D152D64649C0041317C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D142D64649C0041317C /* AppDelegate.swift */; };
 		276D6D172D64649C0041317C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D162D64649C0041317C /* SceneDelegate.swift */; };
 		276D6D192D64649C0041317C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D182D64649C0041317C /* ViewController.swift */; };
@@ -21,7 +25,6 @@
 		276D6D392D646E730041317C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D382D646E730041317C /* Color.swift */; };
 		276D6D3C2D6478D60041317C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D3B2D6478D60041317C /* OnboardingViewController.swift */; };
 		276D6D3E2D648E070041317C /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D3D2D648E070041317C /* BookListViewController.swift */; };
-		276D6D402D648E5F0041317C /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D3F2D648E5F0041317C /* SwipeViewController.swift */; };
 		276D6D422D648E9E0041317C /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D6D412D648E9E0041317C /* Books.swift */; };
 		276D6D472D6490380041317C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 276D6D462D6490380041317C /* FirebaseAnalytics */; };
 		276D6D492D6490380041317C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 276D6D482D6490380041317C /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -80,6 +83,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27244A1C2D7DE98300ADBBAA /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		27244A1E2D7DE99D00ADBBAA /* BookRecommendationSystem.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BookRecommendationSystem.mlmodel; sourceTree = "<group>"; };
+		27244A202D7DF3F700ADBBAA /* BookRecommender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecommender.swift; sourceTree = "<group>"; };
+		27244A222D7DF6E000ADBBAA /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		276D6D112D64649C0041317C /* Eclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		276D6D142D64649C0041317C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		276D6D162D64649C0041317C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +103,6 @@
 		276D6D382D646E730041317C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		276D6D3B2D6478D60041317C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		276D6D3D2D648E070041317C /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
-		276D6D3F2D648E5F0041317C /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		276D6D412D648E9E0041317C /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		276D6D572D64911B0041317C /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		276D6D5E2D6493630041317C /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		276D6D132D64649C0041317C /* Eclipse */ = {
 			isa = PBXGroup;
 			children = (
+				27244A1E2D7DE99D00ADBBAA /* BookRecommendationSystem.mlmodel */,
 				276D6D7E2D64B3B30041317C /* GoogleService-Info.plist */,
 				276D6D5B2D64933A0041317C /* Models */,
 				276D6D3A2D646E810041317C /* Helpers */,
@@ -216,7 +223,8 @@
 				276D6D2B2D646D020041317C /* HomeViewController.swift */,
 				276D6D572D64911B0041317C /* BookViewController.swift */,
 				276D6D3D2D648E070041317C /* BookListViewController.swift */,
-				276D6D3F2D648E5F0041317C /* SwipeViewController.swift */,
+				27244A1C2D7DE98300ADBBAA /* SwipeViewController.swift */,
+				27244A222D7DF6E000ADBBAA /* ResultsViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 				276D6D382D646E730041317C /* Color.swift */,
 				276D6D412D648E9E0041317C /* Books.swift */,
 				2791BD602D67687100A6CB52 /* CoreDataManager.swift */,
+				27244A202D7DF3F700ADBBAA /* BookRecommender.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -436,10 +445,12 @@
 				276D6D6F2D649DD10041317C /* BorrowedBooksViewController.swift in Sources */,
 				276D6D2C2D646D020041317C /* HomeViewController.swift in Sources */,
 				27EEB89A2D7AA50F00A867D3 /* BookTableViewCell.swift in Sources */,
+				27244A1F2D7DE99D00ADBBAA /* BookRecommendationSystem.mlmodel in Sources */,
 				276D6D192D64649C0041317C /* ViewController.swift in Sources */,
 				276D6D2E2D646D3F0041317C /* RentHomeViewController.swift in Sources */,
 				276D6D392D646E730041317C /* Color.swift in Sources */,
 				27EEB8982D7A0F8C00A867D3 /* StatusListViewController.swift in Sources */,
+				27244A212D7DF3F700ADBBAA /* BookRecommender.swift in Sources */,
 				276D6D372D646E590041317C /* SplashViewController.swift in Sources */,
 				276D6D3E2D648E070041317C /* BookListViewController.swift in Sources */,
 				276D6D852D64DCE20041317C /* SearchViewController.swift in Sources */,
@@ -453,6 +464,7 @@
 				27EEB88A2D7A0D2900A867D3 /* AddToLibraryViewController.swift in Sources */,
 				276D6D5F2D6493630041317C /* DataModels.swift in Sources */,
 				276D6D322D646D740041317C /* ProfileViewController.swift in Sources */,
+				27244A232D7DF6E000ADBBAA /* ResultsViewController.swift in Sources */,
 				2791BD592D66ECBB00A6CB52 /* CategoryCollectionViewCell.swift in Sources */,
 				2791BD612D67687100A6CB52 /* CoreDataManager.swift in Sources */,
 				276D6D692D649C2C0041317C /* RentersCell.swift in Sources */,
@@ -469,7 +481,6 @@
 				2791BD5D2D66ECFE00A6CB52 /* RecommendedBooksCollectionViewCell.swift in Sources */,
 				276D6D882D64E1920041317C /* BookCell.swift in Sources */,
 				276D6D8B2D64E9850041317C /* LoginViewController.swift in Sources */,
-				276D6D402D648E5F0041317C /* SwipeViewController.swift in Sources */,
 				27EEB89C2D7AC8C300A867D3 /* ProfileBookViewController.swift in Sources */,
 				27EEB8942D7A0F5100A867D3 /* ReadingListViewController.swift in Sources */,
 				2791BD642D676A6700A6CB52 /* CachedBook.xcdatamodeld in Sources */,
@@ -483,6 +494,7 @@
 				27EEB8962D7A0F6900A867D3 /* ReadingListTableViewCell.swift in Sources */,
 				2791BD5B2D66ECDA00A6CB52 /* RecommendedListTableViewCell.swift in Sources */,
 				276D6D732D649E1D0041317C /* BookCard.swift in Sources */,
+				27244A1D2D7DE98300ADBBAA /* SwipeViewController.swift in Sources */,
 				276D6D812D64DC7A0041317C /* EditProfileController.swift in Sources */,
 				276D6D7B2D64A0360041317C /* RequestTableViewCell.swift in Sources */,
 				276D6D8F2D64E9DC0041317C /* GenrePrefrencesViewController.swift in Sources */,

@@ -39,6 +39,9 @@ class AllBooksViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupCollectionViews()
         setupNoBooksLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchBooks()
     }
 

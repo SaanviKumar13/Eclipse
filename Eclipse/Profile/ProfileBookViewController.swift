@@ -372,18 +372,32 @@ class ProfileBookViewController: UIViewController {
 
     private func convertHTMLToAttributedString(html: String) -> NSAttributedString {
         guard let data = html.data(using: .utf8) else {
-            return NSAttributedString(string: "No description available.")
+            return NSAttributedString(string: "No description available.", attributes: [
+                .font: UIFont.systemFont(ofSize: 16) // SF Pro font with size 15
+            ])
         }
 
         do {
-            return try NSAttributedString(
+            let attributedString = try NSMutableAttributedString(
                 data: data,
-                options: [.documentType: NSAttributedString.DocumentType.html,
-                          .characterEncoding: String.Encoding.utf8.rawValue],
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ],
                 documentAttributes: nil
             )
+
+            // Apply font to the whole attributed string
+            let fullRange = NSRange(location: 0, length: attributedString.length)
+            attributedString.addAttributes([
+                .font: UIFont.systemFont(ofSize: 16) // SF Pro font with size 15
+            ], range: fullRange)
+
+            return attributedString
         } catch {
-            return NSAttributedString(string: "No description available.")
+            return NSAttributedString(string: "No description available.", attributes: [
+                .font: UIFont.systemFont(ofSize: 16) // SF Pro font with size 15
+            ])
         }
     }
 

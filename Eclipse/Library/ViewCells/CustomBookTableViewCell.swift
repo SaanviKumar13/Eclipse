@@ -74,7 +74,7 @@ class CustomBookTableViewCell: UITableViewCell {
         guard let book = book else { return }
         titleLabel.text = book.title
         authorLabel.text = book.authors?.joined(separator: ", ") ?? "Unknown Author"
-        descriptionLabel.text = book.description ?? "No description available."
+        descriptionLabel.text = book.description?.htmlToPlainText ?? "No description available."
 
         // Load book image
         if let urlString = book.imageLinks?.thumbnail, let url = URL(string: urlString) {
@@ -140,5 +140,19 @@ class CustomBookTableViewCell: UITableViewCell {
             descriptionLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
             descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16),
         ])
+    }
+}
+
+extension String {
+    var htmlToPlainText: String {
+        guard let data = self.data(using: .utf8) else { return self }
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
+            return self
+        }
+        return attributedString.string
     }
 }

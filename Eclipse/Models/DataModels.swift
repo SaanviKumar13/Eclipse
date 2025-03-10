@@ -113,6 +113,7 @@ struct RecommendedList{
     var title: String
     var subtitle: String
     var books: [String]
+    var tags: [String]
 }
 
 struct BookRequest {

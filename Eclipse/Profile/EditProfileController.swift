@@ -33,7 +33,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
     private let emailTextField = createTextField(withPlaceholder: "Email")
     private let phoneTextField = createTextField(withPlaceholder: "Phone")
     private let genrePreferencesTextField = createTextField(withPlaceholder: "Genre Preferences")
-    private let authorPreferencesTextField = createTextField(withPlaceholder: "Author Preferences")
     private let addressTextField = createTextField(withPlaceholder: "Address")
     
     private var isEditingProfile = false
@@ -78,7 +77,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
             stackView.addArrangedSubview(createFieldStack(labelText: "Email", textField: emailTextField))
             stackView.addArrangedSubview(createFieldStack(labelText: "Phone", textField: phoneTextField))
             stackView.addArrangedSubview(createFieldStack(labelText: "Genre Preferences", textField: genrePreferencesTextField))
-            stackView.addArrangedSubview(createFieldStack(labelText: "Author Preferences", textField: authorPreferencesTextField))
             stackView.addArrangedSubview(createFieldStack(labelText: "Address", textField: addressTextField))
     
             NSLayoutConstraint.activate([
@@ -189,9 +187,8 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         let phone = phoneTextField.text ?? ""
         let address = addressTextField.text ?? ""
         let genrePreferences = genrePreferencesTextField.text?.split(separator: ",").map { String($0) } ?? []
-        let authorPreferences = authorPreferencesTextField.text?.split(separator: ",").map { String($0) } ?? []
         
-        saveUserInfoToFirestore(dob: dob, email: email, phone: phone, address: address, genrePreferences: genrePreferences, authorPreferences: authorPreferences)
+        saveUserInfoToFirestore(dob: dob, email: email, phone: phone, address: address, genrePreferences: genrePreferences)
         
         enableEditing(false)
         isEditingProfile = false
@@ -212,7 +209,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         emailTextField.isUserInteractionEnabled = enabled
         phoneTextField.isUserInteractionEnabled = enabled
         genrePreferencesTextField.isUserInteractionEnabled = enabled
-        authorPreferencesTextField.isUserInteractionEnabled = enabled
         addressTextField.isUserInteractionEnabled = enabled
         dobTextField.isUserInteractionEnabled = enabled
         
@@ -230,9 +226,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
             genrePreferencesTextField.layer.borderColor = UIColor.systemBlue.cgColor
             genrePreferencesTextField.layer.borderWidth = 1
             genrePreferencesTextField.layer.cornerRadius = 5
-            authorPreferencesTextField.layer.borderColor = UIColor.systemBlue.cgColor
-            authorPreferencesTextField.layer.borderWidth = 1
-            authorPreferencesTextField.layer.cornerRadius = 5
             addressTextField.layer.borderColor = UIColor.systemBlue.cgColor
             addressTextField.layer.borderWidth = 1
             addressTextField.layer.cornerRadius = 5
@@ -244,7 +237,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
             emailTextField.layer.borderWidth = 0
             phoneTextField.layer.borderWidth = 0
             genrePreferencesTextField.layer.borderWidth = 0
-            authorPreferencesTextField.layer.borderWidth = 0
             addressTextField.layer.borderWidth = 0
             dobTextField.layer.borderWidth = 0
         }
@@ -273,7 +265,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
             let phone = document.get("phone") as? String ?? ""
             let address = document.get("address") as? String ?? ""
             let genrePreferences = document.get("genrePreferences") as? [String] ?? []
-            let authorPreferences = document.get("authorPreferences") as? [String] ?? []
             
             DispatchQueue.main.async {
                 self?.nameTextField.text = document.get("name") as? String ?? ""
@@ -282,7 +273,6 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
                 self?.phoneTextField.text = phone
                 self?.addressTextField.text = address
                 self?.genrePreferencesTextField.text = genrePreferences.joined(separator: ", ")
-                self?.authorPreferencesTextField.text = authorPreferences.joined(separator: ", ")
                 
                 if let dobDate = DateFormatter().date(from: dob) {
                     self?.dobTextField.text = DateFormatter().string(from: dobDate)
@@ -291,7 +281,7 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
         }
     }
     
-    private func saveUserInfoToFirestore(dob: String, email: String, phone: String, address: String, genrePreferences: [String], authorPreferences: [String]) {
+    private func saveUserInfoToFirestore(dob: String, email: String, phone: String, address: String, genrePreferences: [String]) {
         guard let user = Auth.auth().currentUser else { return }
         
         let db = Firestore.firestore()
@@ -303,8 +293,7 @@ class EditProfileViewController: UIViewController, PHPickerViewControllerDelegat
             "email": email,
             "phone": phone,
             "address": address,
-            "genrePreferences": genrePreferences,
-            "authorPreferences": authorPreferences
+            "genrePreferences": genrePreferences
         ]) { error in
             if let error = error {
                 print("Error saving data: \(error.localizedDescription)")

@@ -1,20 +1,87 @@
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class GenrePreferencesViewController: UIViewController {
     
     let genres = [
+        // Core Literary Genres
         ("Fiction", "book.fill"),
         ("Non-Fiction", "book.fill"),
         ("Fantasy", "sparkles"),
+        ("Science Fiction", "antenna.radiowaves.left.and.right"),
+        ("Cyberpunk", "cpu.fill"),
+        ("Dystopian", "exclamationmark.triangle.fill"),
         ("Mystery", "magnifyingglass"),
+        ("Thriller", "eye.fill"),
+        ("Horror", "flame.fill"),
         ("Romance", "heart.fill"),
-        ("Historical", "book.closed"),
+        ("Historical Fiction", "book.closed"),
+        ("Adventure", "map.fill"),
+        ("Young Adult", "person.2.fill"),
+        ("New Adult", "person.fill.checkmark"),
+        ("Children’s", "figure.child.circle"),
+        ("Graphic Novel", "rectangle.compress.vertical"),
+        ("Manga", "rectangle.expand.vertical"),
+        ("Comics", "bubble.left.and.bubble.right.fill"),
+        ("Classic Literature", "text.book.closed.fill"),
+        
+        // Thematic & Aesthetic Genres
+        ("Slice of Life", "house.fill"),
+        ("Light Academia", "sun.max"),
+        ("Dark Academia", "book.circle.fill"),
+        ("Cozy Fiction", "mug.fill"),
+        ("Cottagecore", "leaf.fill"),
+        ("Magical Realism", "wand.and.stars"),
+        ("Mythology", "flame.circle"),
+        ("Folklore", "scroll.fill"),
+        ("Feminist Fiction", "venus"),
+        ("Revolutionary Fiction", "flag.fill"),
+        ("Environmental", "tree.fill"),
+        ("LGBTQ+", "rainbow"),
+        ("Spirituality", "hands.sparkles.fill"),
+        
+        // Travel & Exploration
+        ("Travel", "airplane"),
+        ("Road Trip", "car.fill"),
+        ("Wanderlust", "globe.americas.fill"),
+        
+        // Non-Fiction & Special Interests
         ("Biography", "person.fill"),
+        ("Memoir", "text.book.closed"),
         ("Self-Help", "person.3.fill"),
+        ("Psychology", "brain.head.profile"),
+        ("Philosophy", "lightbulb.fill"),
+        ("Science", "atom"),
+        ("Technology", "gear"),
+        ("Political", "building.columns.fill"),
+        ("History", "clock.arrow.circlepath"),
+        ("True Crime", "exclamationmark.shield.fill"),
+        ("Cookbooks", "fork.knife"),
+        ("Humor", "face.smiling.fill"),
         ("Poetry", "textformat.size"),
-        ("Graphic Novel", "rectangle.compress.vertical")
+        ("Music", "music.note"),
+        ("Art & Design", "paintpalette.fill"),
+        ("Fashion", "tshirt.fill"),
+        ("Food Writing", "fork.knife.circle.fill"),
+        ("Sports", "figure.walk"),
+        
+        // Subgenres & Niche Fiction
+        ("Cozy Mystery", "house.fill"),
+        ("Gothic Horror", "moon.fill"),
+        ("Surrealist", "cloud.fill"),
+        ("Alternate History", "clock.fill"),
+        ("Space Opera", "rocket.fill"),
+        ("Steampunk", "gearshape.fill"),
+        ("Time Travel", "arrow.triangle.2.circlepath"),
+        ("Post-Apocalyptic", "waveform.path.ecg"),
+        ("Espionage", "eye.trianglebadge.exclamationmark.fill"),
+        ("War & Military", "shield.lefthalf.filled"),
+        ("Medical Fiction", "stethoscope"),
+        ("Legal Thriller", "building.columns"),
+        ("Metafiction", "ellipsis.rectangle.fill")
     ]
-    
+
     var selectedGenres: [String] = []
     
     override func viewDidLoad() {
@@ -120,15 +187,8 @@ class GenrePreferencesViewController: UIViewController {
     
     @objc private func bubbleTapped(_ sender: UIButton) {
         guard let configuration = sender.configuration,
-              let attributedTitle = configuration.attributedTitle else {
+              let genreName = configuration.title else {
             print("Button configuration or title is nil.")
-            return
-        }
-
-        let titleString = attributedTitle.description
-        
-        guard !titleString.isEmpty else {
-            print("Title string is empty.")
             return
         }
 
@@ -140,21 +200,36 @@ class GenrePreferencesViewController: UIViewController {
             })
         }
 
-        if selectedGenres.contains(titleString) {
-            selectedGenres.removeAll { $0 == titleString }
+        if selectedGenres.contains(genreName) {
+            selectedGenres.removeAll { $0 == genreName }
             sender.configuration?.background.backgroundColor = .white
             sender.configuration?.baseForegroundColor = UIColor(hex: "#005C78")
         } else {
-            selectedGenres.append(titleString)
+            selectedGenres.append(genreName)
             sender.configuration?.background.backgroundColor = UIColor(hex: "#005C78")
             sender.configuration?.baseForegroundColor = .white
         }
     }
     
     @objc private func nextButtonTapped() {
-        let nextViewController = AuthorPreferencesViewController()
-        nextViewController.modalPresentationStyle = .fullScreen
-        present(nextViewController, animated: true, completion: nil)
+        guard let user = Auth.auth().currentUser else {
+            print("No authenticated user found.")
+            return
+        }
+
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(user.uid).collection("userData").document("details")
+
+        userRef.setData(["genrePreferences": selectedGenres], merge: true) { [weak self] error in
+            if let error = error {
+                print("Error saving preferences: \(error.localizedDescription)")
+            } else {
+                print("Genre preferences successfully saved.")
+                let nextViewController = HomeViewController()
+                nextViewController.modalPresentationStyle = .fullScreen
+                self?.present(nextViewController, animated: true, completion: nil)
+            }
+        }
     }
 }
 

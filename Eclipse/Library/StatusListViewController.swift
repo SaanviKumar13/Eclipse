@@ -10,7 +10,6 @@ class StatusListViewController: UIViewController, UITableViewDelegate, UITableVi
     private var statusList: StatusList?
 
     private let tableView = UITableView()
-    private let searchBar = UISearchBar()
     
     private let noBooksLabel: UILabel = {
         let label = UILabel()
@@ -45,14 +44,11 @@ class StatusListViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = statusList?.category ?? "Books"
         
-        searchBar.delegate = self
-        searchBar.placeholder = "Search books..."
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(BookTableViewCell.self, forCellReuseIdentifier: "BookCell")
 
-        let stackView = UIStackView(arrangedSubviews: [searchBar, tableView])
+        let stackView = UIStackView(arrangedSubviews: [tableView])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
@@ -129,6 +125,7 @@ class StatusListViewController: UIViewController, UITableViewDelegate, UITableVi
             $0.authors?.joined(separator: ", ").localizedCaseInsensitiveContains(searchText) ?? false
         }
     }
+    
 
     // MARK: - Action Sheet for Moving Books
     private func showActionSheet(for book: BookF) {
@@ -149,6 +146,7 @@ class StatusListViewController: UIViewController, UITableViewDelegate, UITableVi
                 for list in lists where list.rawValue != currentStatus {
                     let action = UIAlertAction(title: "Move to \(list.rawValue)", style: .default) { _ in
                         self.moveBook(book, to: list.rawValue)
+                        
                     }
                     actionSheet.addAction(action)
                 }

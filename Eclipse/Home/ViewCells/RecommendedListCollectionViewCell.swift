@@ -6,14 +6,16 @@ class RecommendedListCollectionViewCell: UICollectionViewCell, UICollectionViewD
     let listTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
 
     let listDesc: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .gray
         return label
     }()
@@ -22,6 +24,7 @@ class RecommendedListCollectionViewCell: UICollectionViewCell, UICollectionViewD
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.isPagingEnabled = true
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(RecommendedBookCollectionViewCell.self, forCellWithReuseIdentifier: "recommendedBookCell")
         return cv
@@ -43,16 +46,16 @@ class RecommendedListCollectionViewCell: UICollectionViewCell, UICollectionViewD
 
         NSLayoutConstraint.activate([
             listTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            listTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            listTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            listTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            listTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
-            listDesc.topAnchor.constraint(equalTo: listTitle.bottomAnchor, constant: 5),
-            listDesc.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            listDesc.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            listDesc.topAnchor.constraint(equalTo: listTitle.bottomAnchor, constant: 2),
+            listDesc.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            listDesc.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
             bookCollectionView.topAnchor.constraint(equalTo: listDesc.bottomAnchor, constant: 10),
-            bookCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            bookCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            bookCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            bookCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             bookCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             bookCollectionView.heightAnchor.constraint(equalToConstant: 200)
         ])

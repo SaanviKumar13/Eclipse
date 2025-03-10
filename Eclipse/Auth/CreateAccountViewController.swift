@@ -74,6 +74,7 @@ class CreateAccountViewController: UIViewController {
         
         passwordTextField = createTextField(placeholder: "Password", labelColor: UIColor(hex: "#005C78"))
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.textContentType = .none
         
         [nameTextField, emailTextField, birthdateTextField, addressTextField, phoneTextField, passwordTextField].forEach {
             stackView.addArrangedSubview($0)
