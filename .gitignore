@@ -13,8 +13,8 @@ build/
 
 
 # App-specific
-*.plist
-GoogleService-Info.plist 
+Eclipse/*.plist
+Eclipse/GoogleService-Info.plist 
 
 # Ignore user-specific files
 *.xcuserdatad

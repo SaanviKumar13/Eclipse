@@ -4,8 +4,6 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 import CoreData
-
-let apiKey = "AIzaSyBt1YPMwzU2Yzlc0gKAUDPKJnG_UQ4UgRc" // Replace with your actual API key
 let db = Firestore.firestore()
 
 /// Adapter to convert Firestore data into a `BookF` model.
