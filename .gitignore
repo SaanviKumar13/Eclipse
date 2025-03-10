@@ -1,8 +1,7 @@
 # Xcode
 .DS_Store
 *.swp
-*.xcuserstate
-*.xcworkspacedata
+*.xcodeproj/xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 *.xcscheme
