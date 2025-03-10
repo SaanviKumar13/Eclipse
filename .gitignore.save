@@ -1,0 +1,21 @@
+# Xcode
+.DS_Store
+*.swp
+*.xcuserstate
+*.xcworkspacedata
+*.xccheckout
+*.xcscmblueprint
+*.xcscheme
+*.xcuserdatad
+xcuserdata/
+DerivedData/
+build/
+
+
+# App-specific
+*.plist
+GoogleService-Info.plist 
+
+# Ignore user-specific files
+*.xcuserdatad
+*.xcworkspace
